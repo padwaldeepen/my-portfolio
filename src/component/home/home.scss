@@ -1,5 +1,5 @@
 .home-section {
-  background-color: #001c30;
+  background-color: #000;
   padding: 100px 0;
   text-align: center;
 }
@@ -18,15 +18,32 @@
   font-weight: bold;
 }
 
+.main-name {
+  color: #ff5733;
+}
+
 .intro-text {
   font-size: 18px;
   margin-top: 20px;
+
+  .Typewriter {
+    display: inline-block;
+    color: #ff5733;
+  }
+}
+
+.social {
+  margin-top: 20px;
+
+  .social-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 40px; 
+    height: 40px; 
+  }
 }
 
 .btn-cta {
   margin-top: 20px;
-}
-
-.main-name {
-  color: #64ccc5;
 }
