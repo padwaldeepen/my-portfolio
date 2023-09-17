@@ -8,7 +8,6 @@ import './App.scss';
 import './styles.scss';
 import { CustomNavbar } from './component/navbar/Navbar';
 import { Home } from './component/home/Home';
-import { Education } from './component/education/Education';
 import { Skills } from './component/skills/Skills';
 
 export const App = () => {
@@ -18,7 +17,6 @@ export const App = () => {
         <CustomNavbar />
         <Routes>
           <Route path="/" element={ <Home /> } />
-          <Route path="/education" element={ <Education /> } />
           <Route path="/skills" element={ <Skills /> } />
           <Route path="*" element={ <Navigate to="/" /> } />
         </Routes>

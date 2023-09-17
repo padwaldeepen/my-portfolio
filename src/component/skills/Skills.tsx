@@ -11,46 +11,11 @@ export const Skills = () => {
             <div className="skill-category">
               <h2>Languages & Databases</h2>
               <div className="skill-list">
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/js.png" 
-                    alt="JavaScript (ES6+)"
-                  />
-                  <p>JavaScript (ES6+)</p>
-                </div>
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/typescript.png" 
-                    alt="TypeScript"
-                  />
-                  <p>TypeScript</p>
-                </div>
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/python.png" 
-                    alt="Python"
-                  />
-                  <p>Python</p>
-                </div>
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/html.png" 
-                    alt="HTML5"
-                  />
-                  <p>HTML5</p>
-                </div>
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/mysql.png" 
-                    alt="MySQL"
-                  />
-                  <p>MySQL</p>
-                </div>
+                {renderSkillItem('Assests/icons/js.png', 'JavaScript (ES6+)')}
+                {renderSkillItem('Assests/icons/typescript.png', 'TypeScript')}
+                {renderSkillItem('Assests/icons/python.png', 'Python')}
+                {renderSkillItem('Assests/icons/html.png', 'HTML5')}
+                {renderSkillItem('Assests/icons/mysql.png', 'MySQL')}
               </div>
             </div>
           </Col>
@@ -58,15 +23,7 @@ export const Skills = () => {
             <div className="skill-category">
               <h2>Frameworks & Technologies</h2>
               <div className="skill-list">
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/react.png"
-                    alt="ReactJS" 
-                  />
-                  <p>ReactJS</p>
-                </div>
-             
+                {renderSkillItem('Assests/icons/react.png', 'ReactJS')}
               </div>
             </div>
           </Col>
@@ -76,14 +33,7 @@ export const Skills = () => {
             <div className="skill-category">
               <h2>Tools & Platforms</h2>
               <div className="skill-list">
-                <div className="skill-item">
-                  <img
-                    className="icon-style round-image"
-                    src="Assests/icons/git.png"
-                    alt="Git" 
-                  />
-                  <p>Git</p>
-                </div>
+                {renderSkillItem('Assests/icons/git.png', 'Git')}
               </div>
             </div>
           </Col>
@@ -92,3 +42,10 @@ export const Skills = () => {
     </div>
   );
 };
+
+const renderSkillItem = (iconSrc: string, skillName: string) => (
+  <div className="skill-item">
+    <img className="icon-style round-image" src={ iconSrc } alt={ skillName } />
+    <p>{skillName}</p>
+  </div>
+);
