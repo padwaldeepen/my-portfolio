@@ -1,13 +1,8 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import './styles.scss';
 import { CustomNavbar } from './component/navbar/Navbar';
-import { Home } from './component/home/Home';
+import { Home } from './component/home/home';
 import { Skills } from './component/skills/Skills';
 
 export const App = () => {

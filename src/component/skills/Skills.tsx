@@ -32,9 +32,7 @@ export const Skills = () => {
           <Col md={ 6 }>
             <div className="skill-category">
               <h2>Tools & Platforms</h2>
-              <div className="skill-list">
-                {renderSkillItem('Assests/icons/git.png', 'Git')}
-              </div>
+              <div className="skill-list">{renderSkillItem('Assests/icons/git.png', 'Git')}</div>
             </div>
           </Col>
         </Row>

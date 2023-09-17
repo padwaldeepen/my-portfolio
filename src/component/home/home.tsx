@@ -25,7 +25,7 @@ const Header = () => {
           options={ {
             strings: ['Software Engineer'],
             autoStart: true,
-            loop: true,
+            loop: true
           } }
         />
       </p>

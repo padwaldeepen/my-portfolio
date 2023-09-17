@@ -1,25 +1,37 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution":"node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "importHelpers": true,
+    "target": "ES6",
+    "module": "esnext",
+    "lib": [
+      "dom",
+     "ES2019"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,  
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    
     "strict": true,
-    "target": "es5"
+    
   },
+  "exclude": ["node_modules","tmp"],
   "include": [
     "src"
   ]

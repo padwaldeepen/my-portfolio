@@ -13,8 +13,7 @@ export const CustomNavbar = () => {
               href="https://drive.google.com/file/d/1GmXKCLzgeONl-luzeztNqhHq59al-U7y/view"
               target="_blank"
               rel="noopener noreferrer"
-              className="resume-link"
-            >
+              className="resume-link">
               Resume
             </Nav.Link>
           </Nav>
