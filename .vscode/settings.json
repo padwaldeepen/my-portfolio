@@ -1,13 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptReact",
-    "html",
-    "typescriptreact",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "javascriptReact", "html", "typescriptreact", "typescript"],
   "eslint.format.enable": true,
   "editor.tabSize": 2,
   "[typescript]": {
