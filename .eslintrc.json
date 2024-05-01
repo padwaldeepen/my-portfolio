@@ -89,7 +89,8 @@
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
   },
   "env": {
     "es2021": true

@@ -21,7 +21,12 @@
     "sourceMap": true,
     "target": "ES2021",
     "jsx": "react-jsx",
-    "paths": {}
+    "strict": true,
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"]
+    }
   },
-  "exclude": ["node_modules", "tmp"]
+  "include": ["src/**/*", "src/App.tsx", "image.d.ts"],
+  "exclude": ["node_modules", "build"]
 }

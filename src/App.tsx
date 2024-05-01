@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 
 import './App.scss';
-import { Home } from './component/home/home';
-import { CustomNavbar } from './component/navbar/Navbar';
-import { Skills } from './component/skills/Skills';
+import { Home } from './components/home/Home';
+import { CustomNavbar } from './components/navbar/Navbar';
+import { Skills } from './components/skills/Skills';
 import './styles.scss';
 
 export const App = () => {

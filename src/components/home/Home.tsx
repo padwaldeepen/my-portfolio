@@ -1,11 +1,12 @@
-import Typewriter from 'typewriter-effect';
 import { SocialIcon } from 'react-social-icons';
+import Typewriter from 'typewriter-effect';
+import { FC } from 'react';
 
-import { ReactComponent as Desk } from '../../assests/img/desk.svg';
+import { ReactComponent as Desk } from '../../assets/img/desk.svg';
 
 import './home.scss';
 
-export const Home = () => {
+export const Home: FC = () => {
   return (
     <section className='home-section' id='home'>
       <div className='home-content'>
