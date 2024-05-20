@@ -27,14 +27,13 @@
   transition: transform 0.3s ease;
 }
 
-.icon-style {
-  height: 75px;
-  width: 75px;
-  border-radius: 50%;
+.skill-icon {
+  height: 56px;
+  width: auto;
+  border-radius: 20%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  padding: 5px;
 }
 
 .skill-item:hover {

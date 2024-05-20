@@ -5,15 +5,16 @@ import {
 } from 'react-bootstrap';
 import './navbar.scss';
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
-export const CustomNavbar:FC = () => {
+export const CustomNavbar: FC = () => {
   return (
     <Navbar expand='md' className='navbar-custom'>
       <Container fluid>
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ml-auto'>
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/skills'>Skills</Nav.Link>
+            <Link className='nav-link' to='/'>Home</Link>
+            <Link className='nav-link' to='/skills'>Skills</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

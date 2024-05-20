@@ -15,6 +15,13 @@ import gitIcon from '../../assets/icons/git.png';
 
 import './skills.scss';
 
+const SkillItem: React.FC<{ iconSrc: string; skillName: string }> = ({ iconSrc, skillName }) => (
+  <div className='skill-item'>
+    <img className='skill-icon' src={ iconSrc } alt={ `Icon for ${ skillName }` } />
+    <p>{skillName}</p>
+  </div>
+);
+
 export const Skills: React.FC = () => {
   return (
     <div className='skills-container' id='skills'>
@@ -24,26 +31,26 @@ export const Skills: React.FC = () => {
             <div className='skill-category'>
               <h2>Languages & Databases</h2>
               <div className='skill-list'>
-                {renderSkillItem(cssIcon, 'CSS')}
-                {renderSkillItem(typescriptIcon, 'TypeScript')}
-                {renderSkillItem(pythonIcon, 'Python')}
-                {renderSkillItem(htmlIcon, 'HTML5')}
-                {renderSkillItem(mysqlIcon, 'MySQL')}
+                <SkillItem iconSrc={ cssIcon } skillName='CSS' />
+                <SkillItem iconSrc={ typescriptIcon } skillName='TypeScript' />
+                <SkillItem iconSrc={ pythonIcon } skillName='Python' />
+                <SkillItem iconSrc={ htmlIcon } skillName='HTML5' />
+                <SkillItem iconSrc={ mysqlIcon } skillName='MySQL' />
               </div>
             </div>
           </Col>
           <Col md={ 6 }>
             <div className='skill-category'>
               <h2>Frameworks & Technologies</h2>
-              <div className='skill-list'>{renderSkillItem(reactIcon, 'ReactJS')}</div>
+              <div className='skill-list'>
+                <SkillItem iconSrc={ reactIcon } skillName='ReactJS' />
+              </div>
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={ 6 }>
             <div className='skill-category'>
               <h2>Tools & Platforms</h2>
-              <div className='skill-list'>{renderSkillItem(gitIcon, 'Git')}</div>
+              <div className='skill-list'>
+                <SkillItem iconSrc={ gitIcon } skillName='Git' />
+              </div>
             </div>
           </Col>
         </Row>
@@ -51,10 +58,3 @@ export const Skills: React.FC = () => {
     </div>
   );
 };
-
-const renderSkillItem = (iconSrc: string, skillName: string) => (
-  <div className='skill-item'>
-    <img className='icon-style round-image' src={ iconSrc } alt={ skillName } />
-    <p>{skillName}</p>
-  </div>
-);
