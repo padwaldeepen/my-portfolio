@@ -1,23 +1,65 @@
+import { RefObject } from 'react';
 import {
+  Navbar,
   Container,
   Nav,
-  Navbar,
 } from 'react-bootstrap';
 import './navbar.scss';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
 
-export const CustomNavbar: FC = () => {
+interface CustomNavbarProps {
+  scrollToView: (elementRef: RefObject<HTMLDivElement>) => void;
+  homeRef: RefObject<HTMLDivElement>;
+  skillsRef: RefObject<HTMLDivElement>;
+  aboutRef: RefObject<HTMLDivElement>;
+}
+
+export const CustomNavbar = (props: CustomNavbarProps) => {
+  const { scrollToView, homeRef, skillsRef, aboutRef } = props;
+
   return (
     <Navbar expand='md' className='navbar-custom'>
       <Container fluid>
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ml-auto'>
-            <Link className='nav-link' to='/'>Home</Link>
-            <Link className='nav-link' to='/skills'>Skills</Link>
+            <Nav.Link onClick={ () => scrollToView(homeRef) }>Home</Nav.Link>
+            <Nav.Link onClick={ () => scrollToView(aboutRef) }>About</Nav.Link>
+            <Nav.Link onClick={ () => scrollToView(skillsRef) }>Skills</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <SocialIcons />
     </Navbar>
+  );
+};
+
+const SocialIcons = () => {
+  return (
+    <div className='social'>
+      <a
+        className='social-icon'
+        href='https://www.linkedin.com/in/padwaldeepen/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <i className='bi bi-linkedin' />
+      </a>
+      <a
+        className='social-icon'
+        href='https://github.com/padwaldeepen'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <i className='bi bi-github' />
+      </a>
+      <a
+        className='social-icon'
+        href='mailto:padwaldeepen@gmail.com'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <i className='bi bi-envelope' />
+      </a>
+    </div>
+
   );
 };

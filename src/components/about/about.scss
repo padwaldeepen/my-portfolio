@@ -1,0 +1,22 @@
+.about-section {
+  height: 100vh;
+  align-content: center;
+  text-align: center;
+
+  .name {
+    font-size: 6rem;
+    text-align: left;
+    margin-left: 100px;
+    
+    span {
+        color: #f49f08;
+        padding-right: 14px;
+      }
+  }
+
+  .about-me-text {
+    padding: 0 300px 0 500px;
+    font-size: 1.4rem;
+    margin-top: -60px;
+  }
+}

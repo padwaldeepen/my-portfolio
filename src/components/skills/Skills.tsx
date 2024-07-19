@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   Container,
   Row,
@@ -22,14 +22,14 @@ const SkillItem: React.FC<{ iconSrc: string; skillName: string }> = ({ iconSrc, 
   </div>
 );
 
-export const Skills: React.FC = () => {
+export const Skills = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div className='skills-container' id='skills'>
+    <div ref={ ref } className='skills-section'>
+      <h3 className='section-heading'>My skills<span>.</span></h3>
       <Container>
         <Row>
           <Col md={ 6 }>
             <div className='skill-category'>
-              <h2>Languages & Databases</h2>
               <div className='skill-list'>
                 <SkillItem iconSrc={ cssIcon } skillName='CSS' />
                 <SkillItem iconSrc={ typescriptIcon } skillName='TypeScript' />
@@ -41,13 +41,11 @@ export const Skills: React.FC = () => {
           </Col>
           <Col md={ 6 }>
             <div className='skill-category'>
-              <h2>Frameworks & Technologies</h2>
               <div className='skill-list'>
                 <SkillItem iconSrc={ reactIcon } skillName='ReactJS' />
               </div>
             </div>
             <div className='skill-category'>
-              <h2>Tools & Platforms</h2>
               <div className='skill-list'>
                 <SkillItem iconSrc={ gitIcon } skillName='Git' />
               </div>
@@ -57,4 +55,4 @@ export const Skills: React.FC = () => {
       </Container>
     </div>
   );
-};
+});
