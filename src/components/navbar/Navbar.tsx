@@ -32,7 +32,7 @@ export const CustomNavbar = (props: CustomNavbarProps) => {
   );
 };
 
-const SocialIcons = () => {
+export const SocialIcons = () => {
   return (
     <div className='social'>
       <a

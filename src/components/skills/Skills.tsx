@@ -1,58 +1,63 @@
-import React, { forwardRef } from 'react';
-import {
-  Container,
-  Row,
-  Col,
-} from 'react-bootstrap';
-
-import cssIcon from '../../assets/icons/css.png';
-import typescriptIcon from '../../assets/icons/typescript.png';
-import pythonIcon from '../../assets/icons/python.png';
-import htmlIcon from '../../assets/icons/html.png';
-import mysqlIcon from '../../assets/icons/mysql.png';
-import reactIcon from '../../assets/icons/react.png';
-import gitIcon from '../../assets/icons/git.png';
-
+import { forwardRef } from 'react';
 import './skills.scss';
-
-const SkillItem: React.FC<{ iconSrc: string; skillName: string }> = ({ iconSrc, skillName }) => (
-  <div className='skill-item'>
-    <img className='skill-icon' src={ iconSrc } alt={ `Icon for ${ skillName }` } />
-    <p>{skillName}</p>
-  </div>
-);
 
 export const Skills = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ ref } className='skills-section'>
-      <h3 className='section-heading'>My skills<span>.</span></h3>
-      <Container>
-        <Row>
-          <Col md={ 6 }>
-            <div className='skill-category'>
-              <div className='skill-list'>
-                <SkillItem iconSrc={ cssIcon } skillName='CSS' />
-                <SkillItem iconSrc={ typescriptIcon } skillName='TypeScript' />
-                <SkillItem iconSrc={ pythonIcon } skillName='Python' />
-                <SkillItem iconSrc={ htmlIcon } skillName='HTML5' />
-                <SkillItem iconSrc={ mysqlIcon } skillName='MySQL' />
-              </div>
-            </div>
-          </Col>
-          <Col md={ 6 }>
-            <div className='skill-category'>
-              <div className='skill-list'>
-                <SkillItem iconSrc={ reactIcon } skillName='ReactJS' />
-              </div>
-            </div>
-            <div className='skill-category'>
-              <div className='skill-list'>
-                <SkillItem iconSrc={ gitIcon } skillName='Git' />
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+      <h3 className='section-heading'>
+        My skills<span>.</span>
+      </h3>
+      <div className='skills-content'>
+        <div>
+          <span>
+            <i className='devicon-react-plain' aria-hidden='true' />
+          </span>
+          <h4>React JS</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-bootstrap-plain' aria-hidden='true' />
+          </span>
+          <h4>Bootstrap</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-python-plain' aria-hidden='true' />
+          </span>
+          <h4>Python</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-graphql-plain' aria-hidden='true' />
+          </span>
+          <h4>GraphQL</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-nodejs-plain' aria-hidden='true' />
+          </span>
+          <h4>Node JS</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-docker-plain' aria-hidden='true' />
+          </span>
+          <h4>Docker</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-git-plain' aria-hidden='true' />
+          </span>
+          <h4>Git/GitHub</h4>
+        </div>
+        <div>
+          <span>
+            <i className='devicon-openapi-plain' aria-hidden='true' />
+          </span>
+          <h4>Generative AI (Python)</h4>
+        </div>
+      </div>
     </div>
+
   );
 });

@@ -1,16 +1,17 @@
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import React, {
   useEffect,
   useRef,
   useState,
 } from 'react';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.scss';
 
+import { About } from './components/about/About';
+import { Footer } from './components/footer/Footer';
 import { Home } from './components/home/Home';
 import { CustomNavbar } from './components/navbar/Navbar';
 import { Skills } from './components/skills/Skills';
 import './styles.scss';
-import { About } from './components/about/About';
 
 export const App = () => {
   const homeRef = useRef<HTMLDivElement>(null);
@@ -63,6 +64,7 @@ export const App = () => {
         <About ref={ aboutRef } />
         <Skills ref={ skillsRef } />
       </div>
+      <Footer />
       {showScrollToTop && (
         <button className='scroll-to-top' onClick={ scrollToTop }>
           <i className='bi bi-arrow-up-circle-fill' />
