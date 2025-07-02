@@ -2,98 +2,33 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "semistandard",
-    "standard-jsx",
-    "standard-react",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "prettier"
   ],
-  "ignorePatterns": ["**/coverage/**/*", "**/dist/**/*", "**/jest.config.js", "**/jest.preset.js"],
   "plugins": ["modules-newlines"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@typescript-eslint/consistent-type-assertions": "off",
-        "@typescript-eslint/no-array-constructor": "off",
-        "@typescript-eslint/no-namespace": "off",
-        "@typescript-eslint/no-unused-expressions": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/no-useless-constructor": "off",
-        "padding-line-between-statements": "warn",
-        "no-console": "warn",
-        "no-unused-vars": "warn",
-        "no-use-before-define": "off",
-        "newline-before-return": "error",
-        "sort-keys": [
-          "warn",
-          "asc",
-          {
-            "caseSensitive": true,
-            "natural": false,
-            "minKeys": 2
-          }
-        ],
-        "import/order": [
-          2,
-          {
-            "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
-            "newlines-between": "always"
-          }
-        ],
-        "vars-on-top": "warn",
-        "modules-newlines/import-declaration-newline": "warn",
-        "modules-newlines/export-declaration-newline": "warn",
-        "react/jsx-uses-react": "off",
-        "react/jsx-curly-spacing": ["error", "always"],
-        "max-len": [
-          "warn",
-          {
-            "code": 120,
-            "tabWidth": 2,
-            "ignorePattern": "^import .*"
-          }
-        ],
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off",
-        "template-curly-spacing": ["error", "always"],
-        "camelcase": "off",
-        "array-bracket-spacing": ["error", "always"],
-        "no-void": "off",
-        "quotes": [
-          "error",
-          "single",
-          {
-            "allowTemplateLiterals": true
-          }
-        ],
-        "comma-dangle": ["error", "always-multiline"]
-      }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/consistent-type-assertions": "off",
-        "@typescript-eslint/no-array-constructor": "off",
-        "@typescript-eslint/no-namespace": "off",
-        "@typescript-eslint/no-unused-expressions": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/no-useless-constructor": "off"
-      }
-    }
+  "ignorePatterns": [
+    "**/coverage/**/*",
+    "**/dist/**/*",
+    "**/jest.config.js",
+    "**/jest.preset.js"
   ],
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
     "project": "./tsconfig.json",
-    "tsconfigRootDir": "."
+    "tsconfigRootDir": ".",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "env": {
-    "es2021": true
+    "browser": true,
+    "es2021": true,
+    "jest": true
   },
   "globals": {
     "dt": true,
@@ -106,13 +41,87 @@
     "jsdom": true,
     "JSX": true
   },
-  "rules": {
-    "import/extensions": "off",
-    "import/no-unresolved": "off"
-  },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {}
     }
-  }
+  },
+  "rules": {
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "no-console": "warn",
+    "padding-line-between-statements": "warn",
+    "newline-before-return": "error",
+    "sort-keys": [
+      "warn",
+      "asc",
+      {
+        "caseSensitive": true,
+        "natural": false,
+        "minKeys": 2
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "vars-on-top": "warn",
+    "modules-newlines/import-declaration-newline": "warn",
+    "modules-newlines/export-declaration-newline": "warn",
+    "react/jsx-curly-spacing": ["error", "always"],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "tabWidth": 2,
+        "ignorePattern": "^import .*"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    // ESLint 9+ disables legacy rules by default
+    "template-curly-spacing": ["error", "always"],
+    "camelcase": "off",
+    "array-bracket-spacing": ["error", "always"],
+    "no-void": "off",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "comma-dangle": ["error", "always-multiline"],
+    // TypeScript specific rules tightened
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^React$" }
+    ],
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/consistent-type-assertions": "warn",
+    "@typescript-eslint/no-useless-constructor": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        // You can add overrides here if needed
+      }
+    }
+  ]
 }

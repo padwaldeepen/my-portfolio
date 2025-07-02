@@ -1,9 +1,12 @@
 {
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "eslint.validate": ["javascript", "javascriptReact", "html", "typescriptreact", "typescript"],
-  "eslint.format.enable": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.tabSize": 2,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "true"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
