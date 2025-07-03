@@ -1,5 +1,5 @@
 import React from 'react';
-import ComingSoonBox from '@components/shared/coming-soon-box/coming-soon-box';
+import ComingSoonBox from '@components/shared/coming-soon-box/ComingSoonBox';
 
 const Contact: React.FC = () => (
   <section style={{ width: '100%' }}>

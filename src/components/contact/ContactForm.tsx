@@ -41,7 +41,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <form
-      className={styles.contactForm + ' flex flex-col gap-4'}
+      className={styles['contactForm'] + ' flex flex-col gap-4'}
       onSubmit={handleSubmit}
       aria-label="Contact form"
     >

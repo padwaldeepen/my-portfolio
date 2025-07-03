@@ -27,7 +27,7 @@ export const SocialIcons: React.FC<{ className?: string }> = ({ className }) => 
       target="_blank"
       rel="noopener noreferrer"
       aria-label="LinkedIn"
-      className={styles.socialBtn}
+      className={styles['socialBtn']}
       tabIndex={0}
     >
       <FaLinkedin />
@@ -37,7 +37,7 @@ export const SocialIcons: React.FC<{ className?: string }> = ({ className }) => 
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub"
-      className={styles.socialBtn}
+      className={styles['socialBtn']}
       tabIndex={0}
     >
       <FaGithub />
@@ -47,7 +47,7 @@ export const SocialIcons: React.FC<{ className?: string }> = ({ className }) => 
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Email"
-      className={styles.socialBtn}
+      className={styles['socialBtn']}
       tabIndex={0}
     >
       <FaEnvelope />
@@ -76,13 +76,13 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   };
 
   return (
-    <AppBar position="sticky" color="transparent" elevation={0} className={styles.navbarRoot}>
-      <Toolbar className={styles.toolbar}>
-        <RouterLink to="/" className={styles.brand} aria-label="Home">
+    <AppBar position="sticky" color="transparent" elevation={0} className={styles['navbarRoot']}>
+      <Toolbar className={styles['toolbar']}>
+        <RouterLink to="/" className={styles['brand']} aria-label="Home">
           Deepen Padwal
         </RouterLink>
         {/* Desktop Nav Links */}
-        <nav className={styles.navLinks} aria-label="Main navigation">
+        <nav className={styles['navLinks']} aria-label="Main navigation">
           {navLinks.map((link) => (
             <RouterLink
               key={link.to}
@@ -101,20 +101,20 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
             type="button"
             aria-label="Toggle dark mode"
             onClick={handleToggleTheme}
-            className={styles.linkBtn}
+            className={styles['linkBtn']}
             style={{ marginLeft: '1rem', fontSize: '1.1rem' }}
           >
             {darkMode ? '🌙' : '☀️'}
           </button>
         </nav>
         {/* Mobile Hamburger */}
-        <div className={styles.menuIcon}>
+        <div className={styles['menuIcon']}>
           <IconButton
             edge="end"
             aria-label="Open menu"
             onClick={handleMenu}
             size="large"
-            className={styles.socialBtn}
+            className={styles['socialBtn']}
           >
             <MenuIcon />
           </IconButton>
@@ -125,7 +125,7 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
           open={isMenuOpen}
           onClose={handleClose}
           keepMounted
-          className={styles.mobileMenu}
+          className={styles['mobileMenu']}
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           PaperProps={{
@@ -133,7 +133,7 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
             style: { boxShadow: 'none' },
           }}
         >
-          <div className={styles.mobileLinks}>
+          <div className={styles['mobileLinks']}>
             {navLinks.map((link) => (
               <RouterLink
                 key={link.to}
@@ -149,13 +149,13 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
               </RouterLink>
             ))}
           </div>
-          <div className={styles.mobileSocial}>
+          <div className={styles['mobileSocial']}>
             <SocialIcons />
             <button
               type="button"
               aria-label="Toggle dark mode"
               onClick={handleToggleTheme}
-              className={styles.linkBtn}
+              className={styles['linkBtn']}
               style={{ marginLeft: '0.5rem', fontSize: '1.1rem' }}
             >
               {darkMode ? '🌙' : '☀️'}

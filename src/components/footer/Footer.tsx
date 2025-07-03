@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   return (
     <Box
       component="footer"
-      className={styles.footerRoot}
+      className={styles['footerRoot']}
       sx={{
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.secondary,
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
     >
       {/* Desktop/Tablet Footer */}
       <Box
-        className={styles.footerContent}
+        className={styles['footerContent']}
         sx={{
           display: { xs: 'none', md: 'flex' },
           flexWrap: 'nowrap',
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
           margin: '0 auto',
         }}
       >
-        <Box className={styles.footerSection} sx={{ minWidth: 220, textAlign: 'left', flex: 1 }}>
+        <Box className={styles['footerSection']} sx={{ minWidth: 220, textAlign: 'left', flex: 1 }}>
           <Typography variant="h6" component="h4" fontWeight={700} gutterBottom>
             Contact Me
           </Typography>
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           </Typography>
         </Box>
         <Box
-          className={styles.footerSection}
+          className={styles['footerSection']}
           sx={{
             minWidth: 220,
             textAlign: 'right',
@@ -63,20 +63,20 @@ const Footer: React.FC = () => {
           <Typography variant="h6" component="h4" fontWeight={700} gutterBottom>
             Connect
           </Typography>
-          <Box className={styles.socialIcons} sx={{ justifyContent: 'flex-end' }}>
+          <Box className={styles['socialIcons']} sx={{ justifyContent: 'flex-end' }}>
             <SocialIcons />
           </Box>
         </Box>
       </Box>
       {/* Mobile Footer: Only copyright */}
       <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-        <Typography variant="body2" align="center" className={styles.footerBottom}>
+        <Typography variant="body2" align="center" className={styles['footerBottom']}>
           &copy; 2025 Deepen Padwal. All rights reserved.
         </Typography>
       </Box>
       {/* Desktop/Tablet copyright */}
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <Typography variant="body2" align="center" className={styles.footerBottom} sx={{ mt: 2 }}>
+        <Typography variant="body2" align="center" className={styles['footerBottom']} sx={{ mt: 2 }}>
           &copy; {new Date().getFullYear()} Deepen Padwal. All rights reserved.
         </Typography>
       </Box>

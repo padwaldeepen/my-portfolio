@@ -1,6 +1,6 @@
 import React from 'react';
-import Hero from '@components/home/Hero';
+import HomeSection from '@components/home/HomeSection';
 
-const Home: React.FC = () => <Hero />;
+const Home: React.FC = () => <HomeSection />;
 
 export default Home;

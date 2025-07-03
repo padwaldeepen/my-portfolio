@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, useTheme } from '@mui/material';
 
-import './Layout.module.scss';
+import styles from './Layout.module.scss';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,8 +12,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   return (
-    <Box className="layout-root" data-theme={isDark ? 'dark' : 'light'}>
-      <Box className="layout-container">{children}</Box>
+    <Box className={styles['layout-root']} data-theme={isDark ? 'dark' : 'light'}>
+      <Box className={styles['layout-container']}>{children}</Box>
     </Box>
   );
 };

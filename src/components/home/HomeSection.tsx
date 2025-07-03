@@ -7,86 +7,26 @@ import Paper from '@mui/material/Paper';
 import { FaDownload, FaArrowRight } from 'react-icons/fa';
 import profileImg from '@assets/img/desk.svg';
 import Typewriter from 'typewriter-effect';
+import styles from './HomeSection.module.scss';
 
 const headline = "Hi, I'm Deepen Padwal";
 const subheadline = 'Full-stack Developer | React, Node, Python';
 
-const Hero: React.FC = () => {
+const HomeSection: React.FC = () => {
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        minHeight: '80vh',
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: 'background.default',
-        position: 'relative',
-        overflow: 'hidden',
-        px: { xs: 2, md: 6 },
-        py: { xs: 2, md: 6 },
-        mt: { xs: '-2.5rem', md: '-3.5rem' },
-      }}
-      aria-label="Hero section"
-    >
+    <Paper elevation={0} className={styles['heroRoot']} aria-label="Hero section">
       {/* Decorative background circles */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: -120,
-          left: -120,
-          width: 400,
-          height: 400,
-          borderRadius: '50%',
-          bgcolor: 'primary.light',
-          opacity: 0.15,
-          filter: 'blur(60px)',
-          zIndex: 0,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          width: 220,
-          height: 220,
-          borderRadius: '50%',
-          bgcolor: 'primary.main',
-          opacity: 0.1,
-          filter: 'blur(40px)',
-          zIndex: 0,
-        }}
-      />
-      <Container
-        maxWidth="md"
-        sx={{
-          zIndex: 1,
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 6,
-        }}
-      >
-        <Box
-          sx={{
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: { xs: 'center', md: 'flex-start' },
-            textAlign: { xs: 'center', md: 'left' },
-            gap: 3,
-          }}
-        >
+      <div className={styles['heroBgCircle1']} />
+      <div className={styles['heroBgCircle2']} />
+      <Container maxWidth="md" className={styles['heroContainer']}>
+        <Box className={styles['heroTextCol']}>
           <Typography
             variant="h2"
             component="h1"
             fontWeight={800}
             color="text.primary"
             gutterBottom
-            sx={{ fontSize: { xs: 36, md: 56 } }}
+            className={styles['heroHeadline']}
           >
             <Typewriter
               options={{
@@ -98,7 +38,7 @@ const Hero: React.FC = () => {
               }}
             />
           </Typography>
-          <Typography variant="h5" color="text.secondary" sx={{ mb: 2, fontWeight: 500 }}>
+          <Typography variant="h5" color="text.secondary" className={styles['heroSubheadline']}>
             {subheadline}
           </Typography>
           {/* Buttons hidden while under construction */}
@@ -148,29 +88,11 @@ const Hero: React.FC = () => {
             </Button>
           </Box> */}
         </Box>
-        <Box
-          sx={{
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            mt: { xs: 6, md: 0 },
-          }}
-          aria-label="Profile image"
-        >
-          <Box
-            component="img"
+        <Box className={styles['heroImgCol']} aria-label="Profile image">
+          <img
             src={profileImg}
             alt="Deepen Padwal profile illustration"
-            sx={{
-              width: { xs: 180, md: 260 },
-              height: { xs: 180, md: 260 },
-              borderRadius: '50%',
-              objectFit: 'contain',
-              bgcolor: 'background.paper',
-              boxShadow: 6,
-              border: (theme) => `4px solid ${theme.palette.background.paper}`,
-            }}
+            className={styles['heroProfileImg']}
           />
         </Box>
       </Container>
@@ -178,4 +100,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default HomeSection;

@@ -86,7 +86,7 @@ const AboutSection = () => {
       I’m a passionate Full Stack Developer who loves to blend code and creativity. When I’m not
       building web apps, you’ll find me lost in{' '}
       <span
-        className={styles.hobbyWord}
+        className={styles['hobbyWord']}
         tabIndex={0}
         style={{ color: getHobby('anime')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'anime')}
@@ -99,7 +99,7 @@ const AboutSection = () => {
       </span>
       , binging{' '}
       <span
-        className={styles.hobbyWord}
+        className={styles['hobbyWord']}
         tabIndex={0}
         style={{ color: getHobby('movies')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'movies')}
@@ -112,7 +112,7 @@ const AboutSection = () => {
       </span>
       , or on a spontaneous{' '}
       <span
-        className={styles.hobbyWord}
+        className={styles['hobbyWord']}
         tabIndex={0}
         style={{ color: getHobby('travel')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'travel')}
@@ -125,7 +125,7 @@ const AboutSection = () => {
       </span>
       . I enjoy discovering hidden food spots, making{' '}
       <span
-        className={styles.hobbyWord}
+        className={styles['hobbyWord']}
         tabIndex={0}
         style={{ color: getHobby('music')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'music')}
@@ -138,7 +138,7 @@ const AboutSection = () => {
       </span>{' '}
       for every mood, and reading{' '}
       <span
-        className={styles.hobbyWord}
+        className={styles['hobbyWord']}
         tabIndex={0}
         style={{ color: getHobby('books')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'books')}
@@ -155,7 +155,7 @@ const AboutSection = () => {
   );
 
   return (
-    <section className={styles.aboutWrapper} aria-label="About Me section">
+    <section className={styles['aboutWrapper']} aria-label="About Me section">
       <Paper
         elevation={6}
         sx={{
@@ -173,7 +173,7 @@ const AboutSection = () => {
         }}
       >
         <Box
-          className={styles.aboutRow}
+          className={styles['aboutRow']}
           sx={{
             display: 'flex',
             flexDirection: { xs: 'column', md: 'row' },
@@ -181,11 +181,11 @@ const AboutSection = () => {
             gap: { xs: 3, md: 6 },
           }}
         >
-          <Box className={styles.aboutTextSection} sx={{ flex: 1 }}>
+          <Box className={styles['aboutTextSection']} sx={{ flex: 1 }}>
             <Typography
               variant="h3"
               component="h2"
-              className={styles.heading}
+              className={styles['heading']}
               gutterBottom
               sx={{
                 background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
@@ -200,14 +200,14 @@ const AboutSection = () => {
             </Typography>
             <Typography
               variant="body1"
-              className={styles.paragraph}
+              className={styles['paragraph']}
               sx={{ fontSize: { xs: '1.08rem', md: '1.18rem' }, lineHeight: 1.85, fontWeight: 500 }}
             >
               {aboutParagraph}
             </Typography>
             <Typography
               variant="body1"
-              className={styles.paragraph}
+              className={styles['paragraph']}
               sx={{ fontSize: { xs: '1.08rem', md: '1.18rem' }, lineHeight: 1.85, mt: 2 }}
             >
               Whether it’s a Studio Ghibli marathon, a Christopher Nolan film, or a late-night
@@ -216,7 +216,7 @@ const AboutSection = () => {
             </Typography>
           </Box>
           <Box
-            className={styles.avatarBox}
+            className={styles['avatarBox']}
             sx={{
               flexShrink: 0,
               ml: { md: 4 },

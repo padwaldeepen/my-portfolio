@@ -14,15 +14,15 @@ const ComingSoonBox: React.FC<ComingSoonBoxProps> = ({
   description = 'This section is under construction. Stay tuned for updates!',
 }) => {
   return (
-    <Box className={styles.comingSoonBox} aria-label="Coming soon section">
-      <Box className={styles.comingSoonIconBg}>
+    <Box className={styles['comingSoonBox']} aria-label="Coming soon section">
+      <Box className={styles['comingSoonIconBg']}>
         <CelebrationIcon sx={{ fontSize: 120, color: 'primary.light' }} />
       </Box>
-      <HourglassEmptyIcon color="primary" className={styles.comingSoonIconMain} />
-      <Typography className={styles.comingSoonTitle} gutterBottom>
+      <HourglassEmptyIcon color="primary" className={styles['comingSoonIconMain']} />
+      <Typography className={styles['comingSoonTitle']} gutterBottom>
         {label}
       </Typography>
-      <Typography className={styles.comingSoonDesc}>{description}</Typography>
+      <Typography className={styles['comingSoonDesc']}>{description}</Typography>
     </Box>
   );
 };
