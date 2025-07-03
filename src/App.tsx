@@ -15,19 +15,19 @@ import Footer from '@components/footer/Footer';
 import Layout from '@components/layout/Layout';
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = React.useState<boolean>(
+  const [isDarkMode, setIsDarkMode] = React.useState<boolean>(
     () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
   );
 
   React.useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
+    document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
       <div className="app min-h-screen flex flex-col">
-        <MuiNavbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <MuiNavbar darkMode={isDarkMode} setDarkMode={setIsDarkMode} />
         <Layout>
           <main className="flex-1">
             <Routes>

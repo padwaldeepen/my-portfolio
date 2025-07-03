@@ -18,7 +18,8 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
 }) => (
   <li
     className={
-      styles['experienceItem'] + ' bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col gap-2'
+      styles['experienceItem'] +
+      ' bg-white dark:bg-gray-800 rounded-lg shadow p-6 flex flex-col gap-2'
     }
     aria-label={`Experience at ${company}`}
     tabIndex={0}

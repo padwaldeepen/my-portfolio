@@ -76,7 +76,12 @@ const Footer: React.FC = () => {
       </Box>
       {/* Desktop/Tablet copyright */}
       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-        <Typography variant="body2" align="center" className={styles['footerBottom']} sx={{ mt: 2 }}>
+        <Typography
+          variant="body2"
+          align="center"
+          className={styles['footerBottom']}
+          sx={{ mt: 2 }}
+        >
           &copy; {new Date().getFullYear()} Deepen Padwal. All rights reserved.
         </Typography>
       </Box>
