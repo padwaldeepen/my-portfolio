@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, useTheme } from '@mui/material';
 
-import './layout.scss';
+import './layout.module.scss';
 
 interface LayoutProps {
   children: React.ReactNode;
