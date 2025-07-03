@@ -40,9 +40,6 @@ const Footer: React.FC = () => {
           <Typography variant="h6" component="h4" fontWeight={700} gutterBottom>
             Contact Me
           </Typography>
-          <Typography variant="body2" sx={{ mb: 0.5 }}>
-            Florida, USA
-          </Typography>
           <Typography variant="body2">
             <Link href="mailto:padwaldeepen@gmail.com" underline="hover" color="inherit">
               padwaldeepen@gmail.com

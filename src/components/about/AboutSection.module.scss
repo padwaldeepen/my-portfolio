@@ -119,14 +119,13 @@
 }
 
 .aboutWrapper {
-  padding: 4rem 1rem;
+  padding: 6.3rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
   color: $text;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  min-height: calc(100vh - 160px); // Adjust based on your navbar and footer height
 }
 
 @media (prefers-color-scheme: dark) {
@@ -219,7 +218,7 @@
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: linear-gradient(135deg, $primaryLight, $primary);
+    background: $aboutGradient;
     display: flex;
     align-items: center;
     justify-content: center;

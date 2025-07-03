@@ -5,7 +5,7 @@ import About from '@pages/About';
 import Skills from '@pages/Skills';
 import Projects from '@pages/Projects';
 import Experience from '@pages/Experience';
-import Contact from '@pages/Contact';
+import ContactSection from '@pages/Contact';
 
 import MuiNavbar from '@components/navbar/MuiNavbar';
 import './App.scss';
@@ -27,20 +27,18 @@ const App: React.FC = () => {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
       <div className="app min-h-screen flex flex-col">
-        <MuiNavbar darkMode={isDarkMode} setDarkMode={setIsDarkMode} />
-        <Layout>
+        <Layout darkMode={isDarkMode} setDarkMode={setIsDarkMode}>
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<HomeSection />} />
               <Route path="/about" element={<About />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path="/contact" element={<ContactSection />} />
               <Route path="/experience" element={<Experience />} />
             </Routes>
           </main>
         </Layout>
-        <Footer />
       </div>
     </ThemeProvider>
   );

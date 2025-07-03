@@ -1,0 +1,149 @@
+@use '../../styles/variables.scss' as *;
+// Content inside the contact paper
+.contactPaperContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contactLinksSection {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+}
+
+.contactPaper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  background:  $aboutGradient;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #4b5563;
+  padding: 2.5rem;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin: 9.2rem auto;
+  max-width: 720px;
+  width: 100%;
+  border-radius: 50%;
+  // @media (max-width: 900px) {
+  //   padding: 1.1rem 0.75rem 1rem 0.75rem;
+  //   border-radius: 1.2rem;
+  //   margin-top: 1.2rem;
+  // }
+  // @media (max-width: 600px) {
+  //   min-width: 0;
+  //   max-width: 100%;
+  //   width: 100%;
+  //   padding: 1rem 0.5rem 0.85rem 0.5rem;
+  //   margin-top: 1rem;
+  // }
+}
+
+.contactLinksTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  background: linear-gradient(90deg, $primary, $accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  transition: color 0.18s cubic-bezier(0.4, 1.3, 0.6, 1);
+}
+
+.contactLinksSubtext {
+  font-size: 0.98rem;
+  color: var(--mui-palette-text-secondary, #666);
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  max-width: 420px;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .contactLinksSubtext {
+    color: $darkText;
+  }
+}
+
+.linksRow {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  /* No background for icon */
+  background: none;
+  box-shadow: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  font-size: 3.2rem;
+  cursor: pointer;
+  outline: none;
+  border: 2.5px solid transparent;
+}
+
+// Icon color variants for full color
+.iconLink svg {
+  width: 2.6em;
+  height: 2.6em;
+}
+.iconLink--email svg {
+  color: $iconEmail;
+}
+.iconLink--linkedin svg {
+  color: $iconLinkedin;
+}
+.iconLink--github svg {
+  color: $iconGithub;
+}
+
+.iconLink:focus {
+  box-shadow: 0 0 0 3px $primaryLight;
+  border: 2.5px solid $primary;
+}
+
+.iconLabel {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .contactLinksSection {
+    padding: 2.5rem 0.5rem;
+  }
+  .linksRow {
+    gap: 2rem;
+    margin-top: 1.2rem;
+  }
+  .contactLinksTitle {
+    font-size: 2rem;
+  }
+  .iconLink {
+    width: 62px;
+    height: 62px;
+    font-size: 2rem;
+  }
+  .iconLink svg {
+    width: 1.7em;
+    height: 1.7em;
+  }
+}

@@ -21,6 +21,8 @@ $navbar-z: 1100;
 .navbarRoot {
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: $navbar-z;
   background: $navbar-blur-bg;
   backdrop-filter: $navbar-blur;
@@ -30,6 +32,19 @@ $navbar-z: 1100;
   font-family: $navbar-font;
   transition: background 0.3s;
   border-bottom: 1.5px solid $divider;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  @media (max-width: 900px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0 0 1rem 1rem;
+  }
+  @media (max-width: 600px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
   @media (prefers-color-scheme: dark) {
     background: $navbar-blur-bg-dark;
     border-bottom: 1.5px solid $primaryLight;
@@ -40,8 +55,10 @@ $navbar-z: 1100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 56px;
+  width: 100%;
+  min-width: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .brand {

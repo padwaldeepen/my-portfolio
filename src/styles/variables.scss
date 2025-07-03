@@ -18,3 +18,14 @@ $textSecondary: #6b7280; // Gray-500 – for descriptions
 $background: #f0fdf4; // Light emerald tint
 $paper: #ffffff; // For cards/sections
 $divider: #d1fae5; // Soft green divider
+
+$iconEmail: #EA4335;
+$iconLinkedin: #0A66C2;
+$iconGithub: #171515;
+
+// About section gradient (used for avatar, etc)
+$aboutGradient: linear-gradient(135deg, $primaryLight, $primary);
+
+// Usage:
+// $background: Main page background (used in Layout)
+// $darkBg: Main page background for dark mode

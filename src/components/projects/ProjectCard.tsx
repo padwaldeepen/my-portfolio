@@ -1,11 +1,11 @@
-import React from 'react';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
 export interface ProjectCardProps {
   title: string;

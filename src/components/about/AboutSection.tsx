@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import styles from './About.module.scss';
-import { Typography, Box, Paper, useTheme, Avatar, Popover } from '@mui/material';
-import MovieIcon from '@mui/icons-material/Movie';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AnimationIcon from '@mui/icons-material/Animation';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import MovieIcon from '@mui/icons-material/Movie';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import { Avatar, Box, Paper, Popover, Typography, useTheme } from '@mui/material';
+import React, { useRef, useState } from 'react';
+import styles from './AboutSection.module.scss';
 
 const HOBBIES = [
   {
@@ -45,7 +45,7 @@ const HOBBIES = [
   },
 ];
 
-const AboutSection = () => {
+const About = () => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [activeHobby, setActiveHobby] = useState<string | null>(null);
@@ -297,4 +297,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default About;

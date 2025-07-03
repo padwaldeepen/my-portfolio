@@ -12,7 +12,8 @@
   box-sizing: border-box;
   /* Move grid down for desktop */
   @media (min-width: 900px) {
-    margin-top: 3.5rem;
+    margin-top:  5.4rem;
+    margin-bottom: 5.4rem;
   }
   @media (max-width: 600px) {
     padding-left: 0.7rem;
