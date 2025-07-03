@@ -85,6 +85,51 @@ export default [
       '@typescript-eslint/consistent-type-assertions': 'warn',
       '@typescript-eslint/no-useless-constructor': 'warn',
       // Add more custom rules as needed
+      // Naming convention rules for components, variables, constants, hooks, etc.
+      '@typescript-eslint/naming-convention': [
+        'error',
+        // React components: PascalCase
+        {
+          selector: 'typeLike',
+          format: ['PascalCase'],
+        },
+        // Functions and variables: camelCase
+        {
+          selector: 'variable',
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+          leadingUnderscore: 'allow',
+        },
+        {
+          selector: 'function',
+          format: ['camelCase', 'PascalCase'],
+        },
+        // Boolean variables: is/has/should prefix
+        {
+          selector: 'variable',
+          types: ['boolean'],
+          format: ['PascalCase', 'UPPER_CASE', 'camelCase'],
+          prefix: ['is', 'has', 'should'],
+        },
+        // Constants and enums: UPPER_SNAKE_CASE
+        {
+          selector: 'enum',
+          format: ['UPPER_CASE', 'PascalCase'],
+        },
+        {
+          selector: 'enumMember',
+          format: ['UPPER_CASE'],
+        },
+        // Custom hooks: use prefix
+        {
+          selector: 'function',
+          modifiers: ['exported'],
+          format: ['camelCase'],
+          custom: {
+            regex: '^use[A-Z].*',
+            match: true,
+          },
+        },
+      ],
     },
     settings: {
       react: { version: 'detect' },

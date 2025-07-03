@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import classNames from 'classnames';
-import styles from './mui-navbar.module.scss';
+import styles from './MuiNavbar.module.scss';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -63,7 +63,7 @@ interface MuiNavbarProps {
 const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const isMenuOpen = Boolean(anchorEl);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -122,7 +122,7 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
         {/* Mobile Menu */}
         <Menu
           anchorEl={anchorEl}
-          open={open}
+          open={isMenuOpen}
           onClose={handleClose}
           keepMounted
           className={styles.mobileMenu}

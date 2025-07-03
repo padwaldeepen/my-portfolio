@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styles from './about.module.scss';
+import styles from './About.module.scss';
 import { Typography, Box, Paper, useTheme, Avatar, Popover } from '@mui/material';
 import MovieIcon from '@mui/icons-material/Movie';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -54,7 +54,11 @@ const AboutSection = () => {
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverRef = useRef<{ [key: string]: boolean }>({});
 
-  const handlePointerEnter = (event: React.PointerEvent<HTMLElement>, hobbyKey: string) => {
+  // Accepts both PointerEvent and FocusEvent for accessibility
+  const handlePointerEnter = (
+    event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>,
+    hobbyKey: string,
+  ) => {
     if (closeTimeout.current) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
@@ -86,7 +90,7 @@ const AboutSection = () => {
         tabIndex={0}
         style={{ color: getHobby('anime')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'anime')}
-        onFocus={(e) => handlePointerEnter(e as any, 'anime')}
+        onFocus={(e: React.FocusEvent<HTMLElement>) => handlePointerEnter(e, 'anime')}
         onPointerLeave={() => handlePointerLeave('anime')}
         onBlur={() => handlePointerLeave('anime')}
         aria-describedby={activeHobby === 'anime' ? 'hobby-popover' : undefined}
@@ -99,7 +103,7 @@ const AboutSection = () => {
         tabIndex={0}
         style={{ color: getHobby('movies')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'movies')}
-        onFocus={(e) => handlePointerEnter(e as any, 'movies')}
+        onFocus={(e: React.FocusEvent<HTMLElement>) => handlePointerEnter(e, 'movies')}
         onPointerLeave={() => handlePointerLeave('movies')}
         onBlur={() => handlePointerLeave('movies')}
         aria-describedby={activeHobby === 'movies' ? 'hobby-popover' : undefined}
@@ -112,7 +116,7 @@ const AboutSection = () => {
         tabIndex={0}
         style={{ color: getHobby('travel')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'travel')}
-        onFocus={(e) => handlePointerEnter(e as any, 'travel')}
+        onFocus={(e: React.FocusEvent<HTMLElement>) => handlePointerEnter(e, 'travel')}
         onPointerLeave={() => handlePointerLeave('travel')}
         onBlur={() => handlePointerLeave('travel')}
         aria-describedby={activeHobby === 'travel' ? 'hobby-popover' : undefined}
@@ -125,7 +129,7 @@ const AboutSection = () => {
         tabIndex={0}
         style={{ color: getHobby('music')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'music')}
-        onFocus={(e) => handlePointerEnter(e as any, 'music')}
+        onFocus={(e: React.FocusEvent<HTMLElement>) => handlePointerEnter(e, 'music')}
         onPointerLeave={() => handlePointerLeave('music')}
         onBlur={() => handlePointerLeave('music')}
         aria-describedby={activeHobby === 'music' ? 'hobby-popover' : undefined}
@@ -138,7 +142,7 @@ const AboutSection = () => {
         tabIndex={0}
         style={{ color: getHobby('books')?.accent, fontWeight: 600, cursor: 'pointer' }}
         onPointerEnter={(e) => handlePointerEnter(e, 'books')}
-        onFocus={(e) => handlePointerEnter(e as any, 'books')}
+        onFocus={(e: React.FocusEvent<HTMLElement>) => handlePointerEnter(e, 'books')}
         onPointerLeave={() => handlePointerLeave('books')}
         onBlur={() => handlePointerLeave('books')}
         aria-describedby={activeHobby === 'books' ? 'hobby-popover' : undefined}

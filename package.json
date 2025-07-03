@@ -46,6 +46,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "netlify:preview": "vite preview --port 8888 --host",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write ./**/*.{ts,tsx,scss,json} --config .prettierrc.json"

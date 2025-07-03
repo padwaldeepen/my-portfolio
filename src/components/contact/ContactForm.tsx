@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './contact.module.scss';
+import styles from './ContactForm.module.scss';
 
 export interface ContactFormValues {
   name: string;
@@ -11,7 +11,7 @@ const initialForm: ContactFormValues = { name: '', email: '', message: '' };
 
 const ContactForm: React.FC = () => {
   const [form, setForm] = useState<ContactFormValues>(initialForm);
-  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -26,12 +26,12 @@ const ContactForm: React.FC = () => {
     }
     // Simulate form submission
     setTimeout(() => {
-      setSubmitted(true);
+      setIsSubmitted(true);
       setError(null);
     }, 500);
   };
 
-  if (submitted) {
+  if (isSubmitted) {
     return (
       <div className="text-green-600 dark:text-green-400 font-semibold">
         Thank you! Your message has been sent.

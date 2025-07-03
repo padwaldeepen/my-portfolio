@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty';
 import CelebrationIcon from '@mui/icons-material/Celebration';
-import styles from './coming-soon-box.module.scss';
+import styles from './ComingSoonBox.module.scss';
 
 interface ComingSoonBoxProps {
   label?: string;

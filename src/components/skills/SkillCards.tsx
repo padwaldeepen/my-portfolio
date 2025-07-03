@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { skills } from './skills';
-import styles from './skill-cards.module.scss';
+import styles from './SkillCards.module.scss';
 
 const SkillCards: React.FC = () => {
   return (
