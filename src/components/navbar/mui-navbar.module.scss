@@ -1,0 +1,215 @@
+/* MuiNavbar.module.scss - Minimalist, modern, responsive MUI Navbar styles */
+
+@use '../../styles/variables.scss' as *;
+
+$navbar-blur-bg: $navbarBg;
+$navbar-blur-bg-dark: rgba(31, 41, 55, 0.92); // Slate-800 dark
+$navbar-blur: blur(16px);
+$navbar-radius: 1.5rem;
+$navbar-padding-x: 2rem;
+$navbar-padding-y: 0.5rem;
+$navbar-font: 'Roboto', system-ui, sans-serif;
+$navbar-link-color: $text;
+$navbar-link-color-dark: #f0fdf4;
+$navbar-link-active: $primary;
+$navbar-link-active-dark: $primaryLight;
+$navbar-link-hover: $accent;
+$navbar-link-hover-dark: $primaryLight;
+$navbar-shadow: $navbarShadow;
+$navbar-z: 1100;
+
+.navbarRoot {
+  position: sticky;
+  top: 0;
+  z-index: $navbar-z;
+  background: $navbar-blur-bg;
+  backdrop-filter: $navbar-blur;
+  box-shadow: $navbar-shadow;
+  border-radius: 0 0 $navbar-radius $navbar-radius;
+  padding: $navbar-padding-y $navbar-padding-x;
+  font-family: $navbar-font;
+  transition: background 0.3s;
+  border-bottom: 1.5px solid $divider;
+  @media (prefers-color-scheme: dark) {
+    background: $navbar-blur-bg-dark;
+    border-bottom: 1.5px solid $primaryLight;
+  }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding: 0;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: $primary;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+  &:hover,
+  &:focus {
+    color: $accent;
+  }
+  @media (prefers-color-scheme: dark) {
+    color: $primaryLight;
+    &:hover,
+    &:focus {
+      color: $accent;
+    }
+  }
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.linkBtn {
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: $text;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    font-weight 0.18s;
+  position: relative;
+  &:hover,
+  &:focus {
+    background: rgba($primary, 0.08);
+    color: $accent;
+    font-weight: 600;
+  }
+  &.active {
+    color: $primary;
+    font-weight: 700;
+    &::after {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      height: 2px;
+      background: $primary;
+      border-radius: 1px;
+      margin-top: 0.2rem;
+      transition: background 0.2s;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    color: $primaryLight;
+    &:hover,
+    &:focus {
+      color: $accent;
+      background: rgba($primaryLight, 0.08);
+    }
+    &.active {
+      color: $primaryLight;
+      &::after {
+        background: $primaryLight;
+      }
+    }
+  }
+}
+
+.socialIcons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1.5rem;
+  @media (max-width: 900px) {
+    margin-left: 0;
+  }
+}
+
+.socialBtn {
+  color: $iconLight;
+  background: none;
+  border-radius: 50%;
+  transition:
+    background 0.18s,
+    color 0.18s;
+  &:hover,
+  &:focus {
+    background: rgba($primary, 0.08);
+    color: $accent;
+  }
+  @media (prefers-color-scheme: dark) {
+    color: $navbar-link-color-dark;
+    &:hover,
+    &:focus {
+      color: $navbar-link-hover-dark;
+      background: rgba($primaryLight, 0.08);
+    }
+  }
+}
+
+.menuIcon {
+  display: none;
+  @media (max-width: 900px) {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+}
+
+.mobileMenu {
+  .MuiPaper-root {
+    background: $navbar-blur-bg;
+    backdrop-filter: $navbar-blur;
+    border-radius: $navbar-radius;
+    box-shadow: $navbar-shadow;
+    min-width: 180px;
+    padding: 0.5rem 0;
+    @media (prefers-color-scheme: dark) {
+      background: $navbar-blur-bg-dark;
+    }
+    animation: fadeInMenu 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.mobileLinkBtn {
+  @extend .linkBtn;
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-radius: 1rem;
+}
+
+.mobileSocial {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 0.2rem 1rem;
+}

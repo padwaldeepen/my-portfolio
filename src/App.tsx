@@ -1,75 +1,49 @@
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from '@pages/Home';
+import About from '@pages/About';
+import Skills from '@pages/Skills';
+import Projects from '@pages/Projects';
+import Experience from '@pages/Experience';
+import Contact from '@pages/Contact';
+
+import MuiNavbar from '@components/navbar/MuiNavbar';
 import './App.scss';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { lightTheme, darkTheme } from './theme';
+import Footer from '@components/footer/Footer';
+import Layout from '@components/layout/Layout';
 
-import { About } from './components/about/About';
-import { Footer } from './components/footer/Footer';
-import { Home } from './components/home/Home';
-import { CustomNavbar } from './components/navbar/Navbar';
-import { Skills } from './components/skills/Skills';
-import './styles.scss';
+const App: React.FC = () => {
+  const [darkMode, setDarkMode] = React.useState<boolean>(
+    () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+  );
 
-export const App = () => {
-  const homeRef = useRef<HTMLDivElement>(null);
-  const skillsRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const [ showScrollToTop, setShowScrollToTop ] = useState(false);
-
-  const scrollToView = (elementRef: React.RefObject<HTMLDivElement>) => {
-    if (elementRef.current) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: elementRef.current.offsetTop,
-      });
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: 0,
-    });
-  };
-
-  const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setShowScrollToTop(true);
-    } else {
-      setShowScrollToTop(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  React.useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   return (
-    <div className='app'>
-      <CustomNavbar
-        scrollToView={ scrollToView }
-        homeRef={ homeRef }
-        aboutRef={ aboutRef }
-        skillsRef={ skillsRef }
-      />
-      <div className='sections'>
-        <Home ref={ homeRef } />
-        <About ref={ aboutRef } />
-        <Skills ref={ skillsRef } />
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <div className="app min-h-screen flex flex-col">
+        <MuiNavbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Layout>
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/experience" element={<Experience />} />
+            </Routes>
+          </main>
+        </Layout>
+        <Footer />
       </div>
-      <Footer />
-      {showScrollToTop && (
-        <button className='scroll-to-top' onClick={ scrollToTop }>
-          <i className='bi bi-arrow-up-circle-fill' />
-        </button>
-      )}
-    </div>
+    </ThemeProvider>
   );
 };
+
+export { App };

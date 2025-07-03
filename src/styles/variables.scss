@@ -1,4 +1,20 @@
-// Color variables
-$primary-color: #007bff;
-$primary-hover: #0056b3;
-// Add more variables as needed
+$navbarBg: #e5e7eb; // Even darker neutral for navbar, footer, cards backgrounds
+$navbarShadow: 0 2px 16px 0 rgba(31, 41, 55, 0.13);
+$navbarBorder: #94a3b8; // Slate-400 for visible border
+$iconLight: #1f2937; // Slate-800 for icons on light backgrounds
+$darkBg: #1e293b; // Dark blue-gray for dark mode backgrounds
+$darkBgAlt: #0f172a; // Even darker blue-gray for contrast
+$darkBorder: #334155; // Dark border for cards in dark mode
+$darkText: #f1f5f9; // Light text for dark mode
+$darkDesc: #cbd5e1; // Muted light text for descriptions in dark mode
+$darkIcon: #34d399; // Emerald-400 for icons in dark mode
+$iconHover: #0e766e; // Deep emerald for icon hover/focus
+$descStrong: #4b5563; // Strong gray for description (used in light mode)
+$primary: #10b981; // Emerald-500 – clean and professional green
+$primaryLight: #6ee7b7; // Emerald-300 – great for hover, borders, light accents
+$accent: #14b8a6; // Teal-500 – optional, adds variation
+$text: #1f2937; // Slate-800 – strong for headings/body
+$textSecondary: #6b7280; // Gray-500 – for descriptions
+$background: #f0fdf4; // Light emerald tint
+$paper: #ffffff; // For cards/sections
+$divider: #d1fae5; // Soft green divider

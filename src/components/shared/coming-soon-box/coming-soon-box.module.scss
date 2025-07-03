@@ -1,0 +1,72 @@
+@use '../../../styles/variables.scss' as *;
+.comingSoonBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  background: $navbarBg;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 24px 0 rgba(31, 41, 55, 0.1);
+  border: 1.5px solid $navbarBorder;
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin: 3rem auto;
+  max-width: 720px;
+  width: 100%;
+  transition:
+    box-shadow 0.2s cubic-bezier(0.4, 1.3, 0.6, 1),
+    background 0.3s,
+    border 0.3s;
+}
+
+[data-theme='dark'] .comingSoonBox {
+  background: linear-gradient(120deg, #18181b 0%, #23232a 100%);
+  border: 1.5px solid #14b8a6;
+  box-shadow: 0 2px 32px 0 rgba(20, 184, 166, 0.18);
+}
+
+.comingSoonIconBg {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  opacity: 0.13;
+  font-size: 120px;
+  pointer-events: none;
+}
+
+.comingSoonIconMain {
+  font-size: 64px !important;
+  margin-bottom: 0.5rem;
+  color: $iconLight !important;
+}
+[data-theme='dark'] .comingSoonIconMain {
+  color: #6ee7b7 !important;
+}
+
+// Use theme color for title
+.comingSoonTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: $text;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+[data-theme='dark'] .comingSoonTitle {
+  color: #f0fdf4;
+}
+
+// Use theme color for description
+.comingSoonDesc {
+  font-size: 1.15rem;
+  color: $descStrong;
+  text-align: center;
+  opacity: 0.92;
+}
+[data-theme='dark'] .comingSoonDesc {
+  color: #b5f5e0;
+  opacity: 0.95;
+}

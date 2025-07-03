@@ -10,12 +10,7 @@
     "prettier"
   ],
   "plugins": ["modules-newlines"],
-  "ignorePatterns": [
-    "**/coverage/**/*",
-    "**/dist/**/*",
-    "**/jest.config.js",
-    "**/jest.preset.js"
-  ],
+  "ignorePatterns": ["**/coverage/**/*", "**/dist/**/*", "**/jest.config.js", "**/jest.preset.js"],
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
@@ -70,12 +65,7 @@
     "import/order": [
       "warn",
       {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling", "index"]
-        ],
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
         "newlines-between": "always"
       }
     ],

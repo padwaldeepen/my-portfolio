@@ -1,0 +1,98 @@
+@use '../../styles/variables.scss' as *;
+
+.footerRoot {
+  background: $navbarBg;
+  padding: 2.5rem 0 1.2rem 0;
+  text-align: center;
+  color: $textSecondary;
+  border-top: 1px solid $navbarBorder;
+  transition:
+    background 0.3s,
+    color 0.3s;
+  box-shadow: 0 -2px 24px 0 rgba(31, 41, 55, 0.08);
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme='dark'] .footerRoot {
+  background: #18181b;
+  color: #e5e7eb;
+  border-top: 1px solid $primaryLight;
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.07) 0%, rgba(59, 130, 246, 0.06) 100%);
+  box-shadow: 0 2px 16px 0 rgba(16, 185, 129, 0.06);
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footerSection {
+  min-width: 200px;
+  transition: color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+[data-theme='dark'] .footerSection {
+  color: #e5e7eb;
+}
+
+.footerBottom {
+  font-size: 0.98rem;
+  color: $textSecondary;
+  margin-top: 1.2rem;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .footerContent {
+    gap: 1.5rem;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+  .footerSection {
+    align-items: center;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 600px) {
+  .footerContent {
+    border-radius: 1rem;
+    padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+    box-shadow: none;
+    background: none;
+  }
+  .footerSection {
+    align-items: center;
+    min-width: unset;
+  }
+}
+
+[data-theme='dark'] .footerBottom {
+  color: #e5e7eb;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}

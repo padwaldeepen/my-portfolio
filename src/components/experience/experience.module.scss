@@ -1,0 +1,21 @@
+@use '../../styles/variables.scss' as *;
+
+.experienceSection {
+  padding: 4rem 0;
+  background: $background;
+}
+
+.experienceTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: $primary;
+}
+
+.experienceItem {
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  background: $paper;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
