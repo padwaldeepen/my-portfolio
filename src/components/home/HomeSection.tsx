@@ -78,12 +78,10 @@ const HomeSection: React.FC = () => (
           variant="outlined"
           color="primary"
           size="large"
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/resume"
           className={styles.ctaButton}
         >
-          Download Resume
+          View Resume
         </Button>
       </Box>
     </motion.div>

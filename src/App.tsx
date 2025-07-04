@@ -5,7 +5,8 @@ import About from '@pages/About';
 import Skills from '@pages/Skills';
 import Projects from '@pages/Projects';
 import Experience from '@pages/Experience';
-import ContactSection from '@pages/Contact';
+import Resume from '@pages/Resume';
+import Contact from '@pages/Contact';
 
 import MuiNavbar from '@components/navbar/MuiNavbar';
 import './App.scss';
@@ -33,8 +34,9 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<ContactSection />} />
               <Route path="/experience" element={<Experience />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
         </Layout>

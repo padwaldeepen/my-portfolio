@@ -1,0 +1,497 @@
+@use '../../styles/variables.scss' as *;
+
+.resumeContainer {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  background: $background;
+}
+
+.resumeContent {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  background: $paper;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+// Header Section
+.header {
+  padding: 3rem 2rem 2rem 2rem;
+  background: $navFooterGradient;
+  color: $text;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+.headerContent {
+  flex: 1;
+}
+
+.name {
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.title {
+  font-weight: 600;
+  color: $accentGreen;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.summary {
+  color: $textSecondary;
+  line-height: 1.6;
+  font-size: 1rem;
+  max-width: 600px;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+
+.headerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.actionButton {
+  min-width: 140px;
+  
+  @media (max-width: 768px) {
+    flex: 1;
+    min-width: unset;
+  }
+}
+
+// Contact Section
+.contactSection {
+  padding: 1.5rem 2rem;
+  background: rgba($accentGreen, 0.05);
+  
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $textSecondary;
+  
+  .contactIcon {
+    font-size: 1.1rem !important;
+    color: $accentGreen;
+  }
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.divider {
+  margin: 0;
+  border-color: $divider;
+}
+
+// Skills Section
+.skillsSection {
+  padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.sectionTitle {
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.skillCategory {
+  padding: 1.5rem;
+  border: 1px solid $divider;
+  border-radius: 0.75rem;
+  background: $paper;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.categoryTitle {
+  font-weight: 600;
+  color: $accentGreen;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillChip {
+  font-weight: 500;
+  
+  &.MuiChip-colorSuccess {
+    background: rgba($accentGreen, 0.1) !important;
+    color: $accentGreen !important;
+    border-color: $accentGreen !important;
+  }
+  
+  &.MuiChip-colorPrimary {
+    background: rgba($primary, 0.1) !important;
+    color: $primary !important;
+    border-color: $primary !important;
+  }
+  
+  &.MuiChip-colorDefault {
+    background: rgba($textSecondary, 0.1) !important;
+    color: $textSecondary !important;
+    border-color: $textSecondary !important;
+  }
+}
+
+// Experience Section
+.experienceSection {
+  padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timelineItem {
+  border: 1px solid $divider;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.itemHeader {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  gap: 1rem;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: $accentGreen;
+  border-radius: 50%;
+  color: $text;
+  flex-shrink: 0;
+  
+  .timelineItem--education & {
+    background: $primary;
+  }
+  
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemTitle {
+  font-weight: 700;
+  color: $text;
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
+
+.itemSubtitle {
+  font-weight: 600;
+  color: $accentGreen;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  
+  .timelineItem--education & {
+    color: $primary;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+
+.itemCompany {
+  color: $textSecondary;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.itemMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $textSecondary;
+  font-size: 0.85rem;
+}
+
+.metaIcon {
+  font-size: 1rem !important;
+  color: $accentGreen;
+  
+  .timelineItem--education & {
+    color: $primary;
+  }
+}
+
+.expandButton {
+  color: $accentGreen !important;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  .timelineItem--education & {
+    color: $primary !important;
+  }
+}
+
+.itemDetails {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+.description {
+  margin-bottom: 1.5rem;
+}
+
+.descriptionItem {
+  color: $textSecondary;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.skillsContainer {
+  border-top: 1px solid $divider;
+  padding-top: 1.5rem;
+}
+
+.skillsTitle {
+  font-weight: 600;
+  color: $text;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+// Print Styles
+@media print {
+  .resumeContainer {
+    padding: 0;
+    background: white;
+  }
+  
+  .resumeContent {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  
+  .headerActions {
+    display: none;
+  }
+  
+  .expandButton {
+    display: none;
+  }
+  
+  .timelineItem {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .itemDetails {
+    display: block !important;
+  }
+  
+  .MuiCollapse-root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .MuiCollapse-wrapper {
+    height: auto !important;
+  }
+  
+  .MuiCollapse-wrapperInner {
+    height: auto !important;
+  }
+}
+
+// Animation classes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .resumeContainer {
+    padding: 1rem 0.5rem;
+  }
+  
+  .header {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+  
+  .contactSection {
+    padding: 1rem;
+  }
+  
+  .skillsSection,
+  .experienceSection {
+    padding: 1rem;
+  }
+  
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skillCategory {
+    padding: 1rem;
+  }
+  
+  .timelineItem {
+    margin-bottom: 1rem;
+  }
+  
+  .itemHeader {
+    padding: 1rem;
+  }
+  
+  .itemDetails {
+    padding: 0 1rem 1rem 1rem;
+  }
+} 

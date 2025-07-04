@@ -1,6 +1,5 @@
 import React from 'react';
 import ComingSoonBox from '@components/shared/coming-soon-box/ComingSoonBox';
-import styles from '@components/projects/ProjectCard.module.scss';
 
 // Project type for strict typing
 interface Project {
@@ -44,7 +43,7 @@ const projects: Project[] = [
  */
 const Projects: React.FC = () => (
   <section
-    className={styles['projectsSection'] + ' py-16 px-4 max-w-6xl mx-auto'}
+    className="py-16 px-4 max-w-6xl mx-auto"
     aria-label="Projects section"
     data-testid="projects-section"
   >
