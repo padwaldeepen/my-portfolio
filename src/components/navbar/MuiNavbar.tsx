@@ -41,30 +41,30 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
-    <AppBar position="sticky" className={styles.navbarRoot} elevation={0}>
+    <AppBar position="fixed" className={styles.navbarRoot} elevation={0}>
       <Toolbar className={styles.toolbar}>
         {/* Left: Logo */}
         <div className={styles.leftGroup}>
           <RouterLink to="/" className={styles.brand} aria-label="Deepen Padwal Portfolio Home">
             <span aria-hidden="true">DA</span>
-          </RouterLink>
+        </RouterLink>
         </div>
 
         {/* Center: Nav Links */}
         <div className={styles.centerGroup}>
-          <div className={styles.navLinks}>
-            {navLinks.map((link) => (
-              <RouterLink
-                key={link.to}
-                to={link.to}
-                className={classNames(styles.linkBtn, {
-                  [styles.active]: location.pathname === link.to,
-                })}
-              >
+        <div className={styles.navLinks}>
+          {navLinks.map((link) => (
+            <RouterLink
+              key={link.to}
+              to={link.to}
+              className={classNames(styles.linkBtn, {
+                [styles.active]: location.pathname === link.to,
+              })}
+            >
                 <span>{link.label}</span>
                 <span className={styles.underline} />
-              </RouterLink>
-            ))}
+            </RouterLink>
+          ))}
           </div>
         </div>
 
@@ -83,15 +83,15 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
           >
             {darkMode ? <FiMoon /> : <FiSun />}
           </button>
-          <div className={styles.menuIcon}>
+        <div className={styles.menuIcon}>
             <IconButton
               onClick={handleMenu}
               size="large"
               aria-label="Open mobile menu"
               tabIndex={0}
             >
-              <MenuIcon />
-            </IconButton>
+            <MenuIcon />
+          </IconButton>
           </div>
         </div>
 

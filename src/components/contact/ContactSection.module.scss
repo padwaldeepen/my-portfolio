@@ -25,7 +25,7 @@
 
 .mainTitle {
   font-weight: 700;
-  background: linear-gradient(90deg, $primary, $accent);
+  background: $gradientHero;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -47,6 +47,8 @@
   margin: 0 auto 2rem;
   text-align: center !important;
   display: block;
+  justify-content: center;
+  align-items: center;
   
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -54,17 +56,29 @@
   }
 }
 
+.coloredWord {
+  background: linear-gradient(90deg, #ff80ab, #ffd740, #64b5f6, #69f0ae, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 700;
+}
+
 .availabilityChip {
-  border-color: $accentGreen !important;
-  color: $accentGreen !important;
+  border-color: $accent !important;
+  color: $accent !important;
   font-weight: 600;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  transition: all 0.3s ease;
   
   &:hover {
-    background-color: $accentGreenShadow !important;
+    background-color: $activeBg !important;
+    transform: translateY(-1px);
   }
 }
 
@@ -91,8 +105,8 @@
 }
 
 .contactCard {
-  background: $navFooterGradient;
-  border: 1px solid $divider;
+  background: $gradientCard;
+  border: 1px solid $border;
   border-radius: 1rem;
   padding: 2rem;
   height: 100%;
@@ -105,11 +119,12 @@
   min-width: 320px;
   max-width: 370px;
   margin: 0 auto;
+  box-shadow: $shadowMd;
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 32px $accentGreenShadow;
-    border-color: $accentGreen;
+    box-shadow: $shadowAccent;
+    border-color: $accent;
   }
 }
 
@@ -128,9 +143,10 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  color: white;
+  color: $textInverse;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: $shadowMd;
+  background: $accent;
   
   svg {
     font-size: 1.5rem;
@@ -153,9 +169,6 @@
   color: $textSecondary;
   font-weight: 500;
   font-size: 0.9rem;
-  @media (prefers-color-scheme: dark) {
-    color: $textLight;
-  }
 }
 
 // Card Content
@@ -165,7 +178,7 @@
 
 .cardValue {
   font-weight: 600;
-  color: $accentGreen;
+  color: $accent;
   margin-bottom: 0.75rem;
   font-size: 1rem;
   word-break: break-all;
@@ -175,9 +188,6 @@
   color: $textSecondary;
   line-height: 1.5;
   font-size: 0.9rem;
-  @media (prefers-color-scheme: dark) {
-    color: $textLight;
-  }
 }
 
 // Card Actions
@@ -190,10 +200,10 @@
 
 .actionButton {
   color: $textSecondary !important;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   
   &:hover {
-    color: $accentGreen !important;
+    color: $accent !important;
     transform: scale(1.1);
   }
 }
@@ -203,19 +213,20 @@
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  background: $accentGreen;
-  color: $text;
+  background: $accent;
+  color: $textInverse;
   text-decoration: none;
   border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.2s ease;
-  border: 1px solid $accentGreen;
+  transition: all 0.3s ease;
+  border: 1px solid $accent;
   
   &:hover {
-    background: transparent;
-    color: $accentGreen;
+    background: $hoverBg;
+    color: $accent;
     text-decoration: none;
+    transform: translateY(-1px);
   }
 }
 
@@ -226,7 +237,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba($accentGreen, 0.05), rgba($primary, 0.05));
+  background: $gradientGlass;
   pointer-events: none;
   border-radius: 1rem;
 }
@@ -235,8 +246,8 @@
 .ctaSection {
   text-align: center;
   padding: 3rem 2rem;
-  background: $navFooterGradient;
-  border: 1px solid $divider;
+  background: $gradientCard;
+  border: 1px solid $border;
   border-radius: 1rem;
   margin-top: 2rem;
   margin-left: auto;
@@ -249,6 +260,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: $shadowMd;
   
   @media (max-width: 768px) {
     padding: 2rem 1rem;
@@ -275,16 +287,13 @@
   margin: 0 auto;
   font-size: 1rem;
   text-align: center;
-  @media (prefers-color-scheme: dark) {
-    color: $textLight;
-  }
 }
 
 // Snackbar
 .snackbar {
   .MuiSnackbarContent-root {
-    background: $accentGreen;
-    color: $text;
+    background: $accent;
+    color: $textInverse;
     font-weight: 600;
   }
 }

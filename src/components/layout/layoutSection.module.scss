@@ -3,21 +3,20 @@
 // Layout root should take full viewport height and allow footer to stick to bottom
 // Layout root: full viewport height, flex column, no horizontal scroll, responsive
 .layout-root {
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $navFooterGradient;
+  background: $background;
   background-attachment: fixed;
   transition: background 0.4s cubic-bezier(0.4, 1.3, 0.6, 1);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   box-sizing: border-box;
   position: relative;
 }
 
-[data-theme='dark'] .layout-root {
-  background: linear-gradient(90deg, rgba(24,24,27,0.92) 0%, rgba(39,39,42,0.92) 100%);
+html[data-theme='dark'] .layout-root {
+  background: $background;
 }
 
 // Remove dark mode circles
@@ -27,22 +26,24 @@
 }
 
 .layout-container {
-  flex: 1 0 auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 100vw;
   animation: fadeInUp 0.7s cubic-bezier(0.4, 1.3, 0.6, 1);
   position: relative;
   z-index: 2;
   box-sizing: border-box;
+  padding-top: 64px; /* Account for fixed navbar height */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .particlesBg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: 0;
   pointer-events: none;

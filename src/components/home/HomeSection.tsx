@@ -57,8 +57,8 @@ const HomeSection: React.FC = () => (
       </Typography>
       <Box className={styles.ctaRow}>
         <Button
-          variant="contained"
-          color="success"
+          variant="outlined"
+          color="secondary"
           size="large"
           href="/contact"
           className={styles.ctaButton}
@@ -67,7 +67,7 @@ const HomeSection: React.FC = () => (
         </Button>
         <Button
           variant="outlined"
-          color="success"
+          color="secondary"
           size="large"
           href="/experience"
           className={styles.ctaButton}
@@ -76,7 +76,7 @@ const HomeSection: React.FC = () => (
         </Button>
         <Button
           variant="outlined"
-          color="primary"
+          color="secondary"
           size="large"
           href="/resume"
           className={styles.ctaButton}

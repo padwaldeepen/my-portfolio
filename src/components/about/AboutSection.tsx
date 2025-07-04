@@ -72,9 +72,9 @@ const AboutSection: React.FC = () => (
         <span className={styles.highlight}>full stack developer</span> passionate about{' '}
         <span className={styles.coloredWord}>AI</span>,{' '}
         <span className={styles.highlight}>creative problem-solving</span>, and building{' '}
-        <span className={styles.coloredWord}>beautiful web experiences</span>.<br />
+        <span className={styles.highlight}>beautiful web experiences</span>.<br />
         My journey has taken me from <span className={styles.coloredWord}>Mumbai</span> to{' '}
-        <span className={styles.coloredWord}>Montgomery</span> and now to{' '}
+        <span className={styles.highlight}>Montgomery</span> and now to{' '}
         <span className={styles.coloredWord}>Tampa</span>, always learning, always exploring.
       </Typography>
     </motion.div>
@@ -87,7 +87,7 @@ const AboutSection: React.FC = () => (
       className={styles.hobbiesSection}
     >
       <Typography variant="h4" className={styles.hobbiesTitle}>
-        Hobbies & Interests
+        <span className={styles.coloredWord}>Hobbies</span> & Interests
       </Typography>
       <Box className={styles.hobbiesGrid}>
         {HOBBIES.map((hobby) => (
@@ -115,7 +115,7 @@ const AboutSection: React.FC = () => (
       className={styles.factsSection}
     >
       <Typography variant="h5" className={styles.factsTitle}>
-        Fun Facts
+        <span className={styles.coloredWord}>Fun</span> Facts
       </Typography>
       <Box className={styles.factsChips}>
         {FUN_FACTS.map((fact) => (

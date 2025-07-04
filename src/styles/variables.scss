@@ -1,35 +1,139 @@
-$navbarBg: #424242;
-$navbarShadow: 0 2px 16px 0 rgba(60, 60, 90, 0.10);
-$navbarBorder: #686868;
-$iconLight: #FAFAFA;
-$darkBg: #131313;
-$darkBgAlt: #292929;
-$darkBorder: #292929;
-$darkText: #FAFAFA;
-$darkDesc: #686868;
-$descStrong: #686868;
-$primary: #424242;
-$primaryLight: #686868;
-$accent: #FAFAFA;
-$text: #FAFAFA;
-$textLight: #FAFAFA;
-$textDark: #131313;
-$textGray: #686868;
-$textAccent: #FAFAFA;
-$textSecondary: #686868;
-$background: #131313;
-$paper: #292929;
-$divider: #686868;
+// =====================
+// Typography & Text
+// =====================
+$text: var(--text);
+$textSecondary: var(--text-secondary);
+$textMuted: var(--text-muted);
+$textInverse: var(--text-inverse);
+$textAccent: var(--accent);
 
-$iconEmail: #686868;
-$iconLinkedin: #686868;
-$iconGithub: #686868;
+// =====================
+// Backgrounds & Surfaces
+// =====================
+$background: var(--background);
+$backgroundAlt: var(--background-alt);
+$paper: var(--paper);
+$paperElevated: var(--paper-elevated);
+$surface: var(--surface);
 
-$navFooterGradient: linear-gradient(90deg, #424242 0%, #292929 100%);
-$glassBg: rgba(66,66,66,0.65);
-$glassBgDark: rgba(19,19,19,0.82);
+// =====================
+// Borders & Dividers
+// =====================
+$divider: var(--divider);
+$border: var(--border);
+$borderFocus: var(--border-focus);
 
-$skillCardBorder: #e0e7ff;
+// =====================
+// Accents & Brand
+// =====================
+$primary: var(--primary);
+$primaryLight: var(--primary-light);
+$accent: var(--accent);
+$accentLight: var(--accent-light);
+$accentDark: var(--accent-dark);
+$icon: var(--icon);
 
-$accentGreen: #10b981;
-$accentGreenShadow: rgba(16,185,129,0.22);
+// =====================
+// Status & Feedback
+// =====================
+$success: var(--success);
+$warning: var(--warning);
+$error: var(--error);
+$info: var(--info);
+
+// =====================
+// Gradients
+// =====================
+$gradientHero: var(--gradient-hero);
+$gradientCard: var(--gradient-card);
+$gradientAccent: var(--gradient-accent);
+$gradientDark: var(--gradient-dark);
+$gradientGlass: var(--gradient-glass);
+
+// =====================
+// Shadows
+// =====================
+$shadowSm: var(--shadow-sm);
+$shadowMd: var(--shadow-md);
+$shadowLg: var(--shadow-lg);
+$shadowXl: var(--shadow-xl);
+$shadowAccent: var(--shadow-accent);
+
+// =====================
+// Interactive States
+// =====================
+$hoverBg: var(--hover-bg);
+$hoverBorder: var(--hover-border);
+$focusRing: var(--focus-ring);
+$activeBg: var(--active-bg);
+
+// =====================
+// Particles & Effects
+// =====================
+$particle: var(--particle);
+$glow: var(--glow);
+
+// =====================
+// Legacy Support (for existing components)
+// =====================
+// These map to new variables for backward compatibility
+$textLight: var(--text);
+$textGray: var(--text-secondary);
+$textDark: #1a1a1a;
+$darkText: #f8fafc;
+$darkDesc: #cbd5e1;
+$descStrong: #4a5568;
+$darkBg: #0f0f0f;
+$darkBgAlt: #18181b;
+$darkBorder: #374151;
+$navbarBg: var(--primary);
+$navbarBorder: var(--divider);
+$iconEmail: var(--icon);
+$iconLinkedin: var(--icon);
+$iconGithub: var(--icon);
+$glassBg: rgba(66,66,66,0.08);
+$glassBgDark: rgba(19,19,19,0.22);
+$skillCardBorder: #e2e8f0;
+$accentGreen: var(--accent);
+$accentGreenShadow: var(--shadow-accent);
+$borderAccentGreen: var(--border-focus);
+$borderGray: var(--border);
+$borderWhite: #ffffff;
+$colorGreenLight: var(--accent-light);
+$colorGreenPale: #b5f5e0;
+$colorWhite: #ffffff;
+$colorPaleWhite: #f0fdf4;
+$colorGrayLight: #d1d5db;
+$colorGrayPale: #cbd5e1;
+$colorGrayMuted: #9ca3af;
+
+// Legacy shadow mappings
+$boxShadow1: var(--shadow-sm);
+$boxShadow2: var(--shadow-md);
+$boxShadow3: var(--shadow-lg);
+$boxShadow4: var(--shadow-md);
+$boxShadow5: var(--shadow-lg);
+$boxShadow6: var(--shadow-xl);
+$boxShadow7: var(--shadow-sm);
+$boxShadow8: var(--shadow-lg);
+$boxShadow9: var(--shadow-md);
+$boxShadow10: var(--shadow-sm);
+$boxShadow11: var(--shadow-lg);
+$boxShadow12: var(--shadow-md);
+
+// Legacy gradient mappings
+$gradientPrimaryAccent: var(--gradient-accent);
+$gradientPaperAccent: var(--gradient-card);
+$gradientPink: var(--gradient-accent);
+$navFooterGradient: var(--gradient-card);
+
+// Legacy accent mappings
+$accentPink: var(--accent);
+$accentYellow: var(--warning);
+$accentBlue: var(--info);
+$accentGreen: var(--accent);
+$accentPurple: var(--accent);
+$accentGreenEmerald: var(--accent);
+$accentGreenLight: var(--accent-light);
+$accentGreenPale: #b5f5e0;
+$accentWhite: #f0fdf4;

@@ -112,11 +112,11 @@ const ContactSection: React.FC = () => {
         {/* Header Section */}
         <Box className={styles.headerSection}>
           <Typography variant="h2" className={styles.mainTitle}>
-            Let's Connect
+            Let's <span className={styles.coloredWord}>Connect</span>
           </Typography>
           <Typography variant="h6" className={styles.subtitle}>
-            Ready to join a great team, discuss tech, or just say hello? I'm actively seeking new
-            job opportunities and interesting roles.
+            Ready to join a great team, discuss <span className={styles.coloredWord}>tech</span>, or
+            just say hello? I'm actively seeking new job opportunities and interesting roles.
           </Typography>
           <Chip
             label="Open to New Roles"

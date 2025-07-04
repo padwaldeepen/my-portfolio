@@ -8,10 +8,27 @@ interface ParticlesBackgroundProps {
   darkMode: boolean;
 }
 
+const PARTICLE_COLORS_LIGHT = [
+  '#10b981', // emerald
+  '#ffd740', // yellow
+  '#ff80ab', // pink
+  '#64b5f6', // blue
+  '#b388ff', // purple
+];
+
 const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({ darkMode }) => {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSnowPreset(engine);
   }, []);
+
+  // For light mode, generate an array of random colors for each particle
+  const getLightModeColors = (count: number) =>
+    Array.from(
+      { length: count },
+      () => PARTICLE_COLORS_LIGHT[Math.floor(Math.random() * PARTICLE_COLORS_LIGHT.length)],
+    );
+
+  const particleCount = 40;
 
   return (
     <Particles
@@ -22,10 +39,12 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({ darkMode }) =
         background: { color: { value: 'transparent' } },
         fullScreen: { enable: false },
         particles: {
-          color: { value: darkMode ? '#a5b4fc' : '#6366f1' },
-          opacity: { value: 0.18 },
+          color: {
+            value: darkMode ? '#fff' : getLightModeColors(particleCount),
+          },
+          opacity: { value: 1 },
           move: { speed: 0.7 },
-          number: { value: 40 },
+          number: { value: particleCount },
           size: { value: { min: 1, max: 3 } },
         },
         interactivity: { events: { onHover: { enable: false } } },

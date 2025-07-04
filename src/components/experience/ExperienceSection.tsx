@@ -160,11 +160,12 @@ const ExperienceSection: React.FC = () => {
         className={styles.timelineContainer}
       >
         <Typography variant="h2" className={styles.sectionTitle}>
-          Experience & Education
+          <span className={styles.coloredWord}>Experience</span> & Education
         </Typography>
 
         <Typography variant="h6" className={styles.sectionSubtitle}>
-          My professional journey and academic background
+          My professional <span className={styles.coloredWord}>journey</span> and academic
+          background
         </Typography>
 
         <Box className={styles.timeline}>

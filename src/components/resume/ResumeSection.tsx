@@ -224,12 +224,13 @@ const ResumeSection: React.FC = () => {
               Deepen Padwal
             </Typography>
             <Typography variant="h4" className={styles.title}>
-              Full Stack Developer
+              <span className={styles.coloredWord}>Full Stack</span> Developer
             </Typography>
             <Typography variant="body1" className={styles.summary}>
-              Passionate full stack developer with 5+ years of experience building modern web
-              applications. Specialized in React, Node.js, and TypeScript. Love creating
-              user-friendly, scalable solutions and exploring new technologies.
+              Passionate <span className={styles.coloredWord}>full stack developer</span> with 5+
+              years of experience building modern web applications. Specialized in React, Node.js,
+              and TypeScript. Love creating user-friendly, scalable solutions and exploring new
+              technologies.
             </Typography>
           </Box>
 

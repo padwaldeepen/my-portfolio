@@ -20,7 +20,7 @@
   text-align: center;
   margin-bottom: 1rem;
   font-weight: 700;
-  background: linear-gradient(90deg, $primary, $accent);
+  background: $gradientHero;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -45,6 +45,15 @@
   }
 }
 
+.coloredWord {
+  background: linear-gradient(90deg, #ff80ab, #ffd740, #64b5f6, #69f0ae, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 700;
+}
+
 .timeline {
   position: relative;
   padding: 2rem 0;
@@ -56,7 +65,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, $accentGreen, $primary);
+    background: $gradientAccent;
     transform: translateX(-50%);
     z-index: 1;
     
@@ -83,12 +92,12 @@
     top: 2rem;
     width: 16px;
     height: 16px;
-    background: $accentGreen;
+    background: $accent;
     border: 3px solid $paper;
     border-radius: 50%;
     transform: translateX(-50%);
     z-index: 2;
-    box-shadow: 0 0 0 4px $accentGreenShadow;
+    box-shadow: 0 0 0 4px $shadowAccent;
     
     @media (max-width: 768px) {
       left: 2rem;
@@ -97,7 +106,7 @@
   }
   
   &--work::before {
-    background: $accentGreen;
+    background: $accent;
   }
   
   &--education::before {
@@ -108,18 +117,19 @@
 .timelineCard {
   width: calc(50% - 3rem);
   margin-left: auto;
-  background: $navFooterGradient;
-  border: 1px solid $divider;
+  background: $gradientCard;
+  border: 1px solid $border;
   border-radius: 1rem;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 1.3, 0.6, 1);
   position: relative;
   z-index: 3;
+  box-shadow: $shadowMd;
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px $accentGreenShadow;
-    border-color: $accentGreen;
+    box-shadow: $shadowAccent;
+    border-color: $accent;
   }
   
   @media (max-width: 768px) {
@@ -153,11 +163,11 @@
     height: 0;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-right: 8px solid $divider;
+    border-right: 8px solid $border;
     
     @media (max-width: 768px) {
       left: -9px;
-      border-right: 8px solid $divider;
+      border-right: 8px solid $border;
     }
   }
 }
@@ -177,7 +187,7 @@
     left: auto;
     right: -9px;
     border-right: none;
-    border-left: 8px solid $divider;
+    border-left: 8px solid $border;
   }
   
   @media (max-width: 768px) {
@@ -195,7 +205,7 @@
       left: -9px;
       right: auto;
       border-left: none;
-      border-right: 8px solid $divider;
+      border-right: 8px solid $border;
     }
   }
 }
@@ -214,13 +224,14 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: $accentGreen;
+  background: $accent;
   border-radius: 50%;
-  color: $text;
+  color: $textInverse;
   flex-shrink: 0;
   
   .timelineItem--education & {
     background: $primary;
+    color: $textInverse;
   }
 }
 
@@ -238,7 +249,7 @@
 
 .itemSubtitle {
   font-weight: 600;
-  color: $accentGreen;
+  color: $accent;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   
@@ -270,7 +281,7 @@
 
 .metaIcon {
   font-size: 1rem !important;
-  color: $accentGreen;
+  color: $accent;
   
   .timelineItem--education & {
     color: $primary;
@@ -278,7 +289,7 @@
 }
 
 .expandButton {
-  color: $accentGreen !important;
+  color: $accent !important;
   transition: transform 0.3s ease;
   
   &:hover {
@@ -328,14 +339,16 @@
 }
 
 .skillChip {
-  background: $accentGreenShadow !important;
-  color: $accentGreen !important;
-  border: 1px solid $accentGreen !important;
+  background: $activeBg !important;
+  color: $accent !important;
+  border: 1px solid $accent !important;
   font-weight: 500;
+  transition: all 0.3s ease;
   
   &:hover {
-    background: $accentGreen !important;
-    color: $text !important;
+    background: $accent !important;
+    color: $textInverse !important;
+    transform: translateY(-1px);
   }
   
   .timelineItem--education & {
@@ -345,7 +358,7 @@
     
     &:hover {
       background: $primary !important;
-      color: $text !important;
+      color: $textInverse !important;
     }
   }
 }

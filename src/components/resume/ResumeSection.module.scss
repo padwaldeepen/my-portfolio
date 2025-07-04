@@ -17,14 +17,14 @@
   margin: 0 auto;
   background: $paper;
   border-radius: 1rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadowLg;
   overflow: hidden;
 }
 
 // Header Section
 .header {
   padding: 3rem 2rem 2rem 2rem;
-  background: $navFooterGradient;
+  background: $gradientCard;
   color: $text;
   display: flex;
   justify-content: space-between;
@@ -55,13 +55,22 @@
 
 .title {
   font-weight: 600;
-  color: $accentGreen;
+  color: $accent;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   
   @media (max-width: 768px) {
     font-size: 1.25rem;
   }
+}
+
+.coloredWord {
+  background: linear-gradient(90deg, #ff80ab, #ffd740, #64b5f6, #69f0ae, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 700;
 }
 
 .summary {
@@ -98,7 +107,7 @@
 // Contact Section
 .contactSection {
   padding: 1.5rem 2rem;
-  background: rgba($accentGreen, 0.05);
+  background: $activeBg;
   
   @media (max-width: 768px) {
     padding: 1rem 1.5rem;
@@ -113,7 +122,7 @@
   
   .contactIcon {
     font-size: 1.1rem !important;
-    color: $accentGreen;
+    color: $accent;
   }
   
   @media (max-width: 768px) {
@@ -161,9 +170,15 @@
 
 .skillCategory {
   padding: 1.5rem;
-  border: 1px solid $divider;
+  border: 1px solid $border;
   border-radius: 0.75rem;
   background: $paper;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: $shadowMd;
+    border-color: $accent;
+  }
   
   @media (max-width: 768px) {
     padding: 1rem;
@@ -172,7 +187,7 @@
 
 .categoryTitle {
   font-weight: 600;
-  color: $accentGreen;
+  color: $accent;
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
@@ -185,11 +200,16 @@
 
 .skillChip {
   font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
   
   &.MuiChip-colorSuccess {
-    background: rgba($accentGreen, 0.1) !important;
-    color: $accentGreen !important;
-    border-color: $accentGreen !important;
+    background: rgba($accent, 0.1) !important;
+    color: $accent !important;
+    border-color: $accent !important;
   }
   
   &.MuiChip-colorPrimary {
@@ -221,13 +241,14 @@
 }
 
 .timelineItem {
-  border: 1px solid $divider;
+  border: 1px solid $border;
   border-radius: 0.75rem;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: $shadowMd;
+    border-color: $accent;
   }
 }
 
@@ -250,13 +271,14 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: $accentGreen;
+  background: $accent;
   border-radius: 50%;
-  color: $text;
+  color: $textInverse;
   flex-shrink: 0;
   
   .timelineItem--education & {
     background: $primary;
+    color: $textInverse;
   }
   
   @media (max-width: 768px) {
@@ -283,7 +305,7 @@
 
 .itemSubtitle {
   font-weight: 600;
-  color: $accentGreen;
+  color: $accent;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   
@@ -324,7 +346,7 @@
 
 .metaIcon {
   font-size: 1rem !important;
-  color: $accentGreen;
+  color: $accent;
   
   .timelineItem--education & {
     color: $primary;
@@ -332,7 +354,7 @@
 }
 
 .expandButton {
-  color: $accentGreen !important;
+  color: $accent !important;
   transition: transform 0.3s ease;
   
   &:hover {
