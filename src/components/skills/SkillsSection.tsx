@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Box, Typography, Paper, Chip, useTheme } from '@mui/material';
 import { motion } from 'framer-motion';
 import {
@@ -122,6 +122,51 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' as const } },
 };
 
+const SkillCard = memo(({ skill, isDark }: { skill: any; isDark: boolean }) => (
+  <motion.div
+    key={skill.name}
+    variants={cardVariants}
+    className={styles.skillCardWrapper}
+    whileHover={{ scale: 1.07 }}
+    whileTap={{ scale: 0.97 }}
+    tabIndex={0}
+    role="button"
+    aria-label={skill.name}
+  >
+    <div className={styles.flipCard}>
+      <div className={styles.flipCardInner}>
+        <div className={styles.flipCardFront}>
+          <Box className={styles.iconBox} style={{ color: isDark ? '#fff' : '#10b981' }}>
+            {skill.icon}
+          </Box>
+          <Typography className={styles.skillName}>{skill.name}</Typography>
+          <Chip
+            label={skill.level}
+            className={styles.levelChip}
+            size="small"
+            color={
+              skill.level === 'Expert'
+                ? 'success'
+                : skill.level === 'Proficient'
+                  ? 'primary'
+                  : 'default'
+            }
+            variant="outlined"
+          />
+        </div>
+        <div className={styles.flipCardBack}>
+          <Typography className={styles.skillBackTitle}>{skill.name}</Typography>
+          <Typography className={styles.skillBackDesc}>
+            {skill.level === 'Expert' && 'Highly experienced and use daily.'}
+            {skill.level === 'Proficient' && 'Solid experience, use regularly.'}
+            {skill.level === 'Familiar' && 'Used in projects, learning more.'}
+          </Typography>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+));
+
 const SkillsSection: React.FC = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
@@ -142,45 +187,7 @@ const SkillsSection: React.FC = () => {
         className={styles.categoriesGrid}
       >
         {skillCategories[0].skills.map((skill, idx) => (
-          <motion.div
-            key={skill.name}
-            variants={cardVariants}
-            className={styles.skillCardWrapper}
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <div className={styles.flipCard}>
-              <div className={styles.flipCardInner}>
-                <div className={styles.flipCardFront}>
-                  <Box className={styles.iconBox} style={{ color: isDark ? '#fff' : '#10b981' }}>
-                    {skill.icon}
-                  </Box>
-                  <Typography className={styles.skillName}>{skill.name}</Typography>
-                  <Chip
-                    label={skill.level}
-                    className={styles.levelChip}
-                    size="small"
-                    color={
-                      skill.level === 'Expert'
-                        ? 'success'
-                        : skill.level === 'Proficient'
-                          ? 'primary'
-                          : 'default'
-                    }
-                    variant="outlined"
-                  />
-                </div>
-                <div className={styles.flipCardBack}>
-                  <Typography className={styles.skillBackTitle}>{skill.name}</Typography>
-                  <Typography className={styles.skillBackDesc}>
-                    {skill.level === 'Expert' && 'Highly experienced and use daily.'}
-                    {skill.level === 'Proficient' && 'Solid experience, use regularly.'}
-                    {skill.level === 'Familiar' && 'Used in projects, learning more.'}
-                  </Typography>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <SkillCard key={skill.name} skill={skill} isDark={isDark} />
         ))}
       </motion.div>
     </Box>

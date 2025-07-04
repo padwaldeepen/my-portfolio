@@ -432,4 +432,11 @@
   .cardContent {
     padding: 1rem;
   }
+}
+
+.timelineCard:focus {
+  outline: 2.5px solid $accent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px $accentGreenShadow;
+  z-index: 3;
 } 

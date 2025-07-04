@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Box, Paper, Typography, Chip, IconButton, Snackbar, Tooltip } from '@mui/material';
 import { motion } from 'framer-motion';
 import {
@@ -60,6 +60,106 @@ const contactCards: ContactCard[] = [
   },
 ];
 
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut' as const,
+    },
+  },
+};
+
+const ContactCard = memo(({ card, hovered, setHoveredCard, handleCopyEmail }: any) => (
+  <motion.div
+    key={card.id}
+    variants={cardVariants}
+    className={styles.cardWrapper}
+    onHoverStart={() => setHoveredCard(card.id)}
+    onHoverEnd={() => setHoveredCard(null)}
+    tabIndex={0}
+    role="button"
+    aria-label={card.title}
+  >
+    <Paper className={styles.contactCard} elevation={2}>
+      {/* Card Header */}
+      <Box className={styles.cardHeader}>
+        <Box className={styles.iconContainer} style={{ backgroundColor: card.color }}>
+          {card.icon}
+        </Box>
+        <Box className={styles.headerContent}>
+          <Typography variant="h5" className={styles.cardTitle}>
+            {card.title}
+          </Typography>
+          <Typography variant="body2" className={styles.cardSubtitle}>
+            {card.subtitle}
+          </Typography>
+        </Box>
+      </Box>
+      {/* Card Content */}
+      <Box className={styles.cardContent}>
+        <Typography variant="body1" className={styles.cardValue}>
+          {card.value}
+        </Typography>
+        <Typography variant="body2" className={styles.cardDescription}>
+          {card.description}
+        </Typography>
+      </Box>
+      {/* Card Actions */}
+      {card.action === 'copy' ? (
+        <Tooltip title="Copy email address">
+          <IconButton
+            onClick={handleCopyEmail}
+            className={styles.actionButton}
+            aria-label="Copy email address"
+          >
+            <CopyIcon />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Open in new tab">
+          <IconButton
+            component="a"
+            href={card.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.actionButton}
+            aria-label={`Open ${card.title} in new tab`}
+          >
+            <ExternalIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+      <motion.a
+        href={card.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.primaryAction}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {card.action === 'copy' ? 'Send Email' : 'Visit Profile'}
+      </motion.a>
+      {/* Hover Overlay */}
+      {hovered === card.id && (
+        <motion.div
+          className={styles.hoverOverlay}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
+      )}
+    </Paper>
+  </motion.div>
+));
+
 const ContactSection: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -80,23 +180,6 @@ const ContactSection: React.FC = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.95,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
       },
     },
   };
@@ -129,89 +212,13 @@ const ContactSection: React.FC = () => {
         {/* Contact Cards Grid */}
         <Box className={styles.cardsGrid}>
           {contactCards.map((card) => (
-            <motion.div
+            <ContactCard
               key={card.id}
-              variants={cardVariants}
-              className={styles.cardWrapper}
-              onHoverStart={() => setHoveredCard(card.id)}
-              onHoverEnd={() => setHoveredCard(null)}
-            >
-              <Paper className={styles.contactCard} elevation={2}>
-                {/* Card Header */}
-                <Box className={styles.cardHeader}>
-                  <Box className={styles.iconContainer} style={{ backgroundColor: card.color }}>
-                    {card.icon}
-                  </Box>
-                  <Box className={styles.headerContent}>
-                    <Typography variant="h5" className={styles.cardTitle}>
-                      {card.title}
-                    </Typography>
-                    <Typography variant="body2" className={styles.cardSubtitle}>
-                      {card.subtitle}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Card Content */}
-                <Box className={styles.cardContent}>
-                  <Typography variant="body1" className={styles.cardValue}>
-                    {card.value}
-                  </Typography>
-                  <Typography variant="body2" className={styles.cardDescription}>
-                    {card.description}
-                  </Typography>
-                </Box>
-
-                {/* Card Actions */}
-                <Box className={styles.cardActions}>
-                  {card.action === 'copy' ? (
-                    <Tooltip title="Copy email address">
-                      <IconButton
-                        onClick={handleCopyEmail}
-                        className={styles.actionButton}
-                        aria-label="Copy email address"
-                      >
-                        <CopyIcon />
-                      </IconButton>
-                    </Tooltip>
-                  ) : (
-                    <Tooltip title="Open in new tab">
-                      <IconButton
-                        component="a"
-                        href={card.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.actionButton}
-                        aria-label={`Open ${card.title} in new tab`}
-                      >
-                        <ExternalIcon />
-                      </IconButton>
-                    </Tooltip>
-                  )}
-
-                  <motion.a
-                    href={card.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.primaryAction}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    {card.action === 'copy' ? 'Send Email' : 'Visit Profile'}
-                  </motion.a>
-                </Box>
-
-                {/* Hover Overlay */}
-                {hoveredCard === card.id && (
-                  <motion.div
-                    className={styles.hoverOverlay}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  />
-                )}
-              </Paper>
-            </motion.div>
+              card={card}
+              hovered={hoveredCard}
+              setHoveredCard={setHoveredCard}
+              handleCopyEmail={handleCopyEmail}
+            />
           ))}
         </Box>
 

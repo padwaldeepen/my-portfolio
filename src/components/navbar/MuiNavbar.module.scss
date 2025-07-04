@@ -73,25 +73,13 @@
   align-items: center;
   
   &:hover, &:focus {
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-      background: none !important;
-    }
-    @media (prefers-color-scheme: light) {
-      color: $accent;
-      background: $hoverBg !important;
-    }
+    color: $text;
+    background: none;
   }
   
   &.active {
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-      background: none !important;
-    }
-    @media (prefers-color-scheme: light) {
-      color: $accent;
-      background: $activeBg !important;
-    }
+    color: $text;
+    background: none;
   }
   
   &::after {
@@ -107,9 +95,6 @@
     border-radius: 50%;
     opacity: 0;
     transition: opacity 0.2s ease, background 0.2s;
-    @media (prefers-color-scheme: dark) {
-      background: #fff;
-    }
   }
   
   &:hover::after, &.active::after {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Box, Paper, Typography, Chip, IconButton, Collapse } from '@mui/material';
 import { motion } from 'framer-motion';
 import {
@@ -111,6 +111,83 @@ const timelineData: TimelineItem[] = [
   },
 ];
 
+const TimelineCard = memo(
+  ({
+    item,
+    expanded,
+    toggleExpanded,
+  }: {
+    item: TimelineItem;
+    expanded: boolean;
+    toggleExpanded: (id: string) => void;
+  }) => (
+    <Paper
+      className={styles.timelineCard}
+      elevation={2}
+      tabIndex={0}
+      role="button"
+      aria-label={item.title}
+    >
+      <Box className={styles.cardHeader}>
+        <Box className={styles.iconContainer}>{item.icon}</Box>
+        <Box className={styles.headerContent}>
+          <Typography variant="h5" className={styles.itemTitle}>
+            {item.title}
+          </Typography>
+          <Typography variant="h6" className={styles.itemSubtitle}>
+            {item.subtitle}
+          </Typography>
+          {item.company && (
+            <Typography variant="body1" className={styles.company}>
+              {item.company}
+            </Typography>
+          )}
+          <Box className={styles.metaInfo}>
+            <Box className={styles.metaItem}>
+              <LocationIcon className={styles.metaIcon} />
+              <Typography variant="body2">{item.location}</Typography>
+            </Box>
+            <Box className={styles.metaItem}>
+              <CalendarIcon className={styles.metaIcon} />
+              <Typography variant="body2">{item.period}</Typography>
+            </Box>
+          </Box>
+        </Box>
+        <IconButton
+          onClick={() => toggleExpanded(item.id)}
+          className={styles.expandButton}
+          aria-label={expanded ? 'Show less' : 'Show more'}
+        >
+          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </IconButton>
+      </Box>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <Box className={styles.cardContent}>
+          <Box className={styles.description}>
+            {item.description.map((desc: string, descIndex: number) => (
+              <Typography key={descIndex} variant="body2" className={styles.descriptionItem}>
+                • {desc}
+              </Typography>
+            ))}
+          </Box>
+          {item.skills && (
+            <Box className={styles.skillsContainer}>
+              <Typography variant="h6" className={styles.skillsTitle}>
+                Key Skills & Technologies
+              </Typography>
+              <Box className={styles.skillsList}>
+                {item.skills.map((skill: string, skillIndex: number) => (
+                  <Chip key={skillIndex} label={skill} className={styles.skillChip} size="small" />
+                ))}
+              </Box>
+            </Box>
+          )}
+        </Box>
+      </Collapse>
+    </Paper>
+  ),
+);
+
 const ExperienceSection: React.FC = () => {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
@@ -169,84 +246,17 @@ const ExperienceSection: React.FC = () => {
         </Typography>
 
         <Box className={styles.timeline}>
-          {timelineData.map((item, index) => (
+          {timelineData.map((item) => (
             <motion.div
               key={item.id}
               variants={itemVariants}
               className={`${styles.timelineItem} ${styles[`timelineItem--${item.type}`]}`}
             >
-              <Paper className={styles.timelineCard} elevation={2}>
-                <Box className={styles.cardHeader}>
-                  <Box className={styles.iconContainer}>{item.icon}</Box>
-
-                  <Box className={styles.headerContent}>
-                    <Typography variant="h5" className={styles.itemTitle}>
-                      {item.title}
-                    </Typography>
-                    <Typography variant="h6" className={styles.itemSubtitle}>
-                      {item.subtitle}
-                    </Typography>
-                    {item.company && (
-                      <Typography variant="body1" className={styles.company}>
-                        {item.company}
-                      </Typography>
-                    )}
-
-                    <Box className={styles.metaInfo}>
-                      <Box className={styles.metaItem}>
-                        <LocationIcon className={styles.metaIcon} />
-                        <Typography variant="body2">{item.location}</Typography>
-                      </Box>
-                      <Box className={styles.metaItem}>
-                        <CalendarIcon className={styles.metaIcon} />
-                        <Typography variant="body2">{item.period}</Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-
-                  <IconButton
-                    onClick={() => toggleExpanded(item.id)}
-                    className={styles.expandButton}
-                    aria-label={expandedItems.has(item.id) ? 'Show less' : 'Show more'}
-                  >
-                    {expandedItems.has(item.id) ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-                  </IconButton>
-                </Box>
-
-                <Collapse in={expandedItems.has(item.id)} timeout="auto">
-                  <Box className={styles.cardContent}>
-                    <Box className={styles.description}>
-                      {item.description.map((desc, descIndex) => (
-                        <Typography
-                          key={descIndex}
-                          variant="body2"
-                          className={styles.descriptionItem}
-                        >
-                          • {desc}
-                        </Typography>
-                      ))}
-                    </Box>
-
-                    {item.skills && (
-                      <Box className={styles.skillsContainer}>
-                        <Typography variant="h6" className={styles.skillsTitle}>
-                          Key Skills & Technologies
-                        </Typography>
-                        <Box className={styles.skillsList}>
-                          {item.skills.map((skill, skillIndex) => (
-                            <Chip
-                              key={skillIndex}
-                              label={skill}
-                              className={styles.skillChip}
-                              size="small"
-                            />
-                          ))}
-                        </Box>
-                      </Box>
-                    )}
-                  </Box>
-                </Collapse>
-              </Paper>
+              <TimelineCard
+                item={item}
+                expanded={expandedItems.has(item.id)}
+                toggleExpanded={toggleExpanded}
+              />
             </motion.div>
           ))}
         </Box>

@@ -128,6 +128,13 @@
   }
 }
 
+.contactCard:focus {
+  outline: 2.5px solid $accent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px $accentGreenShadow;
+  z-index: 3;
+}
+
 // Card Header
 .cardHeader {
   display: flex;

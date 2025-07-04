@@ -13,37 +13,37 @@ const HOBBIES = [
   {
     key: 'anime',
     label: 'Anime',
-    icon: <AnimationIcon fontSize="large" sx={{ color: '#ff80ab' }} />,
+    icon: <AnimationIcon fontSize="large" />,
     desc: 'Immersive anime worlds & Studio Ghibli marathons.',
-    accent: '#ff80ab',
+    accentClass: 'hobbyAnime',
   },
   {
     key: 'movies',
     label: 'Movies',
-    icon: <MovieIcon fontSize="large" sx={{ color: '#ffd740' }} />,
+    icon: <MovieIcon fontSize="large" />,
     desc: 'From Nolan films to indie gems, movies inspire my creativity.',
-    accent: '#ffd740',
+    accentClass: 'hobbyMovies',
   },
   {
     key: 'travel',
     label: 'Travel',
-    icon: <DirectionsCarIcon fontSize="large" sx={{ color: '#64b5f6' }} />,
+    icon: <DirectionsCarIcon fontSize="large" />,
     desc: 'Road trips across the US—Florida, Georgia, Tennessee, Ohio, Indiana, Alabama, New Orleans, and more. I collect a fridge magnet from every state I visit, and my bucket list is to see all 50!',
-    accent: '#64b5f6',
+    accentClass: 'hobbyTravel',
   },
   {
     key: 'music',
     label: 'Music',
-    icon: <MusicNoteIcon fontSize="large" sx={{ color: '#69f0ae' }} />,
+    icon: <MusicNoteIcon fontSize="large" />,
     desc: 'Playlists for every mood—music keeps me focused and inspired.',
-    accent: '#69f0ae',
+    accentClass: 'hobbyMusic',
   },
   {
     key: 'books',
     label: 'Books',
-    icon: <AutoStoriesIcon fontSize="large" sx={{ color: '#b388ff' }} />,
+    icon: <AutoStoriesIcon fontSize="large" />,
     desc: 'Reading sparks new ideas and helps me grow as a developer.',
-    accent: '#b388ff',
+    accentClass: 'hobbyBooks',
   },
 ];
 
@@ -93,14 +93,13 @@ const AboutSection: React.FC = () => (
         {HOBBIES.map((hobby) => (
           <Paper
             key={hobby.key}
-            className={styles.hobbyCard}
-            elevation={3}
-            style={{ borderColor: hobby.accent }}
+            className={`${styles.hobbyCard} ${styles[hobby.accentClass]}`}
+            tabIndex={0}
+            role="button"
+            aria-label={hobby.label}
           >
-            <span className={styles.hobbyIcon}>{hobby.icon}</span>
-            <Typography className={styles.hobbyLabel} style={{ color: hobby.accent }}>
-              {hobby.label}
-            </Typography>
+            {hobby.icon}
+            <Typography className={styles.hobbyTitle}>{hobby.label}</Typography>
             <Typography className={styles.hobbyDesc}>{hobby.desc}</Typography>
           </Paper>
         ))}
