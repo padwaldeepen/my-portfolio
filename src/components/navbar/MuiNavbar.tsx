@@ -11,6 +11,7 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 import classNames from 'classnames';
 import styles from './MuiNavbar.module.scss';
 import SocialIcons from '../shared/social/SocialIcons';
+import Drawer from '@mui/material/Drawer';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -29,6 +30,7 @@ interface MuiNavbarProps {
 const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const isMenuOpen = Boolean(anchorEl);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,9 +38,13 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setDrawerOpen(false);
   };
 
   const toggleTheme = () => setDarkMode((prev) => !prev);
+
+  // Only show Drawer on mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   return (
     <AppBar position="fixed" className={styles.navbarRoot} elevation={0}>
@@ -47,71 +53,70 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
         <div className={styles.leftGroup}>
           <RouterLink to="/" className={styles.brand} aria-label="Deepen Padwal Portfolio Home">
             <span aria-hidden="true">DA</span>
-        </RouterLink>
+          </RouterLink>
         </div>
 
         {/* Center: Nav Links */}
         <div className={styles.centerGroup}>
-        <div className={styles.navLinks}>
-          {navLinks.map((link) => (
-            <RouterLink
-              key={link.to}
-              to={link.to}
-              className={classNames(styles.linkBtn, {
-                [styles.active]: location.pathname === link.to,
-              })}
-            >
+          <div className={styles.navLinks}>
+            {navLinks.map((link) => (
+              <RouterLink
+                key={link.to}
+                to={link.to}
+                className={classNames(styles.linkBtn, {
+                  [styles.active]: location.pathname === link.to,
+                })}
+              >
                 <span>{link.label}</span>
                 <span className={styles.underline} />
-            </RouterLink>
-          ))}
+              </RouterLink>
+            ))}
           </div>
         </div>
 
         {/* Right: Social Icons + Theme Toggle + Hamburger */}
         <div className={styles.rightGroup}>
-          <SocialIcons className={styles.navActions} />
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            className={classNames(styles.socialBtn, styles.themeToggleBtn)}
-            style={{
-              transition: 'transform 0.3s cubic-bezier(.4,2,.6,1)',
-              transform: 'rotate(' + (darkMode ? 180 : 0) + 'deg)',
-            }}
-          >
-            {darkMode ? <FiMoon /> : <FiSun />}
-          </button>
-        <div className={styles.menuIcon}>
+          <div className={styles.desktopOnly}>
+            <SocialIcons className={styles.navActions} />
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              className={classNames(styles.socialBtn, styles.themeToggleBtn)}
+              style={{
+                transition: 'transform 0.3s cubic-bezier(.4,2,.6,1)',
+                transform: 'rotate(' + (darkMode ? 180 : 0) + 'deg)',
+              }}
+            >
+              {darkMode ? <FiMoon /> : <FiSun />}
+            </button>
+          </div>
+          <div className={styles.menuIcon}>
             <IconButton
-              onClick={handleMenu}
+              onClick={() => setDrawerOpen(true)}
               size="large"
               aria-label="Open mobile menu"
               tabIndex={0}
             >
-            <MenuIcon />
-          </IconButton>
+              <MenuIcon />
+            </IconButton>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <Menu
-          anchorEl={anchorEl}
-          open={isMenuOpen}
+        {/* Mobile Drawer */}
+        <Drawer
+          anchor="right"
+          open={drawerOpen}
           onClose={handleClose}
-          keepMounted
-          className={styles.mobileMenu}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           PaperProps={{
+            className: styles.mobileMenu,
             style: {
+              borderRadius: '1rem',
+              background: 'var(--paper)',
               boxShadow: '0 8px 32px rgba(16,185,129,0.13)',
-              borderRadius: '0.8rem',
-              minWidth: 180,
             },
-            'aria-label': 'Mobile navigation menu',
           }}
+          ModalProps={{ keepMounted: true }}
         >
           <div className={styles.mobileLinks}>
             {navLinks.map((link) => (
@@ -159,7 +164,7 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
               {darkMode ? <FiMoon /> : <FiSun />}
             </button>
           </div>
-        </Menu>
+        </Drawer>
       </Toolbar>
     </AppBar>
   );

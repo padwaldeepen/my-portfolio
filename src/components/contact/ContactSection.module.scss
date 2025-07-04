@@ -92,9 +92,15 @@
   align-items: stretch;
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 480px) {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -120,6 +126,19 @@
   max-width: 370px;
   margin: 0 auto;
   box-shadow: $shadowMd;
+  
+  @media (max-width: 768px) {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+    margin: 0 0 1.2rem 0;
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+  }
+  @media (max-width: 480px) {
+    padding: 0.7rem 0.3rem 0.9rem 0.3rem;
+    border-radius: 0.7rem;
+    margin: 0 0 0.7rem 0;
+  }
   
   &:hover {
     transform: translateY(-8px);
@@ -158,6 +177,21 @@
   svg {
     font-size: 1.5rem;
   }
+  
+  @media (max-width: 768px) {
+    width: 44px;
+    height: 44px;
+    svg {
+      font-size: 1.1rem;
+    }
+  }
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    svg {
+      font-size: 0.95rem;
+    }
+  }
 }
 
 .headerContent {
@@ -170,12 +204,24 @@
   color: $text;
   margin-bottom: 0.25rem;
   font-size: 1.25rem;
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
 }
 
 .cardSubtitle {
   color: $textSecondary;
   font-weight: 500;
   font-size: 0.9rem;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 }
 
 // Card Content
@@ -189,12 +235,24 @@
   margin-bottom: 0.75rem;
   font-size: 1rem;
   word-break: break-all;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 }
 
 .cardDescription {
   color: $textSecondary;
   line-height: 1.5;
   font-size: 0.9rem;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+  }
 }
 
 // Card Actions
@@ -228,12 +286,13 @@
   font-size: 0.9rem;
   transition: all 0.3s ease;
   border: 1px solid $accent;
-  
-  &:hover {
-    background: $hoverBg;
-    color: $accent;
-    text-decoration: none;
-    transform: translateY(-1px);
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.7rem;
   }
 }
 

@@ -37,6 +37,14 @@ html[data-theme='dark'] .layout-root {
   padding-top: 64px; /* Account for fixed navbar height */
   overflow-y: auto;
   overflow-x: hidden;
+  
+  @media (max-width: 768px) {
+    padding-top: 56px; /* Smaller navbar height on mobile */
+  }
+  
+  @media (max-width: 480px) {
+    padding-top: 52px; /* Even smaller for very small screens */
+  }
 }
 
 .particlesBg {
