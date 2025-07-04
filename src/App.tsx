@@ -11,7 +11,6 @@ import MuiNavbar from '@components/navbar/MuiNavbar';
 import './App.scss';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { lightTheme, darkTheme } from './theme';
-import Footer from '@components/footer/Footer';
 import Layout from '@components/layout/Layout';
 
 const App: React.FC = () => {

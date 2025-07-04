@@ -1,31 +1,35 @@
-$navbarBg: #e5e7eb; // Even darker neutral for navbar, footer, cards backgrounds
-$navbarShadow: 0 2px 16px 0 rgba(31, 41, 55, 0.13);
-$navbarBorder: #94a3b8; // Slate-400 for visible border
-$iconLight: #1f2937; // Slate-800 for icons on light backgrounds
-$darkBg: #1e293b; // Dark blue-gray for dark mode backgrounds
-$darkBgAlt: #0f172a; // Even darker blue-gray for contrast
-$darkBorder: #334155; // Dark border for cards in dark mode
-$darkText: #f1f5f9; // Light text for dark mode
-$darkDesc: #cbd5e1; // Muted light text for descriptions in dark mode
-$darkIcon: #34d399; // Emerald-400 for icons in dark mode
-$iconHover: #0e766e; // Deep emerald for icon hover/focus
-$descStrong: #4b5563; // Strong gray for description (used in light mode)
-$primary: #10b981; // Emerald-500 – clean and professional green
-$primaryLight: #6ee7b7; // Emerald-300 – great for hover, borders, light accents
-$accent: #14b8a6; // Teal-500 – optional, adds variation
-$text: #1f2937; // Slate-800 – strong for headings/body
-$textSecondary: #6b7280; // Gray-500 – for descriptions
-$background: #f0fdf4; // Light emerald tint
-$paper: #ffffff; // For cards/sections
-$divider: #d1fae5; // Soft green divider
+$navbarBg: #424242;
+$navbarShadow: 0 2px 16px 0 rgba(60, 60, 90, 0.10);
+$navbarBorder: #686868;
+$iconLight: #FAFAFA;
+$darkBg: #131313;
+$darkBgAlt: #292929;
+$darkBorder: #292929;
+$darkText: #FAFAFA;
+$darkDesc: #686868;
+$descStrong: #686868;
+$primary: #424242;
+$primaryLight: #686868;
+$accent: #FAFAFA;
+$text: #FAFAFA;
+$textLight: #FAFAFA;
+$textDark: #131313;
+$textGray: #686868;
+$textAccent: #FAFAFA;
+$textSecondary: #686868;
+$background: #131313;
+$paper: #292929;
+$divider: #686868;
 
-$iconEmail: #EA4335;
-$iconLinkedin: #0A66C2;
-$iconGithub: #171515;
+$iconEmail: #686868;
+$iconLinkedin: #686868;
+$iconGithub: #686868;
 
-// About section gradient (used for avatar, etc)
-$aboutGradient: linear-gradient(135deg, $primaryLight, $primary);
+$navFooterGradient: linear-gradient(90deg, #424242 0%, #292929 100%);
+$glassBg: rgba(66,66,66,0.65);
+$glassBgDark: rgba(19,19,19,0.82);
 
-// Usage:
-// $background: Main page background (used in Layout)
-// $darkBg: Main page background for dark mode
+$skillCardBorder: #e0e7ff;
+
+$accentGreen: #10b981;
+$accentGreenShadow: rgba(16,185,129,0.22);

@@ -1,79 +1,241 @@
-import { Box, Paper, Typography, useTheme } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Paper, Typography, Chip, IconButton, Snackbar, Tooltip } from '@mui/material';
 import { motion } from 'framer-motion';
-import React from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
+import {
+  Email as EmailIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+  Phone as PhoneIcon,
+  ContentCopy as CopyIcon,
+  Check as CheckIcon,
+  OpenInNew as ExternalIcon,
+} from '@mui/icons-material';
 import styles from './ContactSection.module.scss';
 
-const CONTACTS = [
+interface ContactCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  value: string;
+  href: string;
+  icon: React.ReactNode;
+  color: string;
+  action?: 'copy' | 'external';
+  description?: string;
+}
+
+const contactCards: ContactCard[] = [
   {
+    id: 'email',
+    title: 'Email',
+    subtitle: "Let's get in touch",
+    value: 'padwaldeepen@gmail.com',
     href: 'mailto:padwaldeepen@gmail.com',
-    label: 'Email',
-    icon: <MdEmail aria-hidden="true" />,
-    className: styles.iconLink + ' ' + styles['iconLink--email'],
+    icon: <EmailIcon />,
+    color: '#EA4335',
+    action: 'copy',
+    description: 'I typically respond within 24 hours',
   },
   {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    subtitle: 'Professional networking',
+    value: 'linkedin.com/in/padwaldeepen',
     href: 'https://www.linkedin.com/in/padwaldeepen/',
-    label: 'LinkedIn',
-    icon: <FaLinkedin aria-hidden="true" />,
-    className: styles.iconLink + ' ' + styles['iconLink--linkedin'],
+    icon: <LinkedInIcon />,
+    color: '#0077B5',
+    action: 'external',
+    description: 'Connect for job opportunities and career growth',
   },
   {
+    id: 'github',
+    title: 'GitHub',
+    subtitle: 'Check out my code',
+    value: 'github.com/deepenpadwal',
     href: 'https://github.com/deepenpadwal',
-    label: 'GitHub',
-    icon: <FaGithub aria-hidden="true" />,
-    className: styles.iconLink + ' ' + styles['iconLink--github'],
+    icon: <GitHubIcon />,
+    color: '#333333',
+    action: 'external',
+    description: 'Explore my projects and contributions',
   },
 ];
 
 const ContactSection: React.FC = () => {
-  const theme = useTheme();
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('padwaldeepen@gmail.com');
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.95,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut' as const,
+      },
+    },
+  };
+
   return (
-    <Box className={styles.contactSectionBox}>
-      <section className={styles.contactLinksSection} aria-label="Contact section">
-        <Paper
-          elevation={6}
-          className={styles.contactPaper}
-          sx={{
-            p: { xs: 2.5, md: 5 },
-            borderRadius: 6,
-            background: `linear-gradient(135deg, ${theme.palette.background.paper} 80%, ${theme.palette.primary.light} 100%)`,
-            boxShadow: '0 8px 32px 0 rgba(80,80,180,0.10), 0 1.5px 8px 0 rgba(80,80,180,0.08)',
-            border: `2.5px solid ${theme.palette.primary.main}`,
-            position: 'relative',
-            overflow: 'hidden',
-            transition: 'box-shadow 0.3s cubic-bezier(.4,1.3,.6,1)',
-            '&:hover': {
-              boxShadow: '0 12px 48px 0 rgba(80,80,180,0.18), 0 2px 12px 0 rgba(80,80,180,0.12)',
-            },
-          }}
-        >
-          <Box className={styles.contactPaperContent}>
-            <h1 className={styles.contactLinksTitle}>Let’s Connect</h1>
-            <div className={styles.contactLinksSubtext}>
-              Reach out if you’d like to collaborate, chat tech, or grab a virtual coffee ☕.
-            </div>
-            <Box className={styles.linksRow}>
-              {CONTACTS.map(({ href, label, icon, className }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={className}
-                  whileHover={{ scale: 1.13, boxShadow: '0 4px 32px 0 rgba(25,118,210,0.18)' }}
-                  whileTap={{ scale: 0.93 }}
-                  tabIndex={0}
-                >
-                  {icon}
-                  <span className={styles.iconLabel}>{label}</span>
-                </motion.a>
-              ))}
-            </Box>
-          </Box>
-        </Paper>
-      </section>
+    <Box className={styles.contactContainer}>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className={styles.contactContent}
+      >
+        {/* Header Section */}
+        <Box className={styles.headerSection}>
+          <Typography variant="h2" className={styles.mainTitle}>
+            Let's Connect
+          </Typography>
+          <Typography variant="h6" className={styles.subtitle}>
+            Ready to join a great team, discuss tech, or just say hello? I'm actively seeking new
+            job opportunities and interesting roles.
+          </Typography>
+          <Chip
+            label="Open to New Roles"
+            className={styles.availabilityChip}
+            color="success"
+            variant="outlined"
+          />
+        </Box>
+
+        {/* Contact Cards Grid */}
+        <Box className={styles.cardsGrid}>
+          {contactCards.map((card) => (
+            <motion.div
+              key={card.id}
+              variants={cardVariants}
+              className={styles.cardWrapper}
+              onHoverStart={() => setHoveredCard(card.id)}
+              onHoverEnd={() => setHoveredCard(null)}
+            >
+              <Paper className={styles.contactCard} elevation={2}>
+                {/* Card Header */}
+                <Box className={styles.cardHeader}>
+                  <Box className={styles.iconContainer} style={{ backgroundColor: card.color }}>
+                    {card.icon}
+                  </Box>
+                  <Box className={styles.headerContent}>
+                    <Typography variant="h5" className={styles.cardTitle}>
+                      {card.title}
+                    </Typography>
+                    <Typography variant="body2" className={styles.cardSubtitle}>
+                      {card.subtitle}
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Card Content */}
+                <Box className={styles.cardContent}>
+                  <Typography variant="body1" className={styles.cardValue}>
+                    {card.value}
+                  </Typography>
+                  <Typography variant="body2" className={styles.cardDescription}>
+                    {card.description}
+                  </Typography>
+                </Box>
+
+                {/* Card Actions */}
+                <Box className={styles.cardActions}>
+                  {card.action === 'copy' ? (
+                    <Tooltip title="Copy email address">
+                      <IconButton
+                        onClick={handleCopyEmail}
+                        className={styles.actionButton}
+                        aria-label="Copy email address"
+                      >
+                        <CopyIcon />
+                      </IconButton>
+                    </Tooltip>
+                  ) : (
+                    <Tooltip title="Open in new tab">
+                      <IconButton
+                        component="a"
+                        href={card.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.actionButton}
+                        aria-label={`Open ${card.title} in new tab`}
+                      >
+                        <ExternalIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+
+                  <motion.a
+                    href={card.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.primaryAction}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {card.action === 'copy' ? 'Send Email' : 'Visit Profile'}
+                  </motion.a>
+                </Box>
+
+                {/* Hover Overlay */}
+                {hoveredCard === card.id && (
+                  <motion.div
+                    className={styles.hoverOverlay}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  />
+                )}
+              </Paper>
+            </motion.div>
+          ))}
+        </Box>
+
+        {/* Call to Action */}
+        <Box className={styles.ctaSection}>
+          <Typography variant="h6" className={styles.ctaTitle}>
+            Let's build something amazing together! 🚀
+          </Typography>
+          <Typography variant="body1" className={styles.ctaText}>
+            Whether you have a position in mind or want to connect about career opportunities, I'd
+            love to hear from you. Let's make something great happen!
+          </Typography>
+        </Box>
+      </motion.div>
+
+      {/* Success Snackbar */}
+      <Snackbar
+        open={copiedEmail}
+        autoHideDuration={2000}
+        onClose={() => setCopiedEmail(false)}
+        message="Email copied to clipboard!"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        className={styles.snackbar}
+      />
     </Box>
   );
 };

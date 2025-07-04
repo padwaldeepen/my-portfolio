@@ -1,0 +1,152 @@
+@use '../../styles/variables.scss' as *;
+
+.skillsContainer {
+  min-height: 100vh;
+  padding: 2.5rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, $primary, $accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+}
+
+.sectionSubtitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: $textSecondary;
+  font-weight: 500;
+  font-size: 1.2rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.categorySection {
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.categoryTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $accentGreen;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+  @media (max-width: 600px) {
+    font-size: 1.1rem;
+  }
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.skillCard {
+  background: $navFooterGradient;
+  border: 1.5px solid $divider;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px $accentGreenShadow;
+  padding: 1.2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
+  min-width: 0;
+  &:hover {
+    box-shadow: 0 8px 32px $accentGreenShadow;
+    border-color: $accentGreen;
+    transform: translateY(-4px) scale(1.04);
+  }
+}
+
+.iconBox {
+  font-size: 2.2rem;
+  color: $accentGreen;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: $text;
+  text-align: center;
+  margin-bottom: 0.1rem;
+}
+
+.levelChip {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  border-radius: 0.5rem !important;
+  background: $accentGreenShadow !important;
+  color: $accentGreen !important;
+  border: 1px solid $accentGreen !important;
+  margin-top: 0.1rem;
+  &.MuiChip-colorSuccess {
+    background: $accentGreen !important;
+    color: $text !important;
+  }
+  &.MuiChip-colorPrimary {
+    background: $primaryLight !important;
+    color: $primary !important;
+    border-color: $primary !important;
+  }
+  &.MuiChip-colorDefault {
+    background: $divider !important;
+    color: $text !important;
+    border-color: $divider !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .skillsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  .skillCard {
+    padding: 0.8rem 0.5rem 0.7rem 0.5rem;
+  }
+  .iconBox {
+    font-size: 1.5rem;
+  }
+  .categoryTitle {
+    margin-bottom: 0.7rem;
+  }
+} 

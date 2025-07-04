@@ -3,30 +3,27 @@
 // Layout root should take full viewport height and allow footer to stick to bottom
 // Layout root: full viewport height, flex column, no horizontal scroll, responsive
 .layout-root {
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $background;
+  background: $navFooterGradient;
+  background-attachment: fixed;
   transition: background 0.4s cubic-bezier(0.4, 1.3, 0.6, 1);
   overflow-x: hidden;
   overflow-y: auto;
   box-sizing: border-box;
+  position: relative;
 }
 
-
-/* Dark mode background for layout */
 [data-theme='dark'] .layout-root {
-  background: $darkBg;
+  background: linear-gradient(90deg, rgba(24,24,27,0.92) 0%, rgba(39,39,42,0.92) 100%);
 }
 
-/* Dark mode blurred circles */
-[data-theme='dark'] .layout-root::before {
-  background: #14b8a6;
-  opacity: 0.1;
-}
+// Remove dark mode circles
+[data-theme='dark'] .layout-root::before,
 [data-theme='dark'] .layout-root::after {
-  background: #10b981;
-  opacity: 0.08;
+  display: none !important;
 }
 
 .layout-container {
@@ -37,10 +34,19 @@
   max-width: 100vw;
   animation: fadeInUp 0.7s cubic-bezier(0.4, 1.3, 0.6, 1);
   position: relative;
-  z-index: 1;
+  z-index: 2;
   box-sizing: border-box;
 }
 
+.particlesBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
 
 @keyframes fadeInBg {
   from {

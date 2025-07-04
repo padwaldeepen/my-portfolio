@@ -1,59 +1,24 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FiSun, FiMoon } from 'react-icons/fi';
 import classNames from 'classnames';
 import styles from './MuiNavbar.module.scss';
+import SocialIcons from '../shared/social/SocialIcons';
 
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/skills', label: 'Skills' },
-  { to: '/projects', label: 'Projects' },
   { to: '/experience', label: 'Experience' },
   { to: '/contact', label: 'Contact' },
 ];
-
-export const SocialIcons: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={classNames(styles.socialIcons, className)}>
-    <a
-      href="https://www.linkedin.com/in/padwaldeepen/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="LinkedIn"
-      className={styles['socialBtn']}
-      tabIndex={0}
-    >
-      <FaLinkedin />
-    </a>
-    <a
-      href="https://github.com/padwaldeepen"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="GitHub"
-      className={styles['socialBtn']}
-      tabIndex={0}
-    >
-      <FaGithub />
-    </a>
-    <a
-      href="mailto:padwaldeepen@gmail.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Email"
-      className={styles['socialBtn']}
-      tabIndex={0}
-    >
-      <FaEnvelope />
-    </a>
-  </div>
-);
 
 interface MuiNavbarProps {
   darkMode: boolean;
@@ -71,69 +36,83 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleToggleTheme = () => {
-    setDarkMode((prev) => !prev);
-  };
+
+  const toggleTheme = () => setDarkMode((prev) => !prev);
 
   return (
-    <AppBar position="sticky" color="transparent" elevation={0} className={styles['navbarRoot']}>
-      <Toolbar className={styles['toolbar']}>
-        <RouterLink to="/" className={styles['brand']} aria-label="Home">
-          Deepen Padwal
-        </RouterLink>
-        {/* Desktop Nav Links */}
-        <nav className={styles['navLinks']} aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <RouterLink
-              key={link.to}
-              to={link.to}
-              className={classNames(styles.linkBtn, {
-                [styles.active]: location.pathname === link.to,
-              })}
-              tabIndex={0}
-              aria-current={location.pathname === link.to ? 'page' : undefined}
-            >
-              {link.label}
-            </RouterLink>
-          ))}
-          <SocialIcons />
+    <AppBar position="sticky" className={styles.navbarRoot} elevation={0}>
+      <Toolbar className={styles.toolbar}>
+        {/* Left: Logo */}
+        <div className={styles.leftGroup}>
+          <RouterLink to="/" className={styles.brand} aria-label="Deepen Padwal Portfolio Home">
+            <span aria-hidden="true">DA</span>
+          </RouterLink>
+        </div>
+
+        {/* Center: Nav Links */}
+        <div className={styles.centerGroup}>
+          <div className={styles.navLinks}>
+            {navLinks.map((link) => (
+              <RouterLink
+                key={link.to}
+                to={link.to}
+                className={classNames(styles.linkBtn, {
+                  [styles.active]: location.pathname === link.to,
+                })}
+              >
+                <span>{link.label}</span>
+                <span className={styles.underline} />
+              </RouterLink>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Social Icons + Theme Toggle + Hamburger */}
+        <div className={styles.rightGroup}>
+          <SocialIcons className={styles.navActions} />
           <button
             type="button"
-            aria-label="Toggle dark mode"
-            onClick={handleToggleTheme}
-            className={styles['linkBtn']}
-            style={{ marginLeft: '1rem', fontSize: '1.1rem' }}
+            onClick={toggleTheme}
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            className={classNames(styles.socialBtn, styles.themeToggleBtn)}
+            style={{
+              transition: 'transform 0.3s cubic-bezier(.4,2,.6,1)',
+              transform: 'rotate(' + (darkMode ? 180 : 0) + 'deg)',
+            }}
           >
-            {darkMode ? '🌙' : '☀️'}
+            {darkMode ? <FiMoon /> : <FiSun />}
           </button>
-        </nav>
-        {/* Mobile Hamburger */}
-        <div className={styles['menuIcon']}>
-          <IconButton
-            edge="end"
-            aria-label="Open menu"
-            onClick={handleMenu}
-            size="large"
-            className={styles['socialBtn']}
-          >
-            <MenuIcon />
-          </IconButton>
+          <div className={styles.menuIcon}>
+            <IconButton
+              onClick={handleMenu}
+              size="large"
+              aria-label="Open mobile menu"
+              tabIndex={0}
+            >
+              <MenuIcon />
+            </IconButton>
+          </div>
         </div>
+
         {/* Mobile Menu */}
         <Menu
           anchorEl={anchorEl}
           open={isMenuOpen}
           onClose={handleClose}
           keepMounted
-          className={styles['mobileMenu']}
+          className={styles.mobileMenu}
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           PaperProps={{
-            className: styles.mobileMenu,
-            style: { boxShadow: 'none' },
+            style: {
+              boxShadow: '0 8px 32px rgba(16,185,129,0.13)',
+              borderRadius: '0.8rem',
+              minWidth: 180,
+            },
+            'aria-label': 'Mobile navigation menu',
           }}
         >
-          <div className={styles['mobileLinks']}>
+          <div className={styles.mobileLinks}>
             {navLinks.map((link) => (
               <RouterLink
                 key={link.to}
@@ -141,24 +120,42 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ darkMode, setDarkMode }) => {
                 className={classNames(styles.mobileLinkBtn, {
                   [styles.active]: location.pathname === link.to,
                 })}
-                tabIndex={0}
-                aria-current={location.pathname === link.to ? 'page' : undefined}
                 onClick={handleClose}
               >
                 {link.label}
               </RouterLink>
             ))}
           </div>
-          <div className={styles['mobileSocial']}>
-            <SocialIcons />
-            <button
-              type="button"
-              aria-label="Toggle dark mode"
-              onClick={handleToggleTheme}
-              className={styles['linkBtn']}
-              style={{ marginLeft: '0.5rem', fontSize: '1.1rem' }}
+          <div className={styles.mobileSocial}>
+            <a
+              href="https://linkedin.com/in/padwaldeepen"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialBtn}
             >
-              {darkMode ? '🌙' : '☀️'}
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com/padwaldeepen"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialBtn}
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="mailto:padwaldeepen@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialBtn}
+            >
+              <FaEnvelope />
+            </a>
+            <button
+              onClick={toggleTheme}
+              className={classNames(styles.socialBtn, styles.themeToggleBtn)}
+            >
+              {darkMode ? <FiMoon /> : <FiSun />}
             </button>
           </div>
         </Menu>

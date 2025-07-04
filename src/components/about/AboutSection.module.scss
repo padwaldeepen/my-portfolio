@@ -218,7 +218,7 @@
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: $aboutGradient;
+    background: $navFooterGradient;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,7 +260,8 @@
       box-shadow 0.3s;
     &:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 16px 4px rgba($primary, 0.18);
+      box-shadow: 0 0 16px 4px $accentGreenShadow;
+      border: 2px solid $accentGreen;
     }
     .label {
       font-size: 0.85rem;
@@ -333,5 +334,199 @@
   }
   .visualSection {
     margin-top: 2rem;
+  }
+}
+
+.aboutContainer {
+  min-height: 100vh;
+  padding: 2.5rem 1rem 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, $primary, $accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+}
+
+.coloredWord {
+  color: $accentGreen;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff80ab, #ffd740, #64b5f6, #69f0ae, #b388ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.highlight {
+  color: $primaryLight;
+  font-weight: 700;
+}
+
+.introSection {
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto;
+  text-align: center;
+}
+
+.introText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: $textSecondary;
+  line-height: 1.7;
+  margin-top: 1.2rem;
+  @media (max-width: 600px) {
+    font-size: 1.05rem;
+  }
+}
+
+.hobbiesSection {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 3.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hobbiesTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $accentGreen;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.hobbiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.hobbyCard {
+  background: $navFooterGradient;
+  border: 2.5px solid $divider;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 16px $accentGreenShadow;
+  padding: 1.5rem 1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
+  min-width: 0;
+  &:hover {
+    box-shadow: 0 8px 32px $accentGreenShadow;
+    border-color: $accentGreen;
+    transform: translateY(-4px) scale(1.04);
+  }
+}
+
+.hobbyIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hobbyLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+  text-align: center;
+}
+
+.hobbyDesc {
+  font-size: 0.98rem;
+  color: $textSecondary;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.factsSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.factsTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $primaryLight;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.01em;
+}
+
+.factsChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  justify-content: center;
+}
+
+.factChip {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border-radius: 0.7rem !important;
+  padding: 0.5rem 1.2rem !important;
+  background: $accentGreenShadow !important;
+  color: $accentGreen !important;
+  border: 1.5px solid $accentGreen !important;
+  &.MuiChip-colorSecondary {
+    background: #ff80ab22 !important;
+    color: #ff80ab !important;
+    border-color: #ff80ab !important;
+  }
+  &.MuiChip-colorSuccess {
+    background: #69f0ae22 !important;
+    color: #69f0ae !important;
+    border-color: #69f0ae !important;
+  }
+  &.MuiChip-colorPrimary {
+    background: #64b5f622 !important;
+    color: #64b5f6 !important;
+    border-color: #64b5f6 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .introSection {
+    margin-bottom: 2.2rem;
+  }
+  .hobbiesSection {
+    margin-bottom: 2.2rem;
+  }
+  .hobbiesGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .hobbyCard {
+    padding: 1rem 0.5rem 0.8rem 0.5rem;
+  }
+  .factsSection {
+    margin-bottom: 1.2rem;
   }
 }

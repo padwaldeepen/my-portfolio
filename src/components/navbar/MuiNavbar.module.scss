@@ -1,232 +1,270 @@
-/* MuiNavbar.module.scss - Minimalist, modern, responsive MUI Navbar styles */
-
 @use '../../styles/variables.scss' as *;
 
-$navbar-blur-bg: $navbarBg;
-$navbar-blur-bg-dark: rgba(31, 41, 55, 0.92); // Slate-800 dark
-$navbar-blur: blur(16px);
-$navbar-radius: 1.5rem;
-$navbar-padding-x: 2rem;
-$navbar-padding-y: 0.5rem;
-$navbar-font: 'Roboto', system-ui, sans-serif;
-$navbar-link-color: $text;
-$navbar-link-color-dark: #f0fdf4;
-$navbar-link-active: $primary;
-$navbar-link-active-dark: $primaryLight;
-$navbar-link-hover: $accent;
-$navbar-link-hover-dark: $primaryLight;
-$navbar-shadow: $navbarShadow;
-$navbar-z: 1100;
-
 .navbarRoot {
+  width: 100vw;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: $navbar-z;
-  background: $navbar-blur-bg;
-  backdrop-filter: $navbar-blur;
-  box-shadow: $navbar-shadow;
-  border-radius: 0 0 $navbar-radius $navbar-radius;
-  padding: $navbar-padding-y $navbar-padding-x;
-  font-family: $navbar-font;
-  transition: background 0.3s;
-  border-bottom: 1.5px solid $divider;
-  width: 100%;
-  min-width: 0;
-  box-sizing: border-box;
-  @media (max-width: 900px) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 0 0 1rem 1rem;
-  }
-  @media (max-width: 600px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    border-radius: 0 0 0.5rem 0.5rem;
-  }
-  @media (prefers-color-scheme: dark) {
-    background: $navbar-blur-bg-dark;
-    border-bottom: 1.5px solid $primaryLight;
-  }
+  z-index: 1100;
+  padding: 0;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
-  min-width: 0;
-  padding: 0;
-  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  min-height: 64px;
+  background: none;
+  box-shadow: none;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 }
 
 .brand {
-  font-weight: 700;
-  font-size: 1.35rem;
-  color: $primary;
+  font-size: 1.8rem;
+  color: $text;
+  font-weight: 900;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.2s;
-  &:hover,
-  &:focus {
-    color: $accent;
-  }
-  @media (prefers-color-scheme: dark) {
-    color: $primaryLight;
-    &:hover,
-    &:focus {
-      color: $accent;
-    }
-  }
+  user-select: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s;
 }
 
 .navLinks {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
-  @media (max-width: 900px) {
-    display: none;
-  }
+  gap: 2.2rem;
 }
 
 .linkBtn {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text;
   background: none;
   border: none;
   outline: none;
-  font: inherit;
-  color: $text;
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 2rem;
-  padding: 0.5rem 1.1rem;
-  cursor: pointer;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    font-weight 0.18s;
+  padding: 0.2rem 0.7rem;
+  border-radius: 0.3rem;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
   position: relative;
-  &:hover,
-  &:focus {
-    background: rgba($primary, 0.08);
-    color: $accent;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  &:hover, &:focus {
+    color: $primary;
+    background: none;
   }
   &.active {
     color: $primary;
-    font-weight: 700;
-    &::after {
-      content: '';
-      display: block;
-      margin: 0 auto;
-      width: 60%;
-      height: 2px;
-      background: $primary;
-      border-radius: 1px;
-      margin-top: 0.2rem;
-      transition: background 0.2s;
-    }
+    background: none;
   }
-  @media (prefers-color-scheme: dark) {
-    color: $primaryLight;
-    &:hover,
-    &:focus {
-      color: $accent;
-      background: rgba($primaryLight, 0.08);
-    }
-    &.active {
-      color: $primaryLight;
-      &::after {
-        background: $primaryLight;
-      }
-    }
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &:hover::after, &.active::after {
+    opacity: 1;
   }
 }
 
-.socialIcons {
+.rightGroup {
   display: flex;
-  gap: 0.5rem;
-  margin-left: 1.5rem;
-  @media (max-width: 900px) {
-    margin-left: 0;
-  }
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.navActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 .socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  padding: 0.3rem;
   color: $iconLight;
-  background: none;
   border-radius: 50%;
-  transition:
-    background 0.18s,
-    color 0.18s;
-  &:hover,
-  &:focus {
-    background: rgba($primary, 0.08);
-    color: $accent;
-  }
-  @media (prefers-color-scheme: dark) {
-    color: $navbar-link-color-dark;
-    &:hover,
-    &:focus {
-      color: $navbar-link-hover-dark;
-      background: rgba($primaryLight, 0.08);
-    }
-  }
+  background: transparent;
+  border: none;
+  transition: none;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  vertical-align: middle;
 }
 
 .menuIcon {
   display: none;
-  @media (max-width: 900px) {
-    display: flex;
-    align-items: center;
-    margin-left: 0.5rem;
-  }
-}
 
-.mobileMenu {
-  .MuiPaper-root {
-    background: $navbar-blur-bg;
-    backdrop-filter: $navbar-blur;
-    border-radius: $navbar-radius;
-    box-shadow: $navbar-shadow;
-    min-width: 180px;
-    padding: 0.5rem 0;
-    animation: fadeInMenu 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    @media (prefers-color-scheme: dark) {
-      background: $navbar-blur-bg-dark;
+  @media (max-width: 768px) {
+    display: block;
+
+    button {
+      color: $text;
     }
   }
 }
 
-@keyframes fadeInMenu {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.mobileMenu {
+  background-color: $paper;
+  border-radius: 0.6rem;
+  margin-top: 0.5rem;
+  min-width: 160px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .mobileLinks {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-}
+  padding: 1rem;
 
-.mobileLinkBtn {
-  @extend .linkBtn;
-  width: 100%;
-  text-align: left;
-  padding: 0.7rem 1rem;
-  border-radius: 1rem;
+  .mobileLinkBtn {
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: $text;
+    font-weight: 600;
+    border-radius: 0.4rem;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:focus {
+      background-color: $primaryLight;
+      color: $primary;
+    }
+
+    &.active {
+      color: $primary;
+      font-weight: 700;
+      background-color: rgba($primaryLight, 0.25);
+    }
+  }
 }
 
 .mobileSocial {
   display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem 0.2rem 1rem;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid $divider;
+
+  button {
+    background: none;
+    border: 1.5px solid transparent;
+    color: $text;
+    font-size: 1.3rem;
+    border-radius: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+
+    &:hover,
+    &:focus {
+      border-color: $primary;
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbarRoot {
+    border-bottom: 1px solid $primaryLight;
+  }
+
+  .brand {
+    color: #e5e7eb;
+
+    &:hover,
+    &:focus {
+      color: $primaryLight;
+    }
+  }
+
+  .linkBtn {
+    color: #e5e7eb;
+
+    &:hover,
+    &:focus {
+      color: $primaryLight;
+      border-color: $primaryLight;
+      background-color: rgba($primaryLight, 0.15);
+    }
+
+    &.active {
+      color: $primaryLight;
+      border-color: $primaryLight;
+    }
+  }
+
+  .socialBtn {
+    color: #e5e7eb;
+
+    &:hover,
+    &:focus {
+      color: $primaryLight;
+      background-color: rgba($primaryLight, 0.25);
+    }
+  }
+
+  .menuIcon button {
+    color: #e5e7eb;
+  }
+
+  .mobileMenu {
+    background-color: #18181b;
+    color: #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  }
+
+  .mobileLinkBtn {
+    color: #e5e7eb;
+
+    &:hover,
+    &:focus {
+      background-color: $primary;
+      color: $paper;
+    }
+
+    &.active {
+      background-color: $primaryLight;
+      color: $paper;
+    }
+  }
+
+  .mobileSocial button {
+    color: #e5e7eb;
+
+    &:hover,
+    &:focus {
+      border-color: $primaryLight;
+      color: $primaryLight;
+    }
+  }
 }
