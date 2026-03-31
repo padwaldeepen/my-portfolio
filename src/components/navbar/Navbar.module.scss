@@ -9,7 +9,7 @@
   background: transparent;
 
   &.scrolled {
-    background: rgba(10, 10, 10, 0.8);
+    background: var(--navbar-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0.75rem 0;

@@ -26,6 +26,7 @@
   --paper: #141414;
   --paper-elevated: #1a1a1a;
   --surface: #0f0f0f;
+  --navbar-bg: rgba(10, 10, 10, 0.85);
 
   // =====================
   // Borders & Dividers
@@ -92,6 +93,7 @@ html[data-theme='light'] {
   --paper: #ffffff;
   --paper-elevated: #ffffff;
   --surface: #f8fafc;
+  --navbar-bg: rgba(255, 255, 255, 0.85);
 
   --divider: #e2e8f0;
   --border: #e2e8f0;
