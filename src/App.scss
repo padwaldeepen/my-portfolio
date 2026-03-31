@@ -1,2 +1,23 @@
 @use './styles/global.scss' as *;
-@use './styles/variables.scss' as *;
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--text);
+}
+
+main {
+  flex: 1;
+}
+
+// Smooth scroll for sections
+html {
+  scroll-behavior: smooth;
+}
+
+// Section base styles
+section {
+  scroll-margin-top: 80px;
+}
