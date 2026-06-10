@@ -86,8 +86,8 @@ const Contact: React.FC = () => {
             Let&apos;s <span className={styles.highlight}>connect</span>
           </h2>
           <p className={styles.subtitle}>
-            I&apos;m currently open to new opportunities and collaborations. 
-            Whether you have a question or just want to say hi, feel free to reach out.
+            I&apos;m currently open to new opportunities and collaborations. Whether you have a
+            question or just want to say hi, feel free to reach out.
           </p>
         </motion.div>
 
@@ -137,9 +137,7 @@ const Contact: React.FC = () => {
 
         {/* CTA */}
         <motion.div variants={itemVariants} className={styles.cta}>
-          <p className={styles.ctaText}>
-            Looking forward to hearing from you!
-          </p>
+          <p className={styles.ctaText}>Looking forward to hearing from you!</p>
           <motion.a
             href="mailto:padwaldeepen@gmail.com"
             className={styles.ctaButton}

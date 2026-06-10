@@ -195,4 +195,3 @@ const SkillsSection: React.FC = () => {
 };
 
 export default SkillsSection;
- 

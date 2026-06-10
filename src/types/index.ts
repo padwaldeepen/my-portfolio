@@ -70,4 +70,4 @@ export interface AnimationVariants {
   visible: object;
   hover?: object;
   tap?: object;
-} 
+}

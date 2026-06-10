@@ -120,9 +120,7 @@ const Experience: React.FC = () => {
           <h2 className={styles.title}>
             Where I&apos;ve <span className={styles.highlight}>worked</span>
           </h2>
-          <p className={styles.subtitle}>
-            My professional journey and educational background.
-          </p>
+          <p className={styles.subtitle}>My professional journey and educational background.</p>
         </motion.div>
 
         {/* Experience Content */}
@@ -163,9 +161,7 @@ const Experience: React.FC = () => {
                     <h3 className={styles.panelTitle}>{activeExperience.title}</h3>
                     <span className={styles.panelSubtitle}>{activeExperience.subtitle}</span>
                   </div>
-                  {activeExperience.current && (
-                    <span className={styles.currentBadge}>Current</span>
-                  )}
+                  {activeExperience.current && <span className={styles.currentBadge}>Current</span>}
                 </div>
 
                 <div className={styles.panelMeta}>

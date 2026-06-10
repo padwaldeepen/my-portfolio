@@ -67,9 +67,8 @@ const Hero: React.FC = () => {
         {/* Description */}
         <motion.p variants={itemVariants} className={styles.description}>
           I craft modern web applications at the intersection of{' '}
-          <span className={styles.highlight}>AI and full-stack development</span>. 
-          Passionate about learning, building, and exploring new technologies 
-          to create impactful digital solutions.
+          <span className={styles.highlight}>AI and full-stack development</span>. Passionate about
+          learning, building, and exploring new technologies to create impactful digital solutions.
         </motion.p>
 
         {/* Location */}
@@ -123,11 +122,7 @@ const Hero: React.FC = () => {
           >
             <FaLinkedin />
           </a>
-          <a
-            href="mailto:padwaldeepen@gmail.com"
-            className={styles.socialLink}
-            aria-label="Email"
-          >
+          <a href="mailto:padwaldeepen@gmail.com" className={styles.socialLink} aria-label="Email">
             <FaEnvelope />
           </a>
         </motion.div>

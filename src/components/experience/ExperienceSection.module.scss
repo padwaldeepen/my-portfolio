@@ -26,7 +26,7 @@
   background-clip: text;
   color: transparent;
   font-size: 3rem;
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
@@ -38,7 +38,7 @@
   color: $textSecondary;
   font-weight: 500;
   font-size: 1.2rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-bottom: 3rem;
@@ -57,7 +57,7 @@
 .timeline {
   position: relative;
   padding: 2rem 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -68,7 +68,7 @@
     background: $gradientAccent;
     transform: translateX(-50%);
     z-index: 1;
-    
+
     @media (max-width: 768px) {
       left: 2rem;
       transform: none;
@@ -80,11 +80,11 @@
   position: relative;
   margin-bottom: 3rem;
   width: 100%;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -98,17 +98,17 @@
     transform: translateX(-50%);
     z-index: 2;
     box-shadow: 0 0 0 4px $shadowAccent;
-    
+
     @media (max-width: 768px) {
       left: 2rem;
       transform: none;
     }
   }
-  
+
   &--work::before {
     background: $accent;
   }
-  
+
   &--education::before {
     background: $primary;
   }
@@ -125,18 +125,18 @@
   position: relative;
   z-index: 3;
   box-shadow: $shadowMd;
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: $shadowAccent;
     border-color: $accent;
   }
-  
+
   @media (max-width: 768px) {
     width: calc(100% - 4rem);
     margin-left: 4rem;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -147,13 +147,13 @@
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
     border-right: 8px solid $paper;
-    
+
     @media (max-width: 768px) {
       left: -8px;
       border-right: 8px solid $paper;
     }
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -164,7 +164,7 @@
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
     border-right: 8px solid $border;
-    
+
     @media (max-width: 768px) {
       left: -9px;
       border-right: 8px solid $border;
@@ -175,32 +175,32 @@
 .timelineItem:nth-child(even) .timelineCard {
   margin-left: 0;
   margin-right: auto;
-  
+
   &::before {
     left: auto;
     right: -8px;
     border-right: none;
     border-left: 8px solid $paper;
   }
-  
+
   &::after {
     left: auto;
     right: -9px;
     border-right: none;
     border-left: 8px solid $border;
   }
-  
+
   @media (max-width: 768px) {
     margin-left: 4rem;
     margin-right: 0;
-    
+
     &::before {
       left: -8px;
       right: auto;
       border-left: none;
       border-right: 8px solid $paper;
     }
-    
+
     &::after {
       left: -9px;
       right: auto;
@@ -228,7 +228,7 @@
   border-radius: 50%;
   color: $textInverse;
   flex-shrink: 0;
-  
+
   .timelineItem--education & {
     background: $primary;
     color: $textInverse;
@@ -252,7 +252,7 @@
   color: $accent;
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  
+
   .timelineItem--education & {
     color: $primary;
   }
@@ -282,7 +282,7 @@
 .metaIcon {
   font-size: 1rem !important;
   color: $accent;
-  
+
   .timelineItem--education & {
     color: $primary;
   }
@@ -291,11 +291,11 @@
 .expandButton {
   color: $accent !important;
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.1);
   }
-  
+
   .timelineItem--education & {
     color: $primary !important;
   }
@@ -314,7 +314,7 @@
   line-height: 1.6;
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -344,18 +344,18 @@
   border: 1px solid $accent !important;
   font-weight: 500;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: $accent !important;
     color: $textInverse !important;
     transform: translateY(-1px);
   }
-  
+
   .timelineItem--education & {
     background: rgba($primary, 0.1) !important;
     color: $primary !important;
     border-color: $primary !important;
-    
+
     &:hover {
       background: $primary !important;
       color: $textInverse !important;
@@ -402,33 +402,33 @@
   .experienceContainer {
     padding: 1rem 0.5rem;
   }
-  
+
   .timeline {
     padding: 1rem 0;
   }
-  
+
   .timelineItem {
     margin-bottom: 2rem;
   }
-  
+
   .cardHeader {
     padding: 1rem;
     gap: 0.75rem;
   }
-  
+
   .iconContainer {
     width: 40px;
     height: 40px;
   }
-  
+
   .itemTitle {
     font-size: 1.1rem;
   }
-  
+
   .itemSubtitle {
     font-size: 0.9rem;
   }
-  
+
   .cardContent {
     padding: 1rem;
   }
@@ -439,4 +439,4 @@
   outline-offset: 2px;
   box-shadow: 0 0 0 4px $accentGreenShadow;
   z-index: 3;
-} 
+}

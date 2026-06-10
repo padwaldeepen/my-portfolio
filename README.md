@@ -1,72 +1,152 @@
-# Deepen Padwal's Portfolio
+# Deepen Padwal's Resume Portfolio
 
-A modern, accessible, and responsive developer portfolio built with Vite, React 19, TypeScript, Material UI (MUI v5), and SCSS modules.
+A modern, highly interactive, accessible, and responsive developer resume portfolio. Built with React 19, Vite, TypeScript, Material UI (MUI v5), and SCSS (custom styling and layout).
 
-## Features
-- **Vite + React 19**: Fast, modern build setup with hot reload and optimized production output.
-- **TypeScript**: Strict typing for maintainable, scalable code.
-- **Material UI (MUI v5)**: Consistent, accessible UI components and theming.
-- **SCSS Modules**: Modular, theme-driven styles with variables for color, border, and shadow systems.
-- **Responsive Design**: Mobile-first layouts and adaptive components.
-- **Dark/Light Mode**: Theme toggling with MUI's `ThemeProvider` and custom SCSS variables.
-- **Absolute Imports**: Clean import paths using Vite and TypeScript path aliases.
-- **Unit Testing**: Jest and React Testing Library for robust component tests.
+This portfolio serves as a professional showcase of experience, technical skills, projects, and integrates a downloadable resume PDF with support for both dark and light modes.
 
-## Getting Started
+---
+
+## ✨ Features
+
+- **Interactive Resume Timeline**: View full professional experience with interactive descriptions, tags, and milestones.
+- **Projects Grid**: Showcase developer projects with dynamic tech-stack filtering, screenshots, live previews, and GitHub repository links.
+- **Skills Matrix**: Interactive representation of core competencies categorized by domain (Frontend, Backend, Tools, etc.).
+- **PDF Resume Integration**: Built-in support to view and download a clean, professional print resume.
+- **Dark/Light Mode Sync**: Adaptive UI theme toggling using Material UI's `ThemeProvider` synced with custom SCSS variables.
+- **Responsive & Accessible (WCAG)**: Mobile-first responsive layouts, keyboard navigation, and proper aria-labels for assistive technology.
+- **Path Aliases**: Direct, clean import statements using Vite and TypeScript path mappings.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vite.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **UI & Layout**: [Material UI (MUI v5)](https://mui.com/)
+- **Styling**: [SCSS](https://sass-lang.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+ recommended)
-- npm (v9+ recommended)
+- Node.js (v22.17.0+ recommended)
+- npm (v10+ recommended)
 
 ### Installation
 ```sh
 npm install
 ```
 
-### Development
+### Run Local Development Server
 ```sh
 npm run dev
 ```
-Visit [http://localhost:5173](http://localhost:5173) to view the app.
+Visit [http://localhost:5173](http://localhost:5173) to view the application locally.
 
 ### Build for Production
 ```sh
 npm run build
 ```
-The output will be in the `dist/` folder, ready for static hosting (e.g., Netlify).
+The optimized static files will be placed in the `dist/` directory, ready for deployment.
 
 ### Preview Production Build
 ```sh
 npm run preview
 ```
 
-## Project Structure
+---
+
+## 📂 Project Structure
+
+This project follows a modular structure splitting page-level views from shared utilities, hooks, and reusable components:
+
 ```
 my-portfolio/
-├── public/                # Static assets (favicon, logo, robots.txt)
-├── src/
-│   ├── assets/            # Images and icons
-│   ├── components/        # Modular React components (with SCSS modules)
-│   ├── pages/             # Page-level components
-│   ├── styles/            # Global and variable SCSS
-│   ├── theme.tsx          # MUI theme setup
-│   ├── main.tsx           # App entry point
-│   └── ...
-├── index.html             # Main HTML file
-├── package.json           # Project metadata and scripts
-├── tsconfig.json          # TypeScript config (with path aliases)
-├── vite.config.ts         # Vite config (with alias setup)
+├── .ai/                       # AI Agent instructions & rules
+│   └── rules/                 # Coding, styling, and refactoring guidelines
+├── .github/                   # GitHub workflows & Copilot instruction files
+├── public/                    # Static assets served at the root (favicon, pdf resume)
+├── src/                       # Main source directory
+│   ├── assets/                # Global visual assets
+│   ├── shared/                # Shared code layer (reusable items)
+│   │   ├── components/        # Reusable UI components
+│   │   │   └── Button/
+│   │   │       ├── Button.tsx
+│   │   │       └── Button.scss
+│   │   ├── hooks/             # Custom global React hooks
+│   │   │   └── useLocalStorage.ts
+│   │   ├── utils/             # Helper functions
+│   │   │   └── formatDate.ts
+│   │   ├── types/             # Global typescript definitions
+│   │   │   └── global.d.ts
+│   │   └── assets/            # Shared static assets
+│   │       └── logo.svg
+│   ├── pages/                 # Page-level route views
+│   │   └── Home/              # Home page
+│   │       ├── Home.tsx       # Page component
+│   │       ├── Home.scss      # Page styling
+│   │       └── components/    # Sub-components exclusive to this page
+│   ├── App.tsx                # App entry routing & layout
+│   ├── App.scss               # Global styles & resets
+│   ├── theme.tsx              # MUI theme definitions (light/dark values)
+│   └── main.tsx               # DOM insertion entrypoint
+├── eslint.config.js           # ESLint v9 Flat Configuration
+├── tsconfig.json              # TypeScript compilation setup
+├── vite.config.ts             # Vite bundler options & path alias definitions
 └── README.md
 ```
 
-## Theming & Styling
-- All colors, borders, and shadows are defined in `src/styles/variables.scss` and used throughout SCSS modules.
-- MUI theme is defined in `src/theme.tsx` and provided via `ThemeProvider`.
-- Supports both light and dark modes.
+---
 
-## Deployment
-- Optimized for static hosting (Netlify, Vercel, GitHub Pages, etc.).
-- All assets referenced via absolute or aliased paths.
+## 🛠️ Chrome DevTools MCP Setup
+
+This repository is optimized for use with the **Chrome DevTools Model Context Protocol (MCP)** server, enabling AI agents to connect to your browser, automate page interactions, capture console logs, and visually verify modifications.
+
+### 1. Launch Your Local Dev Server
+Make sure the portfolio is running locally:
+```sh
+npm run dev
+```
+
+### 2. Configure the MCP Server in Your Agent Settings
+Add the Chrome DevTools MCP server configuration to your editor (e.g. Cursor, Claude Desktop, or Gemini config):
+
+```json
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest", "--autoConnect"]
+    }
+  }
+}
+```
+
+*The `--autoConnect` flag tells the MCP server to automatically search for and connect to your open Chrome browser window.*
+
+### 3. Verification Commands for AI Agents
+Once connected, agents can run browser validation tasks such as:
+- Navigating to `http://localhost:5173`.
+- Capturing screenshots of page layouts.
+- Inspecting the console for runtime errors.
+
+---
+
+## 📜 Development & Coding Rules
+
+To maintain high code quality and consistency, all development must follow the specifications listed in `.ai/rules/`:
+- **Architecture**: Always use **Named Exports** (no default exports) and avoid creating `index.ts` barrel files (see [.ai/rules/frontend.md](file:///d:/Projects/my-portfolio/.ai/rules/frontend.md)).
+- **Styling**: Always write component styling in a matching `.scss` file using **BEM naming conventions** (see [.ai/rules/styling.md](file:///d:/Projects/my-portfolio/.ai/rules/styling.md)).
+- **Refactoring**: Enforce limits on file lines and function sizes, and adhere to strict complexity limits (see [.ai/rules/refactor.md](file:///d:/Projects/my-portfolio/.ai/rules/refactor.md)).
+
+Before submitting any code changes, run:
+```sh
+npm run format      # Formats code with Prettier
+npm run lint        # Lints code with ESLint
+npx tsc --noEmit    # Verifies TypeScript compiles successfully
+```
 
 ---
 

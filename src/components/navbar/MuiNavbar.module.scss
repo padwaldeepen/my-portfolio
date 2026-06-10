@@ -26,12 +26,12 @@
   min-height: 64px;
   background: none;
   box-shadow: none;
-  
+
   @media (max-width: 768px) {
     padding: 0 1rem;
     min-height: 56px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 0 0.75rem;
     min-height: 52px;
@@ -42,11 +42,11 @@
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  
+
   @media (max-width: 768px) {
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 1rem;
   }
@@ -63,15 +63,16 @@
   align-items: center;
   transition: color 0.3s ease;
   background: none;
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: $accent;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.6rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.4rem;
   }
@@ -81,7 +82,7 @@
   display: flex;
   align-items: center;
   gap: 2.2rem;
-  
+
   @media (max-width: 768px) {
     gap: 1.5rem;
   }
@@ -101,17 +102,18 @@
   position: relative;
   display: flex;
   align-items: center;
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: $text;
     background: none;
   }
-  
+
   &.active {
     color: $text;
     background: none;
   }
-  
+
   &::after {
     content: '';
     display: block;
@@ -124,10 +126,13 @@
     background: $accent;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.2s ease, background 0.2s;
+    transition:
+      opacity 0.2s ease,
+      background 0.2s;
   }
-  
-  &:hover::after, &.active::after {
+
+  &:hover::after,
+  &.active::after {
     opacity: 1;
   }
 }
@@ -136,11 +141,11 @@
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  
+
   @media (max-width: 768px) {
     gap: 0.8rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 0.6rem;
   }
@@ -151,7 +156,7 @@
   flex-direction: row;
   align-items: center;
   gap: 0.7rem;
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -171,8 +176,9 @@
   margin-left: 0.2rem;
   margin-right: 0.2rem;
   vertical-align: middle;
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: $accent;
     background: $hoverBg;
     transform: scale(1.1);
@@ -194,16 +200,17 @@
       box-shadow: none;
       min-width: 36px;
       min-height: 36px;
-      transition: color 0.2s cubic-bezier(.4,1.3,.6,1);
-      
-      &:hover, &:focus {
+      transition: color 0.2s cubic-bezier(0.4, 1.3, 0.6, 1);
+
+      &:hover,
+      &:focus {
         color: $accent;
         background: transparent;
         border: none;
         box-shadow: none;
         transform: scale(1.08);
       }
-      
+
       svg {
         font-size: 1.5rem;
       }
@@ -219,7 +226,7 @@
   box-shadow: $shadowLg;
   border: 1px solid $border;
   backdrop-filter: blur(12px);
-  
+
   @media (max-width: 480px) {
     min-width: 180px;
     margin-top: 0.3rem;
@@ -256,7 +263,7 @@
       font-weight: 700;
       background-color: $activeBg;
       border-left: 3px solid $accent;
-      
+
       &::before {
         content: '';
         position: absolute;
@@ -269,7 +276,7 @@
         border-radius: 0 2px 2px 0;
       }
     }
-    
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -306,12 +313,12 @@
       transform: scale(1.05);
     }
   }
-  
+
   .themeToggleBtn {
     background: $activeBg !important;
     border-color: $accent !important;
     color: $accent !important;
-    
+
     &:hover {
       background: $accent !important;
       color: $textInverse !important;
@@ -323,7 +330,7 @@
   .navLinks {
     display: none;
   }
-  
+
   .leftGroup {
     gap: 1rem;
   }

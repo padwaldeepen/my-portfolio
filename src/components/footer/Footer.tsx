@@ -10,16 +10,28 @@ const Footer: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.brand}>
-            <span className={styles.logo}>DP<span className={styles.dot}>.</span></span>
+            <span className={styles.logo}>
+              DP<span className={styles.dot}>.</span>
+            </span>
             <p className={styles.tagline}>Building the future with AI and code.</p>
           </div>
 
           <div className={styles.links}>
-            <a href="#hero" className={styles.link}>Home</a>
-            <a href="#about" className={styles.link}>About</a>
-            <a href="#skills" className={styles.link}>Skills</a>
-            <a href="#experience" className={styles.link}>Experience</a>
-            <a href="#contact" className={styles.link}>Contact</a>
+            <a href="#hero" className={styles.link}>
+              Home
+            </a>
+            <a href="#about" className={styles.link}>
+              About
+            </a>
+            <a href="#skills" className={styles.link}>
+              Skills
+            </a>
+            <a href="#experience" className={styles.link}>
+              Experience
+            </a>
+            <a href="#contact" className={styles.link}>
+              Contact
+            </a>
           </div>
 
           <div className={styles.socials}>
@@ -54,9 +66,7 @@ const Footer: React.FC = () => {
         <div className={styles.divider} />
 
         <div className={styles.bottom}>
-          <p className={styles.copyright}>
-            {currentYear} Deepen Padwal. All rights reserved.
-          </p>
+          <p className={styles.copyright}>{currentYear} Deepen Padwal. All rights reserved.</p>
           <p className={styles.madeWith}>
             Crafted with <FaHeart className={styles.heart} /> in Tampa, FL
           </p>

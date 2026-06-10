@@ -1,13 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import {
-  FaReact,
-  FaNodeJs,
-  FaPython,
-  FaDocker,
-  FaAws,
-  FaGitAlt,
-} from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaGitAlt } from 'react-icons/fa';
 import {
   SiTypescript,
   SiNextdotjs,
@@ -126,8 +119,8 @@ const Skills: React.FC = () => {
             <h3 className={styles.aiTitle}>AI-Powered Development</h3>
           </div>
           <p className={styles.aiDesc}>
-            I leverage cutting-edge AI tools to enhance my development workflow, 
-            improve code quality, and accelerate project delivery.
+            I leverage cutting-edge AI tools to enhance my development workflow, improve code
+            quality, and accelerate project delivery.
           </p>
           <div className={styles.aiTools}>
             {aiTools.map((tool) => (

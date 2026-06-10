@@ -64,11 +64,11 @@
     overflow-x: auto;
     padding-bottom: 0.5rem;
     gap: 0.75rem;
-    
+
     &::-webkit-scrollbar {
       height: 4px;
     }
-    
+
     &::-webkit-scrollbar-thumb {
       background: var(--border);
       border-radius: 2px;
@@ -110,11 +110,11 @@
   @media (max-width: 968px) {
     flex-shrink: 0;
     padding: 0.875rem 1rem;
-    
+
     .tabContent {
       display: none;
     }
-    
+
     .tabArrow {
       display: none;
     }

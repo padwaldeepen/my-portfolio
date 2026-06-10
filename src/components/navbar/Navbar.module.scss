@@ -41,7 +41,7 @@
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.02em;
-  
+
   &::after {
     content: '.';
     color: var(--accent);
@@ -103,7 +103,7 @@
   height: 36px;
   color: var(--text-secondary);
   transition: color var(--transition-fast);
-  
+
   &:hover {
     color: var(--accent);
   }

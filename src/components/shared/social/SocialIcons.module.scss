@@ -17,7 +17,9 @@
   background: none;
   border: none;
   border-radius: 0.5rem;
-  transition: color 0.18s, box-shadow 0.18s;
+  transition:
+    color 0.18s,
+    box-shadow 0.18s;
   outline: none;
   cursor: pointer;
   padding: 0.2rem;
@@ -29,4 +31,4 @@
 
 .iconLink:hover {
   color: $accentGreen;
-} 
+}

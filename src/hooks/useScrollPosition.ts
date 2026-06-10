@@ -8,15 +8,15 @@ export function useScrollPosition() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPosition = window.scrollY;
-      
+
       setScrollPosition(currentScrollPosition);
-      
+
       if (currentScrollPosition > lastScrollPosition) {
         setScrollDirection('down');
       } else {
         setScrollDirection('up');
       }
-      
+
       setLastScrollPosition(currentScrollPosition);
     };
 
@@ -28,4 +28,4 @@ export function useScrollPosition() {
   }, [lastScrollPosition]);
 
   return { scrollPosition, scrollDirection };
-} 
+}

@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
       setScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = navLinks.map(link => document.getElementById(link.id));
+      const sections = navLinks.map((link) => document.getElementById(link.id));
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section, index) => {
@@ -51,10 +51,10 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
     setMobileMenuOpen(false);
@@ -134,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
             >
               {darkMode ? <FiSun /> : <FiMoon />}
             </motion.button>
-            
+
             {/* Mobile Menu Button */}
             <motion.button
               className={styles.mobileMenuBtn}

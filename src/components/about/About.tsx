@@ -56,23 +56,23 @@ const About: React.FC = () => {
           {/* Left Column - Bio */}
           <motion.div variants={itemVariants} className={styles.bio}>
             <p className={styles.introParagraph}>
-              I&apos;m a <span className={styles.accent}>Full Stack Developer</span> with a passion for 
-              building intelligent web applications. Currently working at{' '}
-              <span className={styles.accent}>Tata Consultancy Services</span>, where I craft 
+              I&apos;m a <span className={styles.accent}>Full Stack Developer</span> with a passion
+              for building intelligent web applications. Currently working at{' '}
+              <span className={styles.accent}>Tata Consultancy Services</span>, where I craft
               user-facing features for enterprise applications.
             </p>
             <p>
-              My journey in tech has taken me from Mumbai to the United States, where I completed 
-              my Master&apos;s degree in Management Information Systems at Auburn University. 
-              I&apos;m fascinated by the intersection of AI and web development, constantly 
-              exploring how to leverage tools like GitHub Copilot and emerging AI technologies 
-              to build better software.
+              My journey in tech has taken me from Mumbai to the United States, where I completed my
+              Master&apos;s degree in Management Information Systems at Auburn University. I&apos;m
+              fascinated by the intersection of AI and web development, constantly exploring how to
+              leverage tools like GitHub Copilot and emerging AI technologies to build better
+              software.
             </p>
             <p>
-              When I&apos;m not coding, you&apos;ll find me planning my next road trip across 
-              America (I collect fridge magnets from every state!), watching anime, or diving 
-              into the latest tech trends. My goal is to visit all 50 states while building 
-              meaningful technology that makes a difference.
+              When I&apos;m not coding, you&apos;ll find me planning my next road trip across
+              America (I collect fridge magnets from every state!), watching anime, or diving into
+              the latest tech trends. My goal is to visit all 50 states while building meaningful
+              technology that makes a difference.
             </p>
           </motion.div>
 
@@ -117,7 +117,15 @@ const About: React.FC = () => {
         <motion.div variants={itemVariants} className={styles.interests}>
           <h3 className={styles.interestsTitle}>Beyond Code</h3>
           <div className={styles.interestsTags}>
-            {['Anime & Studio Ghibli', 'Road Trips', 'AI & ML', 'Movies', 'Music', 'Reading', 'Photography'].map((interest) => (
+            {[
+              'Anime & Studio Ghibli',
+              'Road Trips',
+              'AI & ML',
+              'Movies',
+              'Music',
+              'Reading',
+              'Photography',
+            ].map((interest) => (
               <span key={interest} className={styles.interestTag}>
                 {interest}
               </span>
