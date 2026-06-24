@@ -67,7 +67,7 @@ const JobCard = ({ job, idx, isMobile }: JobCardProps) => {
         </Typography>
         <Typography
           variant="body2"
-          sx={{ color: 'primary.main', fontFamily: fonts.mono, fontSize: '0.8rem', mb: 1.5 }}
+          sx={{ color: 'text.secondary', fontFamily: fonts.mono, fontSize: '0.8rem', mb: 1.5 }}
         >
           {job.company}
         </Typography>
@@ -100,7 +100,12 @@ const JobCard = ({ job, idx, isMobile }: JobCardProps) => {
   );
 };
 
-export const Experience = () => {
+interface ExperienceProps {
+  onCardEnter?: () => void;
+  onCardLeave?: () => void;
+}
+
+export const Experience = ({ onCardEnter, onCardLeave }: ExperienceProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -111,7 +116,13 @@ export const Experience = () => {
         Where I&apos;ve worked
       </Typography>
       {experience.map((job, idx) => (
-        <JobCard key={job.period + job.company} job={job} idx={idx} isMobile={isMobile} />
+        <Box
+          key={job.period + job.company}
+          onMouseEnter={onCardEnter}
+          onMouseLeave={onCardLeave}
+        >
+          <JobCard job={job} idx={idx} isMobile={isMobile} />
+        </Box>
       ))}
     </Box>
   );

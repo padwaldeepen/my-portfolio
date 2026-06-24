@@ -14,6 +14,8 @@ export const Intro = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        position: 'relative',
+        pb: { lg: 8 },
       }}
     >
       <Typography
@@ -28,7 +30,7 @@ export const Intro = () => {
       >
         {profile.name}
       </Typography>
-      <Typography variant="overline" sx={{ color: 'primary.main', mb: 2 }}>
+      <Typography variant="overline" sx={{ color: 'text.secondary', mb: 2 }}>
         {profile.role}
       </Typography>
       <Typography
@@ -76,6 +78,44 @@ export const Intro = () => {
           Get in touch
         </Button>
       </Stack>
+
+      {/* Scroll indicator */}
+      <Box
+        onClick={() => scrollTo('about')}
+        aria-label="Scroll to about section"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && scrollTo('about')}
+        className="float-dot"
+        sx={{
+          display: { xs: 'none', lg: 'flex' },
+          position: 'absolute',
+          bottom: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 1,
+          cursor: 'pointer',
+          opacity: 0.5,
+          transition: 'opacity 0.2s',
+          '&:hover': { opacity: 1 },
+        }}
+      >
+        <Typography
+          sx={{ fontFamily: fonts.mono, fontSize: '0.6rem', letterSpacing: '0.15em', color: 'text.secondary' }}
+        >
+          SCROLL
+        </Typography>
+        <Box
+          sx={{
+            width: 1,
+            height: 40,
+            bgcolor: 'text.secondary',
+            borderRadius: 1,
+          }}
+        />
+      </Box>
     </Box>
   );
 };
