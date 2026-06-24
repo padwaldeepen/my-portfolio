@@ -107,35 +107,38 @@ export const DesktopNav = () => {
           const isActive = active === item.id;
           return (
             <Box component="li" key={item.id} sx={{ mb: 1.5 }}>
-              <Typography
-                variant="caption"
+              <Box
                 onClick={() => scrollTo(item.id)}
                 onKeyDown={handleKeyDown(item.id)}
                 tabIndex={0}
                 role="button"
                 aria-current={isActive ? 'true' : undefined}
                 sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1.5,
+                  cursor: 'pointer',
                   fontFamily: fonts.mono,
                   fontSize: '0.8rem',
-                  cursor: 'pointer',
                   color: isActive ? 'text.primary' : 'text.secondary',
                   letterSpacing: '0.05em',
                   transition: 'color 0.3s ease',
                   '&:hover': { color: 'text.primary' },
-                  '&::before': {
-                    content: '"—"',
-                    display: 'inline-block',
-                    mr: 1,
-                    fontWeight: 700,
-                    fontSize: '1.1rem',
-                    color: isActive ? 'primary.main' : 'divider',
-                    transition: 'color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    transform: isActive ? 'scale(1.2)' : 'scale(1)',
-                  },
                 }}
               >
+                <Box
+                  sx={{
+                    width: isActive ? 26 : 16,
+                    height: isActive ? 3 : 1,
+                    borderRadius: 1,
+                    bgcolor: isActive ? 'primary.main' : 'text.primary',
+                    opacity: isActive ? 1 : 0.25,
+                    transition:
+                      'width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, opacity 0.3s ease',
+                  }}
+                />
                 {item.label}
-              </Typography>
+              </Box>
             </Box>
           );
         })}
@@ -143,23 +146,25 @@ export const DesktopNav = () => {
 
       {/* Social icons */}
       <Box sx={{ display: 'flex', gap: 1.5 }}>
-        <Tooltip title="GitHub" arrow>
-          <IconButton
-            component="a"
-            href={profile.socials.github || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            size="small"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
-              transition: 'color 0.2s, transform 0.2s',
-            }}
-          >
-            <GitHubIcon fontSize="small" />
-          </IconButton>
-        </Tooltip>
+        {profile.socials.github && (
+          <Tooltip title="GitHub" arrow>
+            <IconButton
+              component="a"
+              href={profile.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              size="small"
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
+                transition: 'color 0.2s, transform 0.2s',
+              }}
+            >
+              <GitHubIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+        )}
         <Tooltip title="LinkedIn" arrow>
           <IconButton
             component="a"
