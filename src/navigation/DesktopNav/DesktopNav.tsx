@@ -122,7 +122,8 @@ export const DesktopNav = () => {
                   fontSize: '0.8rem',
                   color: isActive ? 'text.primary' : 'text.secondary',
                   letterSpacing: '0.05em',
-                  transition: 'color 0.3s ease',
+                  fontWeight: isActive ? 600 : 400,
+                  transition: 'color 0.3s ease, font-weight 0.3s ease',
                   '&:hover': { color: 'text.primary' },
                 }}
               >
@@ -131,7 +132,7 @@ export const DesktopNav = () => {
                     width: isActive ? 26 : 16,
                     height: isActive ? 3 : 1,
                     borderRadius: 1,
-                    bgcolor: isActive ? 'primary.main' : 'text.primary',
+                    bgcolor: 'text.primary',
                     opacity: isActive ? 1 : 0.25,
                     transition:
                       'width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, opacity 0.3s ease',
@@ -157,7 +158,7 @@ export const DesktopNav = () => {
               size="small"
               sx={{
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
                 transition: 'color 0.2s, transform 0.2s',
               }}
             >
@@ -173,13 +174,13 @@ export const DesktopNav = () => {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
             size="small"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
-              transition: 'color 0.2s, transform 0.2s',
-            }}
-          >
-            <LinkedInIcon fontSize="small" />
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
+                transition: 'color 0.2s, transform 0.2s',
+              }}
+            >
+              <LinkedInIcon fontSize="small" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Email" arrow>
@@ -188,13 +189,13 @@ export const DesktopNav = () => {
             href={`mailto:${profile.email}`}
             aria-label="Email"
             size="small"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
-              transition: 'color 0.2s, transform 0.2s',
-            }}
-          >
-            <EmailOutlinedIcon fontSize="small" />
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
+                transition: 'color 0.2s, transform 0.2s',
+              }}
+            >
+              <EmailOutlinedIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       </Box>
