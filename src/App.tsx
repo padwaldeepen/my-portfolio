@@ -76,8 +76,7 @@ const Shell = () => {
           inset: 0,
           zIndex: 0,
           display: { xs: 'none', lg: 'block' },
-          background:
-            'radial-gradient(900px circle at var(--mouse-x, 50%) var(--mouse-y, 0%), color-mix(in oklab, var(--mui-palette-primary-main) 40%, transparent) 10%, color-mix(in oklab, var(--mui-palette-primary-main) 15%, transparent) 30%, transparent 65%)',
+          background: 'none',
         },
         '&::after': {
           content: '""',
