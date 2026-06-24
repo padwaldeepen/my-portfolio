@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-  Box,
-  Typography,
-  Button,
-  Stack,
-  TextField,
-  Snackbar,
-  Alert,
-} from '@mui/material';
+import { Box, Typography, Button, Stack, TextField, Snackbar, Alert } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
 import { profile } from '../../data';
 import { fonts } from '../../theme';
@@ -56,9 +48,7 @@ export const Contact = () => {
       return;
     }
     const subject = encodeURIComponent(`Portfolio contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`,
-    );
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
     setSent(true);
     setForm({ name: '', email: '', message: '' });
@@ -67,20 +57,18 @@ export const Contact = () => {
   return (
     <Box component="section" id="contact" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="06">Contact</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 2, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 2, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Let&apos;s work together
       </Typography>
-      <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 540, mb: 5, lineHeight: 1.7 }}>
+      <Typography
+        variant="body1"
+        sx={{ color: 'text.secondary', maxWidth: 540, mb: 5, lineHeight: 1.7 }}
+      >
         I&apos;m currently available for freelance and full-time opportunities. Send a message and
         I&apos;ll get back to you promptly.
       </Typography>
 
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        noValidate
-        sx={{ maxWidth: 560 }}
-      >
+      <Box component="form" onSubmit={handleSubmit} noValidate sx={{ maxWidth: 560 }}>
         <Stack spacing={2.5}>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <TextField
@@ -115,13 +103,7 @@ export const Contact = () => {
             sx={inputSx}
           />
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation
-              size="large"
-              sx={{ px: 4 }}
-            >
+            <Button type="submit" variant="contained" disableElevation size="large" sx={{ px: 4 }}>
               Send message
             </Button>
             <Button

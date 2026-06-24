@@ -100,27 +100,18 @@ const JobCard = ({ job, idx, isMobile }: JobCardProps) => {
   );
 };
 
-interface ExperienceProps {
-  onCardEnter?: () => void;
-  onCardLeave?: () => void;
-}
-
-export const Experience = ({ onCardEnter, onCardLeave }: ExperienceProps) => {
+export const Experience = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box component="section" id="experience" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="02">Experience</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Where I&apos;ve worked
       </Typography>
       {experience.map((job, idx) => (
-        <Box
-          key={job.period + job.company}
-          onMouseEnter={onCardEnter}
-          onMouseLeave={onCardLeave}
-        >
+        <Box key={job.period + job.company}>
           <JobCard job={job} idx={idx} isMobile={isMobile} />
         </Box>
       ))}

@@ -8,7 +8,8 @@ The project follows a component-based directory structure. All components live i
 src/
 ├── components/                     # All React components (each in its own folder)
 │   └── ComponentName/
-│       └── ComponentName.tsx       # Component implementation
+│       ├── ComponentName.tsx       # Component implementation
+│       └── ComponentName.module.css # Co-located styles (animation/keyframe only)
 ├── hooks/                          # Custom React hooks (flat files)
 │   └── useLocalStorage.ts
 ├── utils/                          # Utility and helper functions (flat files)
@@ -56,8 +57,8 @@ src/
 
 ## Styling Approach
 
-- **MUI `sx` prop only**: All styling is done via the MUI `sx` prop. No CSS modules, no styled-components, no Tailwind.
-- **No `.module.css` files**: Custom CSS files are not used. Everything goes through `sx`.
+- **MUI `sx` prop (primary)**: Most styling is done via the MUI `sx` prop.
+- **CSS Modules (animation/keyframe only)**: Co-located `*.module.css` files are allowed for complex animations, keyframes, and pseudo-elements. See `styling.md` for when to use which.
 - **Theme tokens**: Reference MUI theme tokens (e.g., `color: 'primary.main'`, `bgcolor: 'background.default'`) instead of hardcoded values.
 - **Avoid `style={}`**: Use `sx` over inline `style` objects for better theme integration and responsive support.
 

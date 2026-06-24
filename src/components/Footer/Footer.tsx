@@ -7,7 +7,7 @@ export const Footer = () => {
       component="footer"
       sx={{
         mt: 4,
-        py: 3,
+        py: 1.5,
         borderTop: '1px solid',
         borderColor: 'divider',
         display: 'flex',

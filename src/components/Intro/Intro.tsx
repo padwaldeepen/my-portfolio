@@ -1,13 +1,9 @@
 import { Box, Typography, Button, Stack } from '@mui/material';
+import { scrollTo } from '../../utils/scrollTo';
 import { fonts } from '../../theme';
 import { profile } from '../../data';
 
-
 export const Intro = () => {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <Box
       sx={{
@@ -79,8 +75,6 @@ export const Intro = () => {
           Get in touch
         </Button>
       </Stack>
-
-
     </Box>
   );
 };

@@ -4,12 +4,12 @@ export const profile = {
   tagline: 'Building intelligent applications with cutting-edge AI technologies.',
   location: 'Tampa, FL',
   email: 'padwaldeepen@gmail.com',
-  phone: '(334) 819-6525',
+  phone: '',
   socials: {
-    github: '',
+    github: 'https://github.com/padwaldeepen',
     linkedin: 'https://www.linkedin.com/in/padwaldeepen/',
   },
-  resume: '/resume.pdf',
+  resume: 'https://drive.google.com/file/d/1vZUxc4DAgqsIchIEQ_zpv1m5PIFdN3UD/view?usp=drive_link',
   startYear: 2020,
 };
 
@@ -47,9 +47,9 @@ export const education = [
 
 export const stats = [
   { label: 'Years of Experience', value: experienceYears },
-  { label: 'Focus', value: 'AI & Full Stack' },
+  { label: 'Focus', value: 'AI' },
   { label: 'Degree', value: 'M.S. MIS' },
-  { label: 'Cloud', value: 'AWS (in progress)' },
+  { label: 'Cloud', value: 'AWS, Azure' },
 ];
 
 export const experience = [
@@ -125,7 +125,7 @@ export const skills = {
   backend: ['Express.js', 'Node.js', 'REST APIs'],
   tools: ['Git', 'Docker', 'Postman', 'PowerBI', 'Tableau', 'Jira', 'Confluence', 'Figma'],
   databases: ['PostgreSQL', 'MySQL', 'Oracle SQL', 'MongoDB'],
-  cloud: ['Microsoft Azure', 'AWS (in progress)'],
+  cloud: ['AWS', 'Azure'],
   ai: ['GitHub Copilot', 'Cursor AI', 'Claude (Anthropic)', 'AI Agents', 'LLM Tool Use', 'GenAI'],
 };
 

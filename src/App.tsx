@@ -46,12 +46,15 @@ const Shell = () => {
     [isDark],
   );
 
-  const handleCursorEnter = useCallback((label: string) => () => {
-    setCursorLabel(label);
-    if (labelRef.current) {
-      labelRef.current.style.opacity = '1';
-    }
-  }, []);
+  const handleCursorEnter = useCallback(
+    (label: string) => () => {
+      setCursorLabel(label);
+      if (labelRef.current) {
+        labelRef.current.style.opacity = '1';
+      }
+    },
+    [],
+  );
 
   const handleCursorLeave = useCallback(() => {
     setCursorLabel('');
@@ -140,6 +143,32 @@ const Shell = () => {
         </Box>
       </Box>
 
+      {/* Top-left logo — only on desktop */}
+      <Box
+        component="span"
+        sx={{
+          position: 'fixed',
+          top: 24,
+          left: 24,
+          zIndex: 1100,
+          display: { xs: 'none', lg: 'inline-flex' },
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 44,
+          height: 28,
+          bgcolor: 'transparent',
+          color: 'text.primary',
+          fontWeight: 600,
+          fontSize: '0.8rem',
+          fontFamily: '"Geist Sans", system-ui, -apple-system, sans-serif',
+          letterSpacing: '0.12em',
+          borderRadius: 1,
+          border: '1.5px solid',
+          borderColor: 'text.primary',
+        }}
+      >
+        DP
+      </Box>
       <ThemeToggle />
       <BottomNav />
       <Container
@@ -158,7 +187,8 @@ const Shell = () => {
           <Box
             component="main"
             sx={{
-              py: { xs: 2, lg: 12 },
+              pt: { xs: 2, lg: 12 },
+              pb: { xs: 2, lg: 0 },
               minWidth: 0,
               display: 'flex',
               flexDirection: 'column',
@@ -171,10 +201,7 @@ const Shell = () => {
               <About />
             </Reveal>
             <Reveal>
-              <Experience
-                onCardEnter={handleCursorEnter('Read more')}
-                onCardLeave={handleCursorLeave}
-              />
+              <Experience />
             </Reveal>
             <Reveal>
               <Education />
