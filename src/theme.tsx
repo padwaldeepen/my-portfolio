@@ -1,85 +1,47 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, type ThemeOptions } from '@mui/material/styles';
+
+const sans = '"Geist Sans", system-ui, -apple-system, sans-serif';
+const mono = '"Geist Mono", ui-monospace, monospace';
+const serif = '"Instrument Serif", Georgia, serif';
+
+const baseOptions: ThemeOptions = {
+  shape: { borderRadius: 10 },
+  typography: {
+    fontFamily: sans,
+    overline: {
+      fontFamily: mono,
+      letterSpacing: '0.18em',
+      fontSize: '0.7rem',
+      fontWeight: 500,
+    },
+    h1: { fontWeight: 600, letterSpacing: '-0.03em' },
+    h2: { fontWeight: 600, letterSpacing: '-0.02em' },
+    h3: { fontWeight: 600, letterSpacing: '-0.02em' },
+    h4: { fontWeight: 600, letterSpacing: '-0.01em' },
+    button: { textTransform: 'none' as const, fontWeight: 500 },
+  },
+};
 
 export const lightTheme = createTheme({
+  ...baseOptions,
   palette: {
     mode: 'light',
-    primary: { main: '#0891b2', light: '#22d3ee', dark: '#0e7490', contrastText: '#ffffff' },
-    secondary: { main: '#475569', light: '#64748b', dark: '#334155', contrastText: '#ffffff' },
-    success: { main: '#22c55e', light: '#4ade80', dark: '#16a34a', contrastText: '#ffffff' },
-    background: { default: '#fafafa', paper: '#ffffff' },
-    text: { primary: '#0f172a', secondary: '#475569' },
-    divider: '#e2e8f0',
-  },
-  typography: {
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    h1: { fontWeight: 700, letterSpacing: '-0.02em' },
-    h2: { fontWeight: 600, letterSpacing: '-0.02em' },
-    h3: { fontWeight: 600, letterSpacing: '-0.01em' },
-    h4: { fontWeight: 600 },
-    h5: { fontWeight: 500 },
-    h6: { fontWeight: 500 },
-  },
-  shape: {
-    borderRadius: 12,
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 500,
-          borderRadius: 8,
-        },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          fontWeight: 500,
-        },
-      },
-    },
+    primary: { main: '#2563eb', light: '#3b82f6', dark: '#1d4ed8', contrastText: '#ffffff' },
+    background: { default: '#fafbfc', paper: '#f1f4f9' },
+    text: { primary: '#10141c', secondary: '#55606f' },
+    divider: 'rgba(16, 20, 28, 0.1)',
   },
 });
 
 export const darkTheme = createTheme({
+  ...baseOptions,
   palette: {
     mode: 'dark',
-    primary: { main: '#22d3ee', light: '#67e8f9', dark: '#06b6d4', contrastText: '#0a0a0a' },
-    secondary: { main: '#94a3b8', light: '#cbd5e1', dark: '#64748b', contrastText: '#0a0a0a' },
-    success: { main: '#22c55e', light: '#4ade80', dark: '#16a34a', contrastText: '#ffffff' },
-    background: { default: '#0a0a0a', paper: '#141414' },
-    text: { primary: '#e2e8f0', secondary: '#94a3b8' },
-    divider: '#1e293b',
-  },
-  typography: {
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-    h1: { fontWeight: 700, letterSpacing: '-0.02em' },
-    h2: { fontWeight: 600, letterSpacing: '-0.02em' },
-    h3: { fontWeight: 600, letterSpacing: '-0.01em' },
-    h4: { fontWeight: 600 },
-    h5: { fontWeight: 500 },
-    h6: { fontWeight: 500 },
-  },
-  shape: {
-    borderRadius: 12,
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 500,
-          borderRadius: 8,
-        },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          fontWeight: 500,
-        },
-      },
-    },
+    primary: { main: '#3b82f6', light: '#60a5fa', dark: '#2563eb', contrastText: '#0b0f17' },
+    background: { default: '#0b0f17', paper: '#121826' },
+    text: { primary: '#e7ecf3', secondary: '#94a1b2' },
+    divider: 'rgba(231, 236, 243, 0.1)',
   },
 });
+
+export const fonts = { sans, mono, serif };
