@@ -21,11 +21,9 @@ const ProjectCard = ({ project, index, onEnter, onLeave }: ProjectCardProps) => 
       border: '1px solid',
       borderColor: 'divider',
       bgcolor: 'background.paper',
-      transition:
-        'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease',
+      transition: 'box-shadow 0.35s ease, border-color 0.35s ease',
       cursor: 'default',
       '&:hover': {
-        transform: 'translateY(-8px)',
         boxShadow: '0 24px 56px rgba(0,0,0,0.2)',
         borderColor: 'text.secondary',
         '& .project-image': {
@@ -99,7 +97,12 @@ const ProjectCard = ({ project, index, onEnter, onLeave }: ProjectCardProps) => 
         }}
       >
         <Typography
-          sx={{ fontFamily: fonts.mono, fontSize: '0.65rem', color: '#fff', letterSpacing: '0.1em' }}
+          sx={{
+            fontFamily: fonts.mono,
+            fontSize: '0.65rem',
+            color: '#fff',
+            letterSpacing: '0.1em',
+          }}
         >
           {project.year}
         </Typography>
@@ -174,7 +177,7 @@ export const Work = ({ onCardEnter, onCardLeave }: WorkProps) => {
   return (
     <Box component="section" id="work" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="05">Projects</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 2, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 2, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Things I&apos;ve built
       </Typography>
       <Typography

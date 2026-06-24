@@ -14,18 +14,18 @@ const bodySx = {
 const useCountUp = (target: number, duration = 1600, inView: boolean) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    if (!inView) return;
-    let frame = 0;
-    const totalFrames = Math.round(duration / 16);
-    const timer = setInterval(() => {
-      frame++;
-      const progress = Math.min(frame / totalFrames, 1);
-      // Ease out cubic
+    if (!inView || target === 0) return;
+    const startTime = performance.now();
+    let rafId: number;
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * target));
-      if (frame >= totalFrames) clearInterval(timer);
-    }, 16);
-    return () => clearInterval(timer);
+      if (progress < 1) rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
   }, [inView, target, duration]);
   return count;
 };
@@ -48,6 +48,7 @@ const StatCard = ({ label, value, inView }: StatCardProps) => {
         bgcolor: 'action.hover',
         border: '1px solid',
         borderColor: 'divider',
+        textAlign: 'center',
         transition: 'border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
         '&:hover': {
           borderColor: 'text.secondary',
@@ -57,12 +58,12 @@ const StatCard = ({ label, value, inView }: StatCardProps) => {
     >
       <Typography
         sx={{
-          fontSize: isNumber ? '2rem' : '0.9rem',
-          fontWeight: isNumber ? 700 : 400,
+          fontSize: { xs: '1.1rem', sm: '1.15rem', md: '1.25rem' },
+          fontWeight: 700,
           letterSpacing: '-0.02em',
           lineHeight: 1.1,
           color: 'text.primary',
-          fontFamily: isNumber ? fonts.mono : 'inherit',
+          fontFamily: fonts.mono,
         }}
       >
         {isNumber ? count : value}
@@ -111,7 +112,7 @@ export const About = () => {
   return (
     <Box component="section" id="about" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="01">About</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 3, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 3, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Building AI-powered products people love to use
       </Typography>
       <Typography sx={bodySx}>

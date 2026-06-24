@@ -7,7 +7,7 @@ export const Education = () => {
   return (
     <Box component="section" id="education" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="03">Education</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Academic background
       </Typography>
       {education.map((item, idx) => (

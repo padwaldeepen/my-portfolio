@@ -12,6 +12,8 @@ import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import CodeIcon from '@mui/icons-material/Code';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import LayersIcon from '@mui/icons-material/Layers';
+import { useActiveSection } from '../../hooks/useActiveSection';
+import { scrollTo } from '../../utils/scrollTo';
 import { navItems } from '../../data';
 
 const icons: Record<string, [React.ElementType, React.ElementType]> = {
@@ -26,7 +28,7 @@ const icons: Record<string, [React.ElementType, React.ElementType]> = {
 export const BottomNav = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
-  const [active, setActive] = useState(navItems[0]?.id ?? 'about');
+  const active = useActiveSection();
   const [visible, setVisible] = useState(true);
   const lastScroll = useRef(0);
 
@@ -35,27 +37,11 @@ export const BottomNav = () => {
       const current = window.scrollY;
       setVisible(current < lastScroll.current || current < 50);
       lastScroll.current = current;
-
-      const sections = navItems.map((item) => document.getElementById(item.id)).filter(Boolean);
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 250) {
-            setActive(section.id);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   const pillBg = isDark ? 'rgba(18, 24, 38, 0.8)' : 'rgba(250, 251, 252, 0.85)';
   const activeChipBg = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.07)';
@@ -90,9 +76,7 @@ export const BottomNav = () => {
           border: '1px solid',
           borderColor: 'divider',
           pointerEvents: 'auto',
-          boxShadow: isDark
-            ? '0 8px 32px rgba(0,0,0,0.4)'
-            : '0 8px 32px rgba(0,0,0,0.1)',
+          boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.4)' : '0 8px 32px rgba(0,0,0,0.1)',
         }}
       >
         {navItems.map((item) => {

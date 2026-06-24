@@ -1,7 +1,8 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
-import { skills } from '../../data';
+import { skills, toolkit } from '../../data';
 import { fonts } from '../../theme';
+import styles from './Skills.module.css';
 
 interface BentoCardProps {
   title: string;
@@ -34,12 +35,9 @@ const BentoCard = ({ title, items, featured = false, wide = false }: BentoCardPr
         color: featured ? featuredText : 'inherit',
         position: 'relative',
         overflow: 'hidden',
-        transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
+        transition: 'box-shadow 0.25s ease',
         '&:hover': {
-          transform: 'translateY(-4px)',
-          boxShadow: featured
-            ? '0 16px 40px rgba(0,0,0,0.25)'
-            : '0 8px 24px rgba(0,0,0,0.1)',
+          boxShadow: featured ? '0 16px 40px rgba(0,0,0,0.25)' : '0 8px 24px rgba(0,0,0,0.1)',
         },
         '&::before': featured
           ? {
@@ -71,7 +69,7 @@ const BentoCard = ({ title, items, featured = false, wide = false }: BentoCardPr
         {items.map((item) => (
           <Box
             key={item}
-            className="skill-chip"
+            className={styles['skill-chip']}
             sx={{
               fontFamily: fonts.mono,
               fontSize: '0.7rem',
@@ -97,16 +95,6 @@ const BentoCard = ({ title, items, featured = false, wide = false }: BentoCardPr
   );
 };
 
-const allSkillItems = [
-  ...skills.languages,
-  ...skills.frontend,
-  ...skills.backend,
-  ...skills.ai,
-  ...skills.databases,
-  ...skills.tools,
-  ...skills.cloud,
-];
-
 export const Skills = () => {
   const theme = useTheme();
   const bgColor = theme.palette.background.default;
@@ -114,7 +102,7 @@ export const Skills = () => {
   return (
     <Box component="section" id="skills" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="04">Skills</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.6rem', md: '2rem' } }}>
+      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
         Tools & technologies
       </Typography>
 
@@ -130,7 +118,7 @@ export const Skills = () => {
         {/* Languages — wide */}
         <BentoCard title="Languages" items={skills.languages} wide />
         {/* AI — featured */}
-        <BentoCard title="AI & GenAI" items={skills.ai} featured />
+        <BentoCard title="AI & GenAI" items={skills.ai} />
         {/* Frontend */}
         <BentoCard title="Frontend" items={skills.frontend} />
         {/* Backend */}
@@ -178,10 +166,10 @@ export const Skills = () => {
         }}
       >
         <Box
-          className="marquee-track"
+          className={styles['marquee-track']}
           sx={{ display: 'flex', width: 'max-content', gap: 3 }}
         >
-          {[...allSkillItems, ...allSkillItems, ...allSkillItems].map((item, idx) => (
+          {[...toolkit, ...toolkit, ...toolkit].map((item, idx) => (
             <Typography
               key={`${item}-${idx}`}
               sx={{

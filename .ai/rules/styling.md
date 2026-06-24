@@ -2,8 +2,9 @@
 
 ## Technology Stack
 
-- **MUI (Material UI v9)**: The only styling library. All styling via MUI components and their `sx` prop.
-- **No CSS Modules, SCSS, Tailwind, or styled-components**: Everything is done through MUI's `sx` prop.
+- **MUI (Material UI v9)**: Primary styling library. Most styling via MUI components and their `sx` prop.
+- **CSS Modules**: Allowed for complex animations, keyframes, and pseudo-elements that are awkward in `sx`. Co-located as `*.module.css` in component folders.
+- **No SCSS, Tailwind, or styled-components**: These are not used.
 - **Emotion**: MUI v9 uses Emotion under the hood — do not write Emotion CSS prop directly; use `sx` exclusively.
 
 ---
@@ -67,6 +68,8 @@ All styling is expressed via the `sx` prop on MUI components (including `Box`, `
 | Interactive states | `sx` pseudo-selectors (`'&:hover'`, `'&::before'`) |
 | Custom CSS beyond MUI | Extend MUI theme via `createTheme` overrides |
 | Global resets | MUI `CssBaseline` + minimal `index.css` for html/body |
+| Animations & keyframes | Co-located `.module.css` in component folder |
+| `::before` / `::after` effects | `sx` pseudo-selectors for simple; `.module.css` for complex |
 
 ---
 
@@ -75,9 +78,9 @@ All styling is expressed via the `sx` prop on MUI components (including `Box`, `
 - Keep animations smooth and lightweight.
 - Prioritize animating `transform` and `opacity` properties.
 - Use CSS transitions via `sx` (`transition: 'opacity 0.3s'`) for simple animations.
-- For scroll‑driven reveal animations, use the `Reveal` component (based on IntersectionObserver + CSS classes).
+- For scroll‑driven reveal animations, use the `Reveal` component (based on IntersectionObserver + CSS Module classes).
 - Avoid animating layout properties (width, height, margin, top, left).
-- Respect `prefers-reduced-motion` via the CSS media query in `index.css`.
+- Respect `prefers-reduced-motion` via CSS media queries in component `.module.css` files.
 
 ---
 
@@ -86,4 +89,5 @@ All styling is expressed via the `sx` prop on MUI components (including `Box`, `
 - Theme overrides in `createTheme` are the preferred way to customize MUI components globally.
 - Use `sx` for component-specific, one-off styles.
 - Avoid deeply nested `sx` objects — extract complex styles into well-named variables if they exceed ~10 lines.
-- **No `.module.css` files** — all styles live in `sx`.
+- **CSS Modules only for animations/keyframes**: Keep layout, spacing, color, typography in `sx`. Use `.module.css` only for `@keyframes`, complex `::before`/`::after`, and compound selectors (e.g., staggered children) that are impractical in `sx`.
+- **No `.module.css` for layout**: Don't use modules for padding, margins, flexbox — that's `sx` territory.

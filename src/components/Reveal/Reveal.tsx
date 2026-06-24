@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Box } from '@mui/material';
+import styles from './Reveal.module.css';
 
 interface RevealProps {
   children: ReactNode;
@@ -35,7 +36,7 @@ export const Reveal = ({ children, delay = 0, id }: RevealProps) => {
     <Box
       ref={ref}
       id={id}
-      className={`reveal${visible ? ' is-visible' : ''}`}
+      className={`${styles.reveal}${visible ? ` ${styles['is-visible']}` : ''}`}
       sx={{ transitionDelay: `${delay}ms` }}
     >
       {children}
