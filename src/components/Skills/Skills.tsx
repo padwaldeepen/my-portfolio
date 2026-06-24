@@ -10,78 +10,92 @@ interface BentoCardProps {
   wide?: boolean;
 }
 
-const BentoCard = ({ title, items, featured = false, wide = false }: BentoCardProps) => (
-  <Box
-    sx={{
-      gridColumn: wide ? { xs: 'span 1', sm: 'span 2' } : 'span 1',
-      p: { xs: 2, sm: 2.5 },
-      borderRadius: 2,
-      border: '1px solid',
-      borderColor: featured ? 'text.primary' : 'divider',
-      bgcolor: featured ? 'text.primary' : 'action.hover',
-      color: featured ? 'background.default' : 'inherit',
-      position: 'relative',
-      overflow: 'hidden',
-      transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
-      '&:hover': {
-        transform: 'translateY(-4px)',
-        boxShadow: featured
-          ? '0 16px 40px rgba(0,0,0,0.3)'
-          : '0 8px 24px rgba(0,0,0,0.12)',
-      },
-      '&::before': featured
-        ? {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,255,255,0.1), transparent)',
-            pointerEvents: 'none',
-          }
-        : undefined,
-    }}
-  >
-    <Typography
-      variant="overline"
+const BentoCard = ({ title, items, featured = false, wide = false }: BentoCardProps) => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+
+  // Featured card is always inverted: dark bg on light mode, light bg on dark mode
+  const featuredBg = isDark ? '#e7ecf3' : '#10141c';
+  const featuredText = isDark ? '#10141c' : '#e7ecf3';
+  const featuredSubtext = isDark ? '#55606f' : '#94a1b2';
+  const featuredChipBg = isDark ? 'rgba(16,20,28,0.1)' : 'rgba(255,255,255,0.12)';
+  const featuredChipBorder = isDark ? 'rgba(16,20,28,0.2)' : 'rgba(255,255,255,0.2)';
+  const featuredChipHover = isDark ? 'rgba(16,20,28,0.2)' : 'rgba(255,255,255,0.22)';
+
+  return (
+    <Box
       sx={{
-        fontFamily: fonts.mono,
-        fontSize: '0.65rem',
-        letterSpacing: '0.15em',
-        color: featured ? 'background.paper' : 'text.secondary',
-        display: 'block',
-        mb: 1.5,
+        gridColumn: wide ? { xs: 'span 1', sm: 'span 2' } : 'span 1',
+        p: { xs: 2, sm: 2.5 },
+        borderRadius: 1.5,
+        border: '1px solid',
+        borderColor: featured ? 'transparent' : 'divider',
+        bgcolor: featured ? featuredBg : 'action.hover',
+        color: featured ? featuredText : 'inherit',
+        position: 'relative',
+        overflow: 'hidden',
+        transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: featured
+            ? '0 16px 40px rgba(0,0,0,0.25)'
+            : '0 8px 24px rgba(0,0,0,0.1)',
+        },
+        '&::before': featured
+          ? {
+              content: '""',
+              position: 'absolute',
+              inset: 0,
+              background: isDark
+                ? 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(16,20,28,0.08), transparent)'
+                : 'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,255,255,0.1), transparent)',
+              pointerEvents: 'none',
+            }
+          : undefined,
       }}
     >
-      {title}
-    </Typography>
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
-      {items.map((item) => (
-        <Box
-          key={item}
-          className="skill-chip"
-          sx={{
-            fontFamily: fonts.mono,
-            fontSize: '0.7rem',
-            px: 1.25,
-            py: 0.4,
-            borderRadius: 1,
-            bgcolor: featured ? 'rgba(255,255,255,0.12)' : 'background.paper',
-            color: featured ? 'background.default' : 'text.primary',
-            border: '1px solid',
-            borderColor: featured ? 'rgba(255,255,255,0.2)' : 'divider',
-            transition: 'background-color 0.2s ease, transform 0.2s ease',
-            '&:hover': {
-              bgcolor: featured ? 'rgba(255,255,255,0.2)' : 'action.selected',
-              transform: 'scale(1.05)',
-            },
-          }}
-        >
-          {item}
-        </Box>
-      ))}
+      <Typography
+        variant="overline"
+        sx={{
+          fontFamily: fonts.mono,
+          fontSize: '0.65rem',
+          letterSpacing: '0.15em',
+          color: featured ? featuredSubtext : 'text.secondary',
+          display: 'block',
+          mb: 1.5,
+        }}
+      >
+        {title}
+      </Typography>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+        {items.map((item) => (
+          <Box
+            key={item}
+            className="skill-chip"
+            sx={{
+              fontFamily: fonts.mono,
+              fontSize: '0.7rem',
+              px: 1.25,
+              py: 0.4,
+              borderRadius: 1,
+              bgcolor: featured ? featuredChipBg : 'background.paper',
+              color: featured ? featuredText : 'text.primary',
+              border: '1px solid',
+              borderColor: featured ? featuredChipBorder : 'divider',
+              transition: 'background-color 0.2s ease, transform 0.2s ease',
+              '&:hover': {
+                bgcolor: featured ? featuredChipHover : 'action.selected',
+                transform: 'scale(1.05)',
+              },
+            }}
+          >
+            {item}
+          </Box>
+        ))}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 const allSkillItems = [
   ...skills.languages,
