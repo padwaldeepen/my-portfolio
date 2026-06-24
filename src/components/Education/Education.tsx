@@ -17,7 +17,7 @@ export const Education = () => {
               sx={{
                 height: '2px',
                 width: '40px',
-                bgcolor: 'primary.main',
+                bgcolor: 'divider',
                 borderRadius: 1,
                 mb: 4,
                 mt: 5,
@@ -36,7 +36,7 @@ export const Education = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ color: 'primary.main', fontFamily: fonts.mono, fontSize: '0.8rem', mb: 1.5 }}
+              sx={{ color: 'text.secondary', fontFamily: fonts.mono, fontSize: '0.8rem', mb: 1.5 }}
             >
               {item.school}
             </Typography>
