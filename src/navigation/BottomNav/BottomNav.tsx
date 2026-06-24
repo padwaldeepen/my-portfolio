@@ -104,14 +104,14 @@ export const BottomNav = () => {
                 height: 48,
                 borderRadius: 2,
                 cursor: 'pointer',
-                color: isActive ? 'primary.main' : 'text.secondary',
-                bgcolor: isActive ? 'rgba(37, 99, 235, 0.12)' : 'transparent',
+                color: isActive ? 'text.primary' : 'text.secondary',
+                bgcolor: isActive ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
                 transition:
                   'color 0.25s, background-color 0.25s, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 transform: isActive ? 'scale(1.1)' : 'scale(1)',
                 '&:hover': {
-                  color: 'primary.main',
-                  bgcolor: 'rgba(37, 99, 235, 0.08)',
+                  color: 'text.primary',
+                  bgcolor: 'rgba(255, 255, 255, 0.08)',
                 },
               }}
             >
