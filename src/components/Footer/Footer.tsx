@@ -20,7 +20,7 @@ export const Footer = () => {
               size="small"
               sx={{
                 color: 'text.secondary',
-                '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
                 transition: 'color 0.2s, transform 0.2s',
               }}
             >
@@ -36,13 +36,13 @@ export const Footer = () => {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
             size="small"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
-              transition: 'color 0.2s, transform 0.2s',
-            }}
-          >
-            <LinkedInIcon fontSize="small" />
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
+                transition: 'color 0.2s, transform 0.2s',
+              }}
+            >
+              <LinkedInIcon fontSize="small" />
           </IconButton>
         </Tooltip>
         <Tooltip title="Email" arrow>
@@ -51,13 +51,13 @@ export const Footer = () => {
             href={`mailto:${profile.email}`}
             aria-label="Email"
             size="small"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': { color: 'primary.main', transform: 'scale(1.15)' },
-              transition: 'color 0.2s, transform 0.2s',
-            }}
-          >
-            <EmailOutlinedIcon fontSize="small" />
+              sx={{
+                color: 'text.secondary',
+                '&:hover': { color: 'text.primary', transform: 'scale(1.15)' },
+                transition: 'color 0.2s, transform 0.2s',
+              }}
+            >
+              <EmailOutlinedIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       </Box>

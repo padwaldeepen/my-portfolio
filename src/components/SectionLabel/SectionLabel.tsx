@@ -9,7 +9,7 @@ interface SectionLabelProps {
 export const SectionLabel = ({ index, children }: SectionLabelProps) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 4 }}>
-      <Typography variant="overline" sx={{ color: 'primary.main' }}>
+      <Typography variant="overline" sx={{ color: 'text.secondary', opacity: 0.5 }}>
         {index}
       </Typography>
       <Typography variant="overline" sx={{ color: 'text.secondary' }}>

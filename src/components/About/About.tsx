@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
 import { stats, profile } from '../../data';
@@ -10,7 +11,103 @@ const bodySx = {
   maxWidth: 640,
 };
 
+const useCountUp = (target: number, duration = 1600, inView: boolean) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let frame = 0;
+    const totalFrames = Math.round(duration / 16);
+    const timer = setInterval(() => {
+      frame++;
+      const progress = Math.min(frame / totalFrames, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (frame >= totalFrames) clearInterval(timer);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [inView, target, duration]);
+  return count;
+};
+
+interface StatCardProps {
+  label: string;
+  value: number | string;
+  inView: boolean;
+}
+
+const StatCard = ({ label, value, inView }: StatCardProps) => {
+  const isNumber = typeof value === 'number';
+  const count = useCountUp(isNumber ? (value as number) : 0, 1600, inView && isNumber);
+
+  return (
+    <Box
+      sx={{
+        p: 2.5,
+        borderRadius: 2,
+        bgcolor: 'action.hover',
+        border: '1px solid',
+        borderColor: 'divider',
+        transition: 'border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        '&:hover': {
+          borderColor: 'text.secondary',
+          transform: 'translateY(-3px)',
+        },
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: isNumber ? '2rem' : '0.9rem',
+          fontWeight: isNumber ? 700 : 400,
+          letterSpacing: '-0.02em',
+          lineHeight: 1.1,
+          color: 'text.primary',
+          fontFamily: isNumber ? fonts.mono : 'inherit',
+        }}
+      >
+        {isNumber ? count : value}
+        {isNumber && (
+          <Box component="span" sx={{ color: 'text.secondary', fontWeight: 400 }}>
+            +
+          </Box>
+        )}
+      </Typography>
+      <Typography
+        variant="caption"
+        sx={{
+          display: 'block',
+          fontFamily: fonts.mono,
+          color: 'text.secondary',
+          mt: 0.5,
+          fontSize: '0.65rem',
+        }}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+};
+
 export const About = () => {
+  const [inView, setInView] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Box component="section" id="about" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="01">About</SectionLabel>
@@ -50,6 +147,7 @@ export const About = () => {
         the interface that ties it all together.
       </Typography>
       <Box
+        ref={statsRef}
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(4, 1fr)' },
@@ -57,42 +155,9 @@ export const About = () => {
           mt: 6,
         }}
       >
-        {stats.map((s) => {
-          const isNumber = typeof s.value === 'number';
-          return (
-            <Box
-              key={s.label}
-              sx={{
-                p: 2.5,
-                borderRadius: 2,
-                bgcolor: 'action.hover',
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: isNumber ? '2rem' : '0.9rem',
-                  fontWeight: isNumber ? 600 : 400,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  color: isNumber ? 'text.primary' : 'text.secondary',
-                }}
-              >
-                {s.value}
-              </Typography>
-              <Typography
-                variant="caption"
-                sx={{
-                  display: 'block',
-                  fontFamily: fonts.mono,
-                  color: 'text.secondary',
-                  mt: 0.5,
-                }}
-              >
-                {s.label}
-              </Typography>
-            </Box>
-          );
-        })}
+        {stats.map((s) => (
+          <StatCard key={s.label} label={s.label} value={s.value} inView={inView} />
+        ))}
       </Box>
     </Box>
   );
