@@ -34,8 +34,8 @@ const Shell = () => {
       // Cursor ambient glow — direct DOM update to avoid re-render
       if (glowRef.current) {
         glowRef.current.style.background = isDark
-          ? `radial-gradient(700px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 40%, transparent 70%)`
-          : `radial-gradient(700px circle at ${e.clientX}px ${e.clientY}px, rgba(0,0,0,0.045) 0%, rgba(0,0,0,0.015) 40%, transparent 70%)`;
+          ? `radial-gradient(700px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 40%, transparent 70%)`
+          : `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(0,0,0,0.09) 0%, rgba(0,0,0,0.04) 35%, transparent 65%)`;
       }
 
       // Cursor label position — direct DOM update

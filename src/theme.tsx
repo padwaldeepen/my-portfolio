@@ -5,7 +5,7 @@ const mono = '"Geist Mono", ui-monospace, monospace';
 const serif = '"Instrument Serif", Georgia, serif';
 
 const baseOptions: ThemeOptions = {
-  shape: { borderRadius: 10 },
+  shape: { borderRadius: 6 },
   typography: {
     fontFamily: sans,
     overline: {
