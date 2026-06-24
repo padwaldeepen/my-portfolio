@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
@@ -16,6 +15,8 @@ export default tseslint.config(
       '*.config.ts',
       '*.test.ts',
       '*.test.tsx',
+      '*.mjs',
+      'image.d.ts',
     ],
   },
   js.configs.recommended,
@@ -31,7 +32,6 @@ export default tseslint.config(
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooks,
-      import: importPlugin,
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
@@ -68,19 +68,20 @@ export default tseslint.config(
         {
           selector: 'function',
           modifiers: ['exported'],
-          format: ['camelCase'],
-          custom: {
-            regex: '^use[A-Z].*',
-            match: true,
-          },
+          format: ['camelCase', 'PascalCase'],
+        },
+      ],
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'ExportDefaultDeclaration',
+          message: 'Use named exports instead of default exports',
         },
       ],
     },
     settings: {
       react: { version: 'detect' },
-      'import/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx'] },
-      'import/resolver': { typescript: {} },
     },
   },
-  prettier
+  prettier,
 );

@@ -1,5 +1,5 @@
 {
-  "name": "my-portfolio",
+  "name": "deepen-portfolio",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,39 +9,27 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.2.0",
-    "@mui/material": "^7.2.0",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.12",
-    "autoprefixer": "^10.4.21",
-    "classnames": "^2.5.1",
-    "framer-motion": "^12.22.0",
-    "postcss": "^8.5.6",
-    "react": "^19.1.0",
-    "react-bootstrap": "^2.10.4",
-    "react-dom": "^19.1.0",
-    "react-icons": "^5.5.0",
-    "react-router-dom": "^7.6.3",
-    "tailwindcss": "^4.1.11",
-    "typescript": "^5.8.3",
-    "typewriter-effect": "^2.22.0"
+    "@fontsource/geist-mono": "5.2.8",
+    "@fontsource/geist-sans": "5.2.5",
+    "@fontsource/instrument-serif": "5.2.8",
+    "@mui/icons-material": "^9.1.1",
+    "@mui/material": "^9.1.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^9.30.1",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-modules-newline": "^0.0.6",
-    "eslint-plugin-modules-newlines": "^0.0.7",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "lint-staged": "^16.1.2",
-    "prettier": "3.6.2",
-    "sass": "^1.89.2",
-    "typescript-eslint": "^8.61.0",
-    "vite": "^7.0.1"
+    "lint-staged": "^17.0.8",
+    "prettier": "3.8.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.0",
+    "vite": "^8.0.16"
   },
   "scripts": {
     "audit:fix": "npm audit fix",
@@ -50,7 +38,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ./**/*.{ts,tsx,scss,json} --config .prettierrc.json"
+    "format": "prettier --write \"**/*.{ts,tsx,scss,json}\" --config .prettierrc.json"
   },
   "lint-staged": {
     "**/*.{ts,tsx,scss,json}": [

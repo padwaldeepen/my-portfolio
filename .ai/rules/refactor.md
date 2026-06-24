@@ -8,7 +8,7 @@
 
 ## Component Size
 - **Target**: 100–200 lines.
-- **Maximum**: 300 lines.
+- **Maximum**: 350 lines.
 - Refactor and break down components into sub-components if they exceed the maximum limit.
 
 ---
@@ -28,14 +28,14 @@
 ---
 
 ## Reusability
-- Always check `src/shared/components/` and `src/shared/hooks/` before creating a new component or hook.
-- Avoid duplicate styling; share styling parameters through SCSS variables.
+- Always check `src/components/` before creating a new component.
+- Avoid duplicate styling; share styling parameters through MUI theme tokens (defined in `src/theme.tsx`).
 - Avoid duplicate API logic.
 
 ---
 
 ## Mandatory Checks After Change
-- Run TypeScript compiler checks (`npx tsc`).
+- Run TypeScript compiler checks (`npx tsc --noEmit`).
 - Run ESLint to verify code quality.
 - Run Prettier to format.
 - Remove unused imports, variables, and code.

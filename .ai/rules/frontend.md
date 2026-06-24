@@ -2,37 +2,27 @@
 
 ## Folder Structure
 
-The project follows a modular and strictly organized directory structure split into `pages` and `shared` layers:
+The project follows a component-based directory structure. All components live in `src/components/`:
 
 ```
 src/
-├── pages/
-│   └── Home/
-│       ├── Home.tsx
-│       ├── Home.scss
-│       └── components/            # Local sub-components exclusive to this page
-│           └── HomeBanner/
-│               ├── HomeBanner.tsx
-│               └── HomeBanner.scss
-├── shared/
-│   └── components/                # Reusable UI components (used across multiple pages)
-│       └── Button/
-│           ├── Button.tsx
-│           └── Button.scss
-├── hooks/                         # Custom shared React hooks (flat files)
+├── components/                     # All React components (each in its own folder)
+│   └── ComponentName/
+│       └── ComponentName.tsx       # Component implementation
+├── hooks/                          # Custom React hooks (flat files)
 │   └── useLocalStorage.ts
-├── utils/                         # Utility and helper functions (flat files)
+├── utils/                          # Utility and helper functions (flat files)
 │   └── formatDate.ts
-├── types/                         # Global TypeScript definitions (flat files)
+├── types/                          # Global TypeScript definitions (flat files)
 │   └── global.d.ts
-└── assets/                        # Shared static assets (flat files)
+└── assets/                         # Shared static assets (flat files)
     └── logo.svg
 ```
 
 ### Component Placement Rules
-1. **Shared Components**: Move to `src/shared/components/` if the component is used across multiple pages.
-2. **Page-Specific Components**: If a component is used *only* by a specific page, place it in a `components/` subfolder inside that page's directory (e.g., `src/pages/Home/components/HomeBanner/`).
-3. **Component Folders ONLY**: Only React components (both shared and page-specific) should have their own folders (e.g., `src/shared/components/Button/` containing `Button.tsx` and `Button.scss`). Do **not** create directories for individual hooks, utils, types, or assets. They must be placed as flat files directly inside their parent directories (e.g., `src/hooks/useLocalStorage.ts` and `src/utils/formatDate.ts`).
+1. **All components** go in `src/components/ComponentName/`, regardless of reuse scope.
+2. **Component Folders ONLY**: Only React components have their own folders (e.g., `src/components/Button/`). Do **not** create directories for hooks, utils, types, or assets — keep them as flat files in their respective directories.
+3. **No `pages/` or `shared/` layers** — the project uses a flat component hierarchy.
 
 ---
 
@@ -41,59 +31,46 @@ src/
 - **Named Exports Only**: Always use named exports. Do not use default exports.
   ```typescript
   // Correct
-  export const Button = () => {};
-  
+  export function Button() {}
+
   // Incorrect
   export default Button;
   ```
-- **No Index/Barrel Files**: Do not use `index.ts` files or barrel exports to group imports. Import files directly from their absolute path.
-- **Path Aliases**: Use absolute import paths configured in the compiler options:
-  - `@assets/*`
-  - `@components/*`
-  - `@pages/*`
-  - `@styles/*`
-  - `@types/*`
-  - `@utils/*`
-  - `@hooks/*`
+- **No Index/Barrel Files**: Do not use `index.ts` files or barrel exports. Import files directly from their path.
+- **Path Aliases** (not yet configured — use relative imports):
+  - Currently using relative imports like `./ComponentName` or `../../theme`
+  - Aliases can be enabled later via Vite `resolve.alias` + `tsconfig.json` `paths`
 
 ---
 
 ## Component Rules
 
-- **Functional Components Only**: Standard React functional components with hooks. Do not use class components.
+- **Functional Components Only**: React functional components with hooks. No class components.
 - **Size Restrictions**:
   - Soft maximum of 200 lines, hard limit of 300 lines per component file.
   - Soft maximum of 40 lines, hard limit of 60 lines per function.
-- **Strict Typing**: Strictly type all component props. Do not use `any` — use explicit interfaces or type declarations.
-- **Separation of Styles**: SCSS styling should be in a separate `.scss` file inside the component folder. Avoid inline styles unless dynamic (using custom CSS variables or brief MUI `sx` overrides).
+- **Strict Typing**: Strictly type all component props with interfaces or type aliases. No `any`.
 - **Single Responsibility**: Each component must do one thing well. Compose smaller components to build complex layouts.
 
 ---
 
-## Pages
+## Styling Approach
 
-- Each page has its own folder containing `PageName.tsx` and `PageName.scss`.
-- Local UI sections or sub-components are nested inside `src/pages/PageName/components/`.
+- **MUI `sx` prop only**: All styling is done via the MUI `sx` prop. No CSS modules, no styled-components, no Tailwind.
+- **No `.module.css` files**: Custom CSS files are not used. Everything goes through `sx`.
+- **Theme tokens**: Reference MUI theme tokens (e.g., `color: 'primary.main'`, `bgcolor: 'background.default'`) instead of hardcoded values.
+- **Avoid `style={}`**: Use `sx` over inline `style` objects for better theme integration and responsive support.
 
 ---
 
 ## Hooks
 
 - **Shared Hooks**: Located in `src/hooks/` and prefixed with `use` (e.g., `useLocalStorage.ts`).
-- **Page-Specific Hooks**: Nested inside the page folder if used exclusively by that page.
+- Keep hooks as flat files — no folders.
 
 ---
 
 ## Types
 
-- **Shared Types**: Declared in `src/types/` (e.g., `global.d.ts`).
-- **Page-Specific Types**: Declared inside the page folder.
+- **Shared Types**: Declared in `src/types/` (e.g., `global.d.ts`) as flat files.
 - **Naming**: Use PascalCase for all `interface`, `type`, and `enum` declarations.
-
----
-
-## API & Services
-
-- **Shared Utilities**: General API fetch wrappers go in `src/utils/api.ts` (if any).
-- **Page-Specific API/Services**: Located inside the specific page folder.
-- **DRY**: Do not duplicate API invocation logic.
