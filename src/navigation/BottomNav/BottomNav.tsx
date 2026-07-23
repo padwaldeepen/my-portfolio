@@ -10,8 +10,6 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import EmailIcon from '@mui/icons-material/Email';
 import CodeOutlinedIcon from '@mui/icons-material/CodeOutlined';
 import CodeIcon from '@mui/icons-material/Code';
-import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
-import LayersIcon from '@mui/icons-material/Layers';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { scrollTo } from '../../utils/scrollTo';
 import { navItems } from '../../data';
@@ -21,7 +19,6 @@ const icons: Record<string, [React.ElementType, React.ElementType]> = {
   experience: [WorkOutlineOutlinedIcon, WorkIcon],
   education: [SchoolOutlinedIcon, SchoolIcon],
   skills: [CodeOutlinedIcon, CodeIcon],
-  work: [LayersOutlinedIcon, LayersIcon],
   contact: [EmailOutlinedIcon, EmailIcon],
 };
 

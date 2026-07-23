@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { education } from '../../data';
 import { fonts } from '../../theme';
 
@@ -7,9 +8,7 @@ export const Education = () => {
   return (
     <Box component="section" id="education" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="03">Education</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
-        Academic background
-      </Typography>
+      <SectionHeading>Academic background</SectionHeading>
       {education.map((item, idx) => (
         <Box key={item.degree}>
           {idx > 0 && (

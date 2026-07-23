@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { stats, profile } from '../../data';
 import { fonts } from '../../theme';
 
@@ -112,9 +113,7 @@ export const About = () => {
   return (
     <Box component="section" id="about" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="01">About</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 3, fontSize: { xs: '1.35rem', md: '2rem' } }}>
-        Building AI-powered products people love to use
-      </Typography>
+      <SectionHeading mb={3}>Building AI-powered products people love to use</SectionHeading>
       <Typography sx={bodySx}>
         {profile.tagline} I turn complex models and data into{' '}
         <Box

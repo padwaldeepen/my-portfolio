@@ -1,5 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { skills, toolkit } from '../../data';
 import { fonts } from '../../theme';
 import styles from './Skills.module.css';
@@ -102,9 +103,7 @@ export const Skills = () => {
   return (
     <Box component="section" id="skills" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="04">Skills</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
-        Tools & technologies
-      </Typography>
+      <SectionHeading>Tools & technologies</SectionHeading>
 
       {/* Bento grid */}
       <Box

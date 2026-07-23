@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Box, Typography, Divider, Collapse, useMediaQuery, useTheme, Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { experience } from '../../data';
 import { fonts } from '../../theme';
 
@@ -107,9 +108,7 @@ export const Experience = () => {
   return (
     <Box component="section" id="experience" sx={{ py: { xs: 6, md: 10 } }}>
       <SectionLabel index="02">Experience</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 5, fontSize: { xs: '1.35rem', md: '2rem' } }}>
-        Where I&apos;ve worked
-      </Typography>
+      <SectionHeading>Where I&apos;ve worked</SectionHeading>
       {experience.map((job, idx) => (
         <Box key={job.period + job.company}>
           <JobCard job={job} idx={idx} isMobile={isMobile} />

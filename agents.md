@@ -14,7 +14,7 @@ Follow all rules in order.
 ## Project Stack
 
 - **Core**: React 19 + Vite 8 + TypeScript 6
-- **Styling**: Material UI (MUI v9) — **sx prop only**. No CSS Modules, no Tailwind, no styled-components.
+- **Styling**: Material UI (MUI v9) — **sx prop primary**. CSS Modules (`*.module.css`) are allowed only for keyframe animations and complex pseudo-elements/compound selectors — see `.ai/rules/styling.md`. No Tailwind, no styled-components.
 - **Quality**: ESLint v9 (Flat Config) + Prettier
 
 ---

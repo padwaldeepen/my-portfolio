@@ -4,7 +4,6 @@ export const profile = {
   tagline: 'Building intelligent applications with cutting-edge AI technologies.',
   location: 'Tampa, FL',
   email: 'padwaldeepen@gmail.com',
-  phone: '',
   socials: {
     github: 'https://github.com/padwaldeepen',
     linkedin: 'https://www.linkedin.com/in/padwaldeepen/',
@@ -20,7 +19,6 @@ export const navItems = [
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },
   { id: 'skills', label: 'Skills' },
-  { id: 'work', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ];
 

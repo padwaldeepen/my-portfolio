@@ -25,7 +25,6 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "lint-staged": "^17.0.8",
     "prettier": "3.8.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.0",
@@ -39,11 +38,5 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,scss,json}\" --config .prettierrc.json"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,scss,json}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
   }
 }

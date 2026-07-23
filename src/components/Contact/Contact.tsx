@@ -1,6 +1,19 @@
 import { useState } from 'react';
-import { Box, Typography, Button, Stack, TextField, Snackbar, Alert } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Button,
+  Stack,
+  TextField,
+  Snackbar,
+  Alert,
+  IconButton,
+  Tooltip,
+} from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CheckIcon from '@mui/icons-material/Check';
 import { SectionLabel } from '../SectionLabel/SectionLabel';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { profile } from '../../data';
 import { fonts } from '../../theme';
 
@@ -19,6 +32,41 @@ const inputSx = {
     letterSpacing: '0.03em',
     '&.Mui-focused': { color: 'text.primary' },
   },
+};
+
+const CopyableEmail = ({ email }: { email: string }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  return (
+    <Stack direction="row" spacing={0.25} sx={{ alignItems: 'center', mb: 0.5 }}>
+      <Typography
+        variant="caption"
+        sx={{ fontFamily: fonts.mono, color: 'text.secondary', fontSize: '0.7rem' }}
+      >
+        {email}
+      </Typography>
+      <Tooltip title={copied ? 'Copied!' : 'Copy email'}>
+        <IconButton
+          size="small"
+          onClick={handleCopy}
+          aria-label="Copy email address"
+          sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+        >
+          {copied ? (
+            <CheckIcon sx={{ fontSize: '0.85rem' }} />
+          ) : (
+            <ContentCopyIcon sx={{ fontSize: '0.85rem' }} />
+          )}
+        </IconButton>
+      </Tooltip>
+    </Stack>
+  );
 };
 
 export const Contact = () => {
@@ -56,10 +104,8 @@ export const Contact = () => {
 
   return (
     <Box component="section" id="contact" sx={{ py: { xs: 6, md: 10 } }}>
-      <SectionLabel index="06">Contact</SectionLabel>
-      <Typography variant="h2" sx={{ mb: 2, fontSize: { xs: '1.35rem', md: '2rem' } }}>
-        Let&apos;s work together
-      </Typography>
+      <SectionLabel index="05">Contact</SectionLabel>
+      <SectionHeading mb={2}>Let&apos;s work together</SectionHeading>
       <Typography
         variant="body1"
         sx={{ color: 'text.secondary', maxWidth: 540, mb: 5, lineHeight: 1.7 }}
@@ -120,18 +166,7 @@ export const Contact = () => {
       </Box>
 
       <Box sx={{ mt: 5 }}>
-        <Typography
-          variant="caption"
-          sx={{
-            fontFamily: fonts.mono,
-            color: 'text.secondary',
-            fontSize: '0.7rem',
-            display: 'block',
-            mb: 0.5,
-          }}
-        >
-          {profile.email}
-        </Typography>
+        <CopyableEmail email={profile.email} />
         <Typography
           variant="caption"
           sx={{
